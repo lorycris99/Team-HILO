@@ -1,2 +1,5 @@
 riunione 12-11-2020 per fare class diagram e altri use case
 minuta abbiamo ristrutturato il db (entità accorpate e separate),collegato nel class diagram le varie entità individuate e realizzati altri 4 use case
+facilitatore-> lorenzo timekeeper->howreasio minute taker->hermano
+
+riunione

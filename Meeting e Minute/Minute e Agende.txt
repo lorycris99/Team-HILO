@@ -2,4 +2,8 @@ riunione 12-11-2020 per fare class diagram e altri use case
 minuta abbiamo ristrutturato il db (entità accorpate e separate),collegato nel class diagram le varie entità individuate e realizzati altri 4 use case
 facilitatore-> lorenzo timekeeper->howreasio minute taker->hermano
 
+riunione 16-11-2020 per fare sequence diagram
+minuta abbiamo stilato i vari sequence diagram escludendo UC_3 e 4 per semplicità (<- da non scrivere). commenti sulle varie scelte
+facilitatore->howreasio timekeeper->howreasio minute taker-> ivanoff
+
 riunione

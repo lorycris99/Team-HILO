@@ -9,3 +9,11 @@ facilitatore->howreasio timekeeper->howreasio minute taker-> ivanoff
 riunione 20-11-2020 per fare statechart
 minuta abbiamo fatto gli statechart, il mapping logico del db e use case model
 facilitatore-> ivanoff timekeeper->howreasio minute taker->lorenzo
+
+riunione 30-11-2020 per compilare RAD
+minuta abbiamo compilato i primi punti del RAD (fino a scenari)
+facilitatore-> lorenzo timekeeper->howreasio minute taker->howreasio
+
+riunione 1-12-2020 per ultimare RAD e iniziare SDD
+minuta abbiamo completato il RAD e fatto i primi 3 punti dell' SDD
+facilitatore->howreasio timekeeper->howreasio minute taker->hermano

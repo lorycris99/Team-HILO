@@ -17,3 +17,7 @@ facilitatore-> lorenzo timekeeper->howreasio minute taker->howreasio
 riunione 1-12-2020 per ultimare RAD e iniziare SDD
 minuta abbiamo completato il RAD e fatto i primi 3 punti dell' SDD
 facilitatore->howreasio timekeeper->howreasio minute taker->hermano
+
+riunione 2-12-2020 per continuare SDD
+minuta abbiamo fatto component diagram, deployment diagram e digitalizzato lo schema logico del DB
+facilitatore->hermano time keeper->howreasio minute taker->ivanoff

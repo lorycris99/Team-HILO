@@ -21,3 +21,7 @@ facilitatore->howreasio timekeeper->howreasio minute taker->hermano
 riunione 2-12-2020 per continuare SDD
 minuta abbiamo fatto component diagram, deployment diagram e digitalizzato lo schema logico del DB
 facilitatore->hermano time keeper->howreasio minute taker->ivanoff
+
+riunione 4-12-2020 per continuare SDD
+minuta abbiamo aggiunto i punti dove il mapping hw/sw, formattato il testo e corretto il class diagram in object diagram
+facilitatore->ivanoff time keeper->howreasio minute taker->lorenzo

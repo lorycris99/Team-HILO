@@ -18,10 +18,18 @@ riunione 1-12-2020 per ultimare RAD e iniziare SDD
 minuta abbiamo completato il RAD e fatto i primi 3 punti dell' SDD
 facilitatore->howreasio timekeeper->howreasio minute taker->hermano
 
-riunione 2-12-2020 per continuare SDD
+riunione 2-12-2020 per continuare SDD e compilare matrice di tracciabilità
 minuta abbiamo fatto component diagram, deployment diagram e digitalizzato lo schema logico del DB
 facilitatore->hermano time keeper->howreasio minute taker->ivanoff
 
 riunione 4-12-2020 per continuare SDD
 minuta abbiamo aggiunto i punti dove il mapping hw/sw, formattato il testo e corretto il class diagram in object diagram
 facilitatore->ivanoff time keeper->howreasio minute taker->lorenzo
+
+riunione 5-12-2020 per ultimare SDD
+minuta abbiamo esaminato i casi limite, aggiunto le immagini e completato SDD
+facilitatore->lorenzo time keeper->howreasio minute taker->howreasio 
+
+riunione 6-12-2020 per revisionare il lavoro svolto
+minuta abbiamo revisionato i documenti per la consegna di oggi apportando modifiche minori di layout e correzione di errori di battitura
+facilitatore->howreasio time keeper->howreasio minute taker->hermano

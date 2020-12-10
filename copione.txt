@@ -1,0 +1,49 @@
+Slide 1:
+Salve, sono Adamo Ivan Carmine e sono qui per presentarvi il nostro progetto di ingegneria del Software, "HILO" .
+Slide 2:
+Il nostro team è composto da: Hermann Senatore, Me, Lorenzo Criscuolo, e Orazio Cesarano. Come è facilmente intuibile il nome del progetto
+nasce dalle nostre iniziali.
+Slide 3:
+Gli strumenti di comunicazione che abbiamo utilizzato sono:
+	Github per la condivisione di file e documenti
+	Whatsapp per la comunicazione instantanea ed informale
+	Teams per i meeting e ilavori di gruppo
+Ovviamente in questo periodo è stato impossibile incontrarsi personalmente per riunioni e lavoro, ma è proprio per fronteggiare questo periodo
+che nasce questo progetto.
+Slide 4:
+Questo progetto nasce per aiutare le ASL a tracciare, a comunicare e ad avvicinarsi ai pazienti affetti da covid sparsi sul territorio.
+Tramite una Web Application, gli operatori sanitari potranno ricevere i dati che i pazienti immetteranno nel sistema per comunicare il loro 
+stato di salute. Inoltre la piattaforma permette le ASL di avere un sistema di scheduling online basato su una IA che analizza le radiografie dei pazienti.
+Slide 5:
+Al momento questi problemi sono affrontati in maniera manuale, con un minimo sistema informatico di supporto. L'unico caso degno di nota, ma non
+perfettamente funzionante è quella della piattaforma Sinfonia in Campania. Questo provoca Tempi di attesa lunghi, uno scheduling inefficiente, 
+sfiducia nei pazienti che si sentono abbandonati e la difficoltà di dover trattare con una serie di problemi non centralizzati.
+Slide 6:
+Gli attori di questo sistema sono:
+	Operatori Sanitari: I dipendenti delle strutture sanitarie come ad esempio dottori ed analisti.
+	Pazienti: Le persone purtroppo contagiate che hanno bisogno di supporto nella loro quarantena domestica o nel loro ricovero.
+	Admin: L'amministratore di sistema che ha la possibilità di gestire il sistema quasi per intero e l'unico che può aggiungere nuove strutture sanitarie.
+Slide 7:
+I requisiti funzionali sono divisi in base agli attori, ci sono quelli che riguardano gli operatori sanitari, quelli che riguardano i pazienti e infine 
+quelli che riguardano l'Admin. Ma vediamoli nel dettaglio.
+Slide 8:
+L'operatore sanitario dovrà essere in grado di registrare nuovi tamponi nel sistema, visionare lo scheduling dell'analisi dei tamponi, caricare e 
+visionare le radiografie dei pazienti. E ottenere dall'IA la probabilità di quel paziente alla positività del tampone.
+Slide 9:
+Il paziente dovrà essere in grado di Visualizzare la sua cartella clinica, Gestire il suo diario clinico, Ricevere la comunicazione del risultato del tampone, 
+descrivere il suo stato mentale che verrà poi giudicato da una IA.
+Slide 10:
+L'Admin dovrà essere in grado di garantire l'invio di statistiche periodiche dell'andamento della pandemia sul territorio, Tracciare la positività degli operatori,
+sanitari e gestire i dati del personale.
+Slide 11:
+Nell'ambito dell'analisi è stato creato uno use case diagram, che serve a descrivere le relazioni tra gli attori ed il sistema, ogni diagramma presente in questa presentazione
+viene descritto in maniera più dettagliata negli specifici documenti poichè non è scopo della presentazione approfondire questi aspetti.
+Slide 12:
+Poi abbiamo creato una tabella riassuntiva degli oggetti del dominio che possono essere di tipo Entity(Oggetti di rilievo per il sistema), 
+Boundary(coloro che agiscono con gli attori direttamente) o Control(Oggetti che applicano la logica di business).
+Slide 13:
+Altro diagramma prodotto è l'object diagram, una visione d'insieme degli ogetti individuati e le relazioni che ci sono tra di loro.
+Slide 14:
+Dagli use case si ricavono i sequence diagram una rappresentazione dinamica dello use case stesso e mostra l'interazione tra gli ogetti in funzione del tempo.
+Slide 15:
+Infine lo statechart Diagram mostra gli stati di un ogetto a seconda di determinati eventi, e abbiamo la totale assenza del concetto di tempo.

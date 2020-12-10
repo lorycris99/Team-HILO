@@ -1,8 +1,10 @@
 Slide 1:
 Salve, sono Adamo Ivan Carmine e sono qui per presentarvi il nostro progetto di ingegneria del Software, "HILO" .
+
 Slide 2:
 Il nostro team è composto da: Hermann Senatore, Me, Lorenzo Criscuolo, e Orazio Cesarano. Come è facilmente intuibile il nome del progetto
 nasce dalle nostre iniziali.
+
 Slide 3:
 Gli strumenti di comunicazione che abbiamo utilizzato sono:
 	Github per la condivisione di file e documenti
@@ -10,40 +12,86 @@ Gli strumenti di comunicazione che abbiamo utilizzato sono:
 	Teams per i meeting e ilavori di gruppo
 Ovviamente in questo periodo è stato impossibile incontrarsi personalmente per riunioni e lavoro, ma è proprio per fronteggiare questo periodo
 che nasce questo progetto.
+
 Slide 4:
 Questo progetto nasce per aiutare le ASL a tracciare, a comunicare e ad avvicinarsi ai pazienti affetti da covid sparsi sul territorio.
 Tramite una Web Application, gli operatori sanitari potranno ricevere i dati che i pazienti immetteranno nel sistema per comunicare il loro 
 stato di salute. Inoltre la piattaforma permette le ASL di avere un sistema di scheduling online basato su una IA che analizza le radiografie dei pazienti.
+
 Slide 5:
 Al momento questi problemi sono affrontati in maniera manuale, con un minimo sistema informatico di supporto. L'unico caso degno di nota, ma non
 perfettamente funzionante è quella della piattaforma Sinfonia in Campania. Questo provoca Tempi di attesa lunghi, uno scheduling inefficiente, 
 sfiducia nei pazienti che si sentono abbandonati e la difficoltà di dover trattare con una serie di problemi non centralizzati.
+
 Slide 6:
 Gli attori di questo sistema sono:
 	Operatori Sanitari: I dipendenti delle strutture sanitarie come ad esempio dottori ed analisti.
 	Pazienti: Le persone purtroppo contagiate che hanno bisogno di supporto nella loro quarantena domestica o nel loro ricovero.
 	Admin: L'amministratore di sistema che ha la possibilità di gestire il sistema quasi per intero e l'unico che può aggiungere nuove strutture sanitarie.
+
 Slide 7:
 I requisiti funzionali sono divisi in base agli attori, ci sono quelli che riguardano gli operatori sanitari, quelli che riguardano i pazienti e infine 
 quelli che riguardano l'Admin. Ma vediamoli nel dettaglio.
+
 Slide 8:
 L'operatore sanitario dovrà essere in grado di registrare nuovi tamponi nel sistema, visionare lo scheduling dell'analisi dei tamponi, caricare e 
 visionare le radiografie dei pazienti. E ottenere dall'IA la probabilità di quel paziente alla positività del tampone.
+
 Slide 9:
 Il paziente dovrà essere in grado di Visualizzare la sua cartella clinica, Gestire il suo diario clinico, Ricevere la comunicazione del risultato del tampone, 
 descrivere il suo stato mentale che verrà poi giudicato da una IA.
+
 Slide 10:
 L'Admin dovrà essere in grado di garantire l'invio di statistiche periodiche dell'andamento della pandemia sul territorio, Tracciare la positività degli operatori,
 sanitari e gestire i dati del personale.
+
 Slide 11:
 Nell'ambito dell'analisi è stato creato uno use case diagram, che serve a descrivere le relazioni tra gli attori ed il sistema, ogni diagramma presente in questa presentazione
 viene descritto in maniera più dettagliata negli specifici documenti poichè non è scopo della presentazione approfondire questi aspetti.
+
 Slide 12:
 Poi abbiamo creato una tabella riassuntiva degli oggetti del dominio che possono essere di tipo Entity(Oggetti di rilievo per il sistema), 
 Boundary(coloro che agiscono con gli attori direttamente) o Control(Oggetti che applicano la logica di business).
-Slide 13:
+
+lide 13:
 Altro diagramma prodotto è l'object diagram, una visione d'insieme degli ogetti individuati e le relazioni che ci sono tra di loro.
+
 Slide 14:
 Dagli use case si ricavono i sequence diagram una rappresentazione dinamica dello use case stesso e mostra l'interazione tra gli ogetti in funzione del tempo.
+
 Slide 15:
 Infine lo statechart Diagram mostra gli stati di un ogetto a seconda di determinati eventi, e abbiamo la totale assenza del concetto di tempo.
+
+Slide 16: Nella parte di System Design del progetto ci siamo focalizzati su tre macro-attività: Design Goals, compromessi di design e decomposizione in sottosistemi. Partiamo dai design goals.
+
+Slide 17: Gli obiettivi principali del sistema si possono elencare in 5 categorie che sono performance, manutenibiulità, usabilità, affidabilità e costi. Per quanto riguarda le performance il 
+sistema deve garantire tempi di risposta minimi e deve utilizzare la minor quantità di memoria possibile. Per quanto riguarda la manutenibilità il sistema deve essere strutturato in modo da poter 
+essere riadattato a domini applicativi differenti e da poter essere manutenuto da futuri nuovi sviluppatori. Il sistema inoltre deve essere usabile, ovvero facilmente comprensibile dagli utenti 
+per massimizzare l'efficienza delle interazioni. Ovviamente il sistema dovrà essere affidabile e quindi deve essere a prova di utenti naive che sono soliti fare errori e deve, 
+per quanto possibile, fault tolerance. Per quanto riguarda i costi sono stimate 200 ore di lavoro complessivo.
+
+Slide 18: Ovviamente non si può garantire ogni aspetto e per questo motivo sono necessari dei compromessi di progettazione. Il sistema deve essere usabile a discapito delle funzionalità dal 
+momento che è più importante fare poche cose ma buone. Dal momento che il sistema verrà adoperato in ambito medico c'è bisogno che il sistema sia il più robusto possibile poichè un comportamento 
+scorretto potrebbe avere impatti seri su medici e pazienti che interagiscono con il sistema. 
+Inoltre si preferirà un sistema efficiente piuttosto che portabile dal momento che tempi di risposta minimi ed elaborazioni efficienti trasmettono una sensazione di affidabilità agli utenti
+
+Slide 19: Dal momento che non esiste un vero e proprio sistema legacy da riutilizzare abbiamo optato per un contenimento dei costi. 
+Per quanto riguarda l'affidabilità si preferisce un sistema che minimizzi le condizioni di errore a discapito della velocità di risposta in caso di situazioni "complicate". 
+Infine, in base alla deadline e ai costi di sviluppo si preferisce uno sviluppo rapido tralasciando le funzionalità ritenute non essenziali
+
+Slide 20: Come già anticipato, non esiste un vero e proprio sistema corrente. In Campania, la Regione ha sviluppato una piattaforma chiamata SINFONIA la quale si limita solo alla comunicazione 
+degli esiti dei tamponi. Quello che vogliamo proporre noi invece va oltre questo e vuole essere un vero e proprio supporto agli operatori sanitari coinvolti nell'analisi dei tamponi nonchè 
+alle persone che li devono effettuare.
+
+Slide 21: Questo sistema sarà composto da 12 sottosistemi che saranno disposti su layer differenti secondo il pattern architetturale MVC (Model, View, Controller) 
+come si può notare anche dal component diagram del sistema
+
+Slide 22: Per interagire con il sistema gli utenti avranno necessità solo di un browser capace di interpretare codice JavaScript e con accesso ad internet. 
+Il sistema sarà installato su una macchina server sulla quale sarà attivo un web server capace di servire richieste HTTPS e di interagire con un DBMS relazionale che consentirà l'accesso ai dati 
+persistenti
+
+Slide 23: La base di dati rispetta questo schema concettuale ristrutturato.
+
+Slide 24: Per quanto riguarda invece la sicurezza, i ruoli assegnati agli utenti identificheranno le operazioni lecite e le risorse a cui hanno accesso. 
+Da notare la scelta di non fornire accesso ai dati relativi ai tamponi e alle cartelle cliniche all'amministratore in quanto non è detto che quest'ultimo sia un medico e 
+che quindi abbia prestato il giuramento di Ippocrate. 

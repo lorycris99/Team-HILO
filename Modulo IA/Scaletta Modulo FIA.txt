@@ -1,0 +1,6 @@
+- introduzione
+- definizione della natura del problema (reg o class)
+- introduzione alla rete neurale e razionale sulla scelta
+- discussione sulla natura delle reti neurali (multilivello o convoluzionale)
+- pro e contro delle due implementazioni
+- conclusioni

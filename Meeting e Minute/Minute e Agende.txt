@@ -33,3 +33,8 @@ facilitatore->lorenzo time keeper->howreasio minute taker->howreasio
 riunione 6-12-2020 per revisionare il lavoro svolto
 minuta abbiamo revisionato i documenti per la consegna di oggi apportando modifiche minori di layout e correzione di errori di battitura
 facilitatore->howreasio time keeper->howreasio minute taker->hermano
+
+riunione 19-12-2020 per correggere RAD e cominciare ODD
+minuta abbiamo corretto i sequence, lo statechart SCI_01, abbiamo cominciato la scrittura dell'ODD.
+da fare: Salvare le modifiche nel RAD
+facilitatore->hermano time keeper->howreasio minute taker->ivanoff

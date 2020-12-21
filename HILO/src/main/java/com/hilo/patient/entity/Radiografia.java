@@ -3,7 +3,6 @@ package com.hilo.patient.entity;
 
 
 import javax.persistence.*;
-import java.sql.Blob;
 
 @Entity
 @IdClass(EmbeddedRadiografia.class)

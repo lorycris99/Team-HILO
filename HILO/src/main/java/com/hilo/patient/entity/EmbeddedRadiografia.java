@@ -8,6 +8,9 @@ import java.util.Objects;
 
 @Embeddable
 public class EmbeddedRadiografia implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
+
     @NotNull
     private String cfpaziente;
 

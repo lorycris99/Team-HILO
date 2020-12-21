@@ -44,5 +44,5 @@ minuta abbiamo aggiornato i sequence, statechart, use case e requisiti nel RAD
 facilitatore->ivanoff time keeper->howreasio minute taker->lorenzo
 
 riunione 21-12-2020 per continuare ODD e iniziare a codificare
-minuta
+minuta abbiamo modificato Component diagram e class diagram mostrante i servizi nell'SDD, abbiamo continuato l'ODD aggiungendo tutti i punti fino al 2 (da completare), cominciato a codificare i primi componenti del model: HealthWorkerManagement, PatientManagement e StatisticsManagement.
 facilitatore->lorenzo time keeper->howreasio minute taker->howreasio

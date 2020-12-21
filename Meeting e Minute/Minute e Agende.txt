@@ -38,3 +38,11 @@ riunione 19-12-2020 per correggere RAD e cominciare ODD
 minuta abbiamo corretto i sequence, lo statechart SCI_01, abbiamo cominciato la scrittura dell'ODD.
 da fare: Salvare le modifiche nel RAD
 facilitatore->hermano time keeper->howreasio minute taker->ivanoff
+
+riunione 20-12-2020 per correggere RAD
+minuta abbiamo aggiornato i sequence, statechart, use case e requisiti nel RAD
+facilitatore->ivanoff time keeper->howreasio minute taker->lorenzo
+
+riunione 21-12-2020 per continuare ODD e iniziare a codificare
+minuta
+facilitatore->lorenzo time keeper->howreasio minute taker->howreasio

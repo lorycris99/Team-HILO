@@ -15,10 +15,6 @@ public class PatientController {
 
     @GetMapping("/patient/all")
     List<Patient> getAll(){
-        for (Patient temp: pr.findAll()
-             ) {
-
-        }
         return pr.findAll();
     }
 }

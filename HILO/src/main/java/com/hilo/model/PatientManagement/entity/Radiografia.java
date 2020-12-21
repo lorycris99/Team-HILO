@@ -1,4 +1,4 @@
-package com.hilo.patient.entity;
+package com.hilo.model.PatientManagement.entity;
 
 
 

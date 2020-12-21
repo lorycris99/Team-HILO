@@ -1,7 +1,8 @@
-package com.hilo.statistics.controller;
+package com.hilo.controller;
 
 
-import com.hilo.statistics.links.links;
+import com.hilo.StatisticsManagement.links;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

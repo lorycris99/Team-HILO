@@ -1,4 +1,4 @@
-package com.hilo.HealthWorkerManagement.entity;
+package com.hilo.model.HealthWorkerManagement.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

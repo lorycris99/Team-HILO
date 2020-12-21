@@ -1,7 +1,7 @@
-package com.hilo.HealthWorkerManagement.controller;
+package com.hilo.controller;
 
-import com.hilo.HealthWorkerManagement.entity.HealthWorker;
-import com.hilo.HealthWorkerManagement.repository.HealthWorkerRepository;
+import com.hilo.model.HealthWorkerManagement.entity.HealthWorker;
+import com.hilo.model.HealthWorkerManagement.repository.HealthWorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

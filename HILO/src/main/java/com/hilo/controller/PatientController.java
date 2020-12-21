@@ -1,14 +1,15 @@
-package com.hilo.patient;
+package com.hilo.controller;
 
-import com.hilo.patient.entity.Patient;
-import com.hilo.patient.entity.Radiografia;
-import com.hilo.patient.repository.PatientRepository;
-import com.hilo.patient.repository.RadiografiaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import com.hilo.model.PatientManagement.entity.Patient;
+import com.hilo.model.PatientManagement.entity.Radiografia;
+import com.hilo.model.PatientManagement.repository.PatientRepository;
+import com.hilo.model.PatientManagement.repository.RadiografiaRepository;
 
 @RestController
 public class PatientController {

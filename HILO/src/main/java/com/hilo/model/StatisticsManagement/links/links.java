@@ -1,4 +1,4 @@
-package com.hilo.statistics.links;
+package com.hilo.model.StatisticsManagement.links;
 
 import org.springframework.stereotype.Component;
 

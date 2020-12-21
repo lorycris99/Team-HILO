@@ -24,7 +24,7 @@ public class Patient {
     @Column
     private String telefono;
 
-    @Column
+    @Column(name="isinterno")
     private Boolean isInterno;
 
     @Column
@@ -38,6 +38,18 @@ public class Patient {
 
     public Patient() {
 
+    }
+
+    public Patient(String cf, String username, String password, String mail, String telefono, Boolean isInterno, String indirizzo, String nome, String cognome) {
+        this.cf = cf;
+        this.username = username;
+        this.password = password;
+        this.mail = mail;
+        this.telefono = telefono;
+        this.isInterno = isInterno;
+        this.indirizzo = indirizzo;
+        this.nome = nome;
+        this.cognome = cognome;
     }
 
     public String getCf() {
@@ -80,11 +92,11 @@ public class Patient {
         this.telefono = telefono;
     }
 
-    public Boolean getInterno() {
+    public Boolean getIsInterno() {
         return isInterno;
     }
 
-    public void setInterno(Boolean interno) {
+    public void setIsInterno(Boolean interno) {
         isInterno = interno;
     }
 
@@ -110,5 +122,20 @@ public class Patient {
 
     public void setCognome(String cognome) {
         this.cognome = cognome;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "cf='" + cf + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", mail='" + mail + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", isInterno=" + isInterno +
+                ", indirizzo='" + indirizzo + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                '}';
     }
 }

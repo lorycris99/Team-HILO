@@ -61,7 +61,8 @@ public class EmbeddedPaginaDiarioClinico implements Serializable {
         return true;
     }
 
-    
-
-    
+    @Override
+    public String toString() {
+        return "EmbeddedPaginaDiarioClinico [cfPaziente=" + cfPaziente + ", numero=" + numero + "]";
+    }
 }

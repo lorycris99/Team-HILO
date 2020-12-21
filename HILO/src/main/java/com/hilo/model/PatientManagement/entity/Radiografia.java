@@ -1,7 +1,5 @@
 package com.hilo.model.PatientManagement.entity;
 
-
-
 import javax.persistence.*;
 
 @Entity

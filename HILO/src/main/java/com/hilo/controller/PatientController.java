@@ -14,13 +14,13 @@ import com.hilo.model.patientmanagement.repository.RadiografiaRepository;
 @RestController
 public class PatientController {
     @Autowired
-    PatientRepository pr;
+    private PatientRepository pr;
 
     @Autowired
-    RadiografiaRepository rr;
+    private RadiografiaRepository rr;
 
     @GetMapping("/patient/all")
-    List<Patient> getAll(){
+    List<Patient> getAll() {
         return pr.findAll();
     }
 

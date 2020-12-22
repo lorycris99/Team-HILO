@@ -9,7 +9,7 @@ import javax.persistence.IdClass;
 @IdClass(EmbeddedPagina.class)
 public class Pagina {
   @Id
-  @Column
+  @Column(name = "cfpaziente")
   private String cfPaziente;
 
   @Id

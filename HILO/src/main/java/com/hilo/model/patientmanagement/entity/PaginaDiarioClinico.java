@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @IdClass(EmbeddedPaginaDiarioClinico.class)
 public class PaginaDiarioClinico {
 
-  @Column
+  @Column(name = "cfpaziente")
   @Id
   private String cfPaziente;
 

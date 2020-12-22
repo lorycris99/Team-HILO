@@ -8,116 +8,129 @@ import javax.persistence.IdClass;
 @Entity
 @IdClass(EmbeddedPagina.class)
 public class Pagina {
-    @Id
-    @Column
-    private String cfPaziente;
+  @Id
+  @Column
+  private String cfPaziente;
 
-    @Id
-    @Column
-    private Integer numero;
+  @Id
+  @Column
+  private Integer numero;
 
-    @Column
-    private String note;
-    @Column
-    private String temperatura;
-    @Column
-    private String sintomi;
+  @Column
+  private String note;
+  @Column
+  private String temperatura;
+  @Column
+  private String sintomi;
 
-    public Pagina() {}
+  public Pagina() {}
 
-    public String getCfPaziente() {
-        return cfPaziente;
+  public String getCfPaziente() {
+    return cfPaziente;
+  }
+
+  public void setCfPaziente(String cfPaziente) {
+    this.cfPaziente = cfPaziente;
+  }
+
+  public Integer getNumero() {
+    return numero;
+  }
+
+  public void setNumero(Integer numero) {
+    this.numero = numero;
+  }
+
+  public String getNote() {
+    return note;
+  }
+
+  public void setNote(String note) {
+    this.note = note;
+  }
+
+  public String getTemperatura() {
+    return temperatura;
+  }
+
+  public void setTemperatura(String temperatura) {
+    this.temperatura = temperatura;
+  }
+
+  public String getSintomi() {
+    return sintomi;
+  }
+
+  public void setSintomi(String sintomi) {
+    this.sintomi = sintomi;
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((cfPaziente == null) ? 0 : cfPaziente.hashCode());
+    result = prime * result + ((note == null) ? 0 : note.hashCode());
+    result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+    result = prime * result + ((sintomi == null) ? 0 : sintomi.hashCode());
+    result = prime * result + ((temperatura == null) ? 0 : temperatura.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
     }
-
-    public void setCfPaziente(String cfPaziente) {
-        this.cfPaziente = cfPaziente;
+    if (obj == null) {
+      return false;
     }
-
-    public Integer getNumero() {
-        return numero;
+    if (getClass() != obj.getClass()) {
+      return false;
     }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+    Pagina other = (Pagina) obj;
+    if (cfPaziente == null) {
+      if (other.cfPaziente != null) {
+        return false;
+      }
+    } else if (!cfPaziente.equals(other.cfPaziente)) {
+      return false;
     }
-
-    public String getNote() {
-        return note;
+    if (note == null) {
+      if (other.note != null) {
+        return false;
+      }
+    } else if (!note.equals(other.note)) {
+      return false;
     }
-
-    public void setNote(String note) {
-        this.note = note;
+    if (numero == null) {
+      if (other.numero != null) {
+        return false;
+      }
+    } else if (!numero.equals(other.numero)) {
+      return false;
     }
-
-    public String getTemperatura() {
-        return temperatura;
+    if (sintomi == null) {
+      if (other.sintomi != null) {
+        return false;
+      }
+    } else if (!sintomi.equals(other.sintomi)) {
+      return false;
     }
-
-    public void setTemperatura(String temperatura) {
-        this.temperatura = temperatura;
+    if (temperatura == null) {
+      if (other.temperatura != null) {
+        return false;
+      }
+    } else if (!temperatura.equals(other.temperatura)) {
+      return false;
     }
+    return true;
+  }
 
-    public String getSintomi() {
-        return sintomi;
-    }
+  @Override
+  public String toString() {
+    return "Pagina [cfPaziente=" + cfPaziente + ", note=" + note + ", numero=" + numero
+            + ", sintomi=" + sintomi + ", temperatura=" + temperatura + "]";
+  }
 
-    public void setSintomi(String sintomi) {
-        this.sintomi = sintomi;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((cfPaziente == null) ? 0 : cfPaziente.hashCode());
-        result = prime * result + ((note == null) ? 0 : note.hashCode());
-        result = prime * result + ((numero == null) ? 0 : numero.hashCode());
-        result = prime * result + ((sintomi == null) ? 0 : sintomi.hashCode());
-        result = prime * result + ((temperatura == null) ? 0 : temperatura.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Pagina other = (Pagina) obj;
-        if (cfPaziente == null) {
-            if (other.cfPaziente != null)
-                return false;
-        } else if (!cfPaziente.equals(other.cfPaziente))
-            return false;
-        if (note == null) {
-            if (other.note != null)
-                return false;
-        } else if (!note.equals(other.note))
-            return false;
-        if (numero == null) {
-            if (other.numero != null)
-                return false;
-        } else if (!numero.equals(other.numero))
-            return false;
-        if (sintomi == null) {
-            if (other.sintomi != null)
-                return false;
-        } else if (!sintomi.equals(other.sintomi))
-            return false;
-        if (temperatura == null) {
-            if (other.temperatura != null)
-                return false;
-        } else if (!temperatura.equals(other.temperatura))
-            return false;
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Pagina [cfPaziente=" + cfPaziente + ", note=" + note + ", numero=" + numero + ", sintomi=" + sintomi
-                + ", temperatura=" + temperatura + "]";
-    }
-    
 }

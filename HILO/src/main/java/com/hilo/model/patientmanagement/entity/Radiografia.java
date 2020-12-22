@@ -1,53 +1,57 @@
 package com.hilo.model.patientmanagement.entity;
 
-import javax.persistence.*;
+import java.util.Arrays;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Lob;
 
 @Entity
 @IdClass(EmbeddedRadiografia.class)
 public class Radiografia {
 
-    @Id
-    private String cfpaziente;
+  @Id
+  private String cfpaziente;
 
-    @Id
-    private Integer numero;
+  @Id
+  private Integer numero;
 
-    @Lob
-    private Byte[] img;
+  @Lob
+  private Byte[] img;
 
-    public Radiografia() {
-    }
+  public Radiografia() {
+  }
 
-    public String getCfpaziente() {
-        return cfpaziente;
-    }
+  public String getCfpaziente() {
+    return cfpaziente;
+  }
 
-    public void setCfpaziente(String cfpaziente) {
-        this.cfpaziente = cfpaziente;
-    }
+  public void setCfpaziente(String cfpaziente) {
+    this.cfpaziente = cfpaziente;
+  }
 
-    public Integer getNumero() {
-        return numero;
-    }
+  public Integer getNumero() {
+    return numero;
+  }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
+  public void setNumero(Integer numero) {
+    this.numero = numero;
+  }
 
-    public Byte[] getImg() {
-        return img;
-    }
+  public Byte[] getImg() {
+    return img;
+  }
 
-    public void setImg(Byte[] img) {
-        this.img = img;
-    }
+  public void setImg(Byte[] img) {
+    this.img = img;
+  }
 
-    @Override
-    public String toString() {
-        return "Radiografia{" +
-                "cfpaziente='" + "er.getCfpaziente()" + '\'' +
-                ", numero=" + "er.getNumero()" +
-                ", img=" + img +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Radiografia{"
+            + "cfpaziente='" + cfpaziente + '\''
+            + ", numero=" + numero
+            + ", img=" + Arrays.toString(img)
+            + '}';
+  }
 }

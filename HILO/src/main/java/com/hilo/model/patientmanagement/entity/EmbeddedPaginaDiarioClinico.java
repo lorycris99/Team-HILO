@@ -1,27 +1,18 @@
-package com.hilo.model.PatientManagement.entity;
+package com.hilo.model.patientmanagement.entity;
 
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class EmbeddedPagina implements Serializable {
+public class EmbeddedPaginaDiarioClinico implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    public EmbeddedPaginaDiarioClinico() {}
 
-    private String cfPaziente;
     private Integer numero;
-
-
-    public EmbeddedPagina() {}
-
-    public String getCfPaziente() {
-        return cfPaziente;
-    }
-
-    public void setCfPaziente(String cfPaziente) {
-        this.cfPaziente = cfPaziente;
-    }
+    private String cfPaziente;
 
     public Integer getNumero() {
         return numero;
@@ -29,6 +20,14 @@ public class EmbeddedPagina implements Serializable {
 
     public void setNumero(Integer numero) {
         this.numero = numero;
+    }
+
+    public String getCfPaziente() {
+        return cfPaziente;
+    }
+
+    public void setCfPaziente(String cfPaziente) {
+        this.cfPaziente = cfPaziente;
     }
 
     @Override
@@ -48,7 +47,7 @@ public class EmbeddedPagina implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        EmbeddedPagina other = (EmbeddedPagina) obj;
+        EmbeddedPaginaDiarioClinico other = (EmbeddedPaginaDiarioClinico) obj;
         if (cfPaziente == null) {
             if (other.cfPaziente != null)
                 return false;
@@ -61,9 +60,9 @@ public class EmbeddedPagina implements Serializable {
             return false;
         return true;
     }
-    
+
     @Override
     public String toString() {
-        return "EmbeddedPagina [cfPaziente=" + cfPaziente + ", numero=" + numero + "]";
-    }  
+        return "EmbeddedPaginaDiarioClinico [cfPaziente=" + cfPaziente + ", numero=" + numero + "]";
+    }
 }

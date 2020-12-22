@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import com.hilo.model.PatientManagement.entity.Patient;
-import com.hilo.model.PatientManagement.entity.Radiografia;
-import com.hilo.model.PatientManagement.repository.PatientRepository;
-import com.hilo.model.PatientManagement.repository.RadiografiaRepository;
+import com.hilo.model.patientmanagement.entity.Patient;
+import com.hilo.model.patientmanagement.entity.Radiografia;
+import com.hilo.model.patientmanagement.repository.PatientRepository;
+import com.hilo.model.patientmanagement.repository.RadiografiaRepository;
 
 @RestController
 public class PatientController {

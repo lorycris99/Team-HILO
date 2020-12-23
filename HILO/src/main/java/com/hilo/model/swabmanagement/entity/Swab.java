@@ -15,7 +15,7 @@ public class Swab {
   @Column
   private String risultato;
   @Column
-  private String isInterno;
+  private Boolean isInterno;
   @Column
   private String idStruttura;
 
@@ -35,11 +35,11 @@ public class Swab {
     this.risultato = risultato;
   }
 
-  public String getIsInterno() {
+  public Boolean getIsInterno() {
     return isInterno;
   }
 
-  public void setIsInterno(String isInterno) {
+  public void setIsInterno(Boolean isInterno) {
     this.isInterno = isInterno;
   }
 

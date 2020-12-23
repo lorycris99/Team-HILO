@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface SwabRepository extends JpaRepository<Swab, Integer> {
   List<Swab> findByRisultato(String risultato);
 
-  List<Swab> findByIsInterno();
+  List<Swab> findByIsInterno(Boolean valore);
 }

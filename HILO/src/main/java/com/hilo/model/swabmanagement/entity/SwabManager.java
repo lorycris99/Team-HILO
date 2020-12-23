@@ -33,6 +33,14 @@ public class SwabManager {
     return repo.findById(id);
   }
 
+  public List<Swab> findByEsito(String esito) {
+    return repo.findByRisultato(esito);
+  }
+
+  public List<Swab>findByInterno(){
+    return repo.findByIsInterno();
+  }
+
 
 
 }

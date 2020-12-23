@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @IdClass(EmbeddedEffettuaAs.class)
-@Table(name = "effettua_p")
+@Table(name = "effettua_as")
 public class EffettuaAs {
   @Id
   @Column(name = "idtampone")

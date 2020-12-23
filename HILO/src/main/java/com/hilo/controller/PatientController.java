@@ -1,18 +1,12 @@
 package com.hilo.controller;
 
-import com.hilo.model.patientmanagement.entity.EmbeddedPagina;
 import com.hilo.model.patientmanagement.entity.Pagina;
 import com.hilo.model.patientmanagement.entity.PaginaDiarioClinico;
 import com.hilo.model.patientmanagement.entity.PaginaDiarioClinicoManager;
 import com.hilo.model.patientmanagement.entity.PaginaManager;
-import com.hilo.model.patientmanagement.entity.Patient;
-import com.hilo.model.patientmanagement.entity.Radiografia;
-import com.hilo.model.patientmanagement.repository.PatientRepository;
-import com.hilo.model.patientmanagement.repository.RadiografiaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,7 +36,7 @@ public class PatientController {
   }
 
   @GetMapping("/patient/diarioPaziente/byCF")
-  public List<Pagina> getPaginaByCF(@RequestParam(name = "cf") String cf) {
+  public List<Pagina> getPaginaByCf(@RequestParam(name = "cf") String cf) {
     return pm.findByCf(cf);
   }
 

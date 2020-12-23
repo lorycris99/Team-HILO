@@ -8,4 +8,6 @@ public interface SwabRepository extends JpaRepository<Swab, Integer> {
   List<Swab> findByRisultato(String risultato);
 
   List<Swab> findByIsInterno(Boolean valore);
+
+  List<Swab> findByIdStruttura(String id);
 }

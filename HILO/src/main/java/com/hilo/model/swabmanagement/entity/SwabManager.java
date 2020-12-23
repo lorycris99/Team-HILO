@@ -37,8 +37,12 @@ public class SwabManager {
     return repo.findByRisultato(esito);
   }
 
-  public List<Swab>findByInterno(Boolean valore){
+  public List<Swab> findByInterno(Boolean valore) {
     return repo.findByIsInterno(valore);
+  }
+
+  public List<Swab> findByStruttura(String id) {
+    return repo.findByIdStruttura(id);
   }
 
 

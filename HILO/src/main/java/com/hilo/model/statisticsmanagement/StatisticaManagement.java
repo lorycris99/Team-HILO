@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Statistica {
+public class StatisticaManagement {
 
-  public Statistica(){
+  public StatisticaManagement(){
 
   }
 

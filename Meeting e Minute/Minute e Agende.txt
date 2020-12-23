@@ -46,3 +46,7 @@ facilitatore->ivanoff time keeper->howreasio minute taker->lorenzo
 riunione 21-12-2020 per continuare ODD e iniziare a codificare
 minuta abbiamo modificato Component diagram e class diagram mostrante i servizi nell'SDD, abbiamo continuato l'ODD aggiungendo tutti i punti fino al 2 (da completare), cominciato a codificare i primi componenti del model: HealthWorkerManagement, PatientManagement e StatisticsManagement.
 facilitatore->lorenzo time keeper->howreasio minute taker->howreasio
+
+riunione 23-12-2020 per continuare codifica e ODD
+minuta abbiamo implementato una buona parte del model e cominciato a creare il class diagram definitivo nell'ODD
+facilitatore->howreasio time keeper->howreasio minute taker->hermano

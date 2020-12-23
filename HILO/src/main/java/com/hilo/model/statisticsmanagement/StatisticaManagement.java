@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,17 @@ public class StatisticaManagement {
 
   }
 
+  /**
+   * Serve per ottenere tutti i tamponi effettuati in un arco di tempo che va dall'ultimo richiamo
+   * del metodo alla data in cui è richiamato nuovamente il metodo. Nel caso in cui viene
+   * richiamato la prima volta e non è stata impostata una data di riferimento, il periodo
+   * considerato è tra il giorno prima e il giorno in cui viene richiamato il metodo.
+   *
+   * @return tutti i tamponi effettuati, sia su pazienti che operatori sanitari, in un intervallo
+   *     di tempo che va tra la data dell'ultimo richiamo del metodo e la data di chiamata del
+   *     metodo
+   *
+   */
   public List<Swab> retreiveTamponi() {
 
     //TODO: cercare un modo più efficiente di fare questa operazione di filtering
@@ -63,9 +75,48 @@ public class StatisticaManagement {
     return tamponiPeriodo;
   }
 
-  private List<Swab> listaTamponi;
+  public Map<String, Integer> getSommaEsiti(List<Swab> listaTamponi) {
+
+    //inizializzo i dati per contare i vari esiti dei tamponi
+    HashMap<String, Integer> elenco = new HashMap<>();
+    elenco.put("Positivo", 0);
+    elenco.put("Negativo", 0);
+    elenco.put("Inconcludente", 0);
+
+    //controllo per ogni tampone l'esito e sommo ogni volta il totale
+    for (Swab s : listaTamponi) {
+
+      if (s.getRisultato().equals("Positivo")) {
+
+        elenco.put("Positivo", elenco.get("Positivo") + 1);
+
+      } else if (s.getRisultato().equals("Negativo")) {
+
+        elenco.put("Negativo", elenco.get("Negativo") + 1);
+
+      } else {
+
+        elenco.put("Inconcludente", elenco.get("Inconcludente") + 1);
+
+      }
+
+    }
+
+    return elenco;
+
+  }
+
+  public Statistica getStatistiche(Map<String, Integer> esitiTamponi) {
+
+    return new Statistica(esitiTamponi.get("Positivo"), esitiTamponi.get("Negativo"),
+            esitiTamponi.get("Inconcludente"));
+  }
+
+  public void setDataFineRiferimento(GregorianCalendar dataFineRiferimento) {
+    this.dataFineRiferimento = dataFineRiferimento;
+  }
+
   private GregorianCalendar dataFineRiferimento;
-  private HashMap<String, Integer> medie;
   @Autowired
   private EffettuaAsManager swabAs;
   @Autowired

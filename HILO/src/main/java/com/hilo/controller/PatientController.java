@@ -38,12 +38,14 @@ public class PatientController {
     Boolean isInterno = obj.getBoolean("isInterno");
     String indirizzo = obj.getString("indirizzo");
     Patient p = new Patient(cf, username, password, mail, telefono, isInterno, indirizzo, name, surname);
+    System.out.println(p);
     patientManager.creaPaziente(p);
   }
 
   @GetMapping("/patient/all")
   public List<Patient> getAll() {
-    return null;
+
+    return patientManager.findAll();
   }
 
   @GetMapping("/patient/diarioClinico/all")

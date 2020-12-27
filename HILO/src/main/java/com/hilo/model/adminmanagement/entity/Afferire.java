@@ -16,14 +16,14 @@ public class Afferire {
 
   @Id
   @Column(name = "idstruttura")
-  int idStruttura;
+  private int idStruttura;
 
   @Id
   @Column(name = "cfpaziente")
-  String cfPaziente;
+  private String cfPaziente;
 
   @Column
-  int giorni;
+  private int giorni;
 
   public int getIdstruttura() {
     return idStruttura;

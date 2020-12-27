@@ -35,6 +35,26 @@ public class PatientManager {
     return repo.findById(id);
   }
 
+  public Patient findByUsernameAndPassword(String user, String pass) {
+    return repo.findByUsernameAndPassword(user, pass);
+  }
+
+  public List<Patient> findByIsInterno(Boolean val) {
+    return repo.findByIsInterno(val);
+  }
+
+  public Patient findByTelefono(String tel) {
+    return repo.findByTelefono(tel);
+  }
+
+  public Patient findByMail(String mail) {
+    return repo.findByMail(mail);
+  }
+
+  public List<Patient> findByCognome(String cognome) {
+    return repo.findByCognome(cognome);
+  }
+
 
 
 }

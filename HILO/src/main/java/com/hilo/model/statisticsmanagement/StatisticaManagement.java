@@ -149,6 +149,10 @@ public class StatisticaManagement {
             esitiTamponi.get("Inconcludente"));
   }
 
+  public GregorianCalendar getDataFineRiferimento() {
+    return dataFineRiferimento;
+  }
+
   public void setDataFineRiferimento(GregorianCalendar dataFineRiferimento) {
     this.dataFineRiferimento = dataFineRiferimento;
   }

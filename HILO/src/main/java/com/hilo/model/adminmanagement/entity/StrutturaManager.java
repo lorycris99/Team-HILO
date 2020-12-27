@@ -39,4 +39,16 @@ public class StrutturaManager {
     return sr.findAll();
   }
 
+  public List<Struttura> findByRegione(String reg) {
+    return sr.findByRegione(reg);
+  }
+
+  public Struttura findByNome(String nome) {
+    return sr.findByNome(nome);
+  }
+
+  public List<Struttura> findByIsAnalisis(Boolean val) {
+    return  sr.findByIsanalisis(val);
+  }
+
 }

@@ -27,6 +27,8 @@ public class PaginaDiarioClinico {
   private Double temperatura;
   @Column
   private String sintomi;
+  @Column
+  private String timestamp;
 
   public PaginaDiarioClinico() {}
 
@@ -78,6 +80,22 @@ public class PaginaDiarioClinico {
     this.numero = numero;
   }
 
+  public String getTimestamp() {
+    return timestamp;
+  }
+
+  public void setTimestamp(String timestamp) {
+    this.timestamp = timestamp;
+  }
+
+  @Override
+  public String toString() {
+    return "PaginaDiarioClinico [cfPaziente=" + cfPaziente 
+      + ", note=" + note + ", numero=" + numero + ", sintomi="
+      + sintomi + ", temperatura=" + temperatura + ", terapia=" + terapia 
+      + ", timestamp=" + timestamp + "]";
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -88,6 +106,7 @@ public class PaginaDiarioClinico {
     result = prime * result + ((sintomi == null) ? 0 : sintomi.hashCode());
     result = prime * result + ((temperatura == null) ? 0 : temperatura.hashCode());
     result = prime * result + ((terapia == null) ? 0 : terapia.hashCode());
+    result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
     return result;
   }
 
@@ -145,15 +164,17 @@ public class PaginaDiarioClinico {
     } else if (!terapia.equals(other.terapia)) {
       return false;
     }
+    if (timestamp == null) {
+      if (other.timestamp != null) {
+        return false;
+      }
+    } else if (!timestamp.equals(other.timestamp)) {
+      return false;
+    }
     return true;
   }
 
-  @Override
-  public String toString() {
-    return "PaginaDiarioClinico [cfPaziente=" + cfPaziente + ", note=" + note + ", numero="
-            + numero + ", sintomi=" + sintomi + ", temperatura=" + temperatura + ", terapia="
-            + terapia + "]";
-  }
+  
 
 
 }

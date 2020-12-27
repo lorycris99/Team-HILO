@@ -69,8 +69,8 @@ public class Afferire {
 
   @Override
   public String toString() {
-    return "Afferire{" + "idstruttura=" + idStruttura +
-      ", cfpaziente='" + cfPaziente + '\'' + ", giorni=" + giorni
+    return "Afferire{" + "idstruttura=" + idStruttura
+      + ", cfpaziente='" + cfPaziente + '\'' + ", giorni=" + giorni
         + '}';
   }
 }

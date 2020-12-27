@@ -1,7 +1,6 @@
 package com.hilo.model.swabmanagement.entity;
 
 import com.hilo.model.swabmanagement.repository.EffettuaAsRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

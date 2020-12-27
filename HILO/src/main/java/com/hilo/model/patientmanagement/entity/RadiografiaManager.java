@@ -43,4 +43,9 @@ public class RadiografiaManager {
     }
   }
 
+  public List<Radiografia> findByCfPaziente(String cf) {
+    List<Radiografia> lista = rr.findByCfpaziente(cf);
+    return lista;
+  }
+
 }

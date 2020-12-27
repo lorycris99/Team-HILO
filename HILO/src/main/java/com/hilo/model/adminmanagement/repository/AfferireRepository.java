@@ -8,10 +8,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AfferireRepository extends JpaRepository<Afferire, EmbeddedAfferire> {
-  public List<Afferire> findByIdStruttura(Integer id);
+  List<Afferire> findByIdStruttura(Integer id);
 
-  public List<Afferire> findByCfPaziente(String cf);
+  List<Afferire> findByCfPaziente(String cf);
 
-  public List<Afferire> findByGiorniGreatherThan(Integer giorni);
-  
+  List<Afferire> findByGiorniGreatherThan(Integer giorni);
 }

@@ -5,6 +5,7 @@ import com.hilo.model.patientmanagement.entity.*;
 import java.util.List;
 
 import net.bytebuddy.utility.RandomString;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class PatientController {
   private PatientManager patientManager;
 
   @PostMapping("/patient/register")
-  public void registerPatient(@RequestParam(name = "User") String user) {
+  public void registerPatient(@RequestParam(name = "User") String user) throws JSONException {
     JSONObject obj = new JSONObject(user);
     String cf = obj.getString("cf");
     String name = obj.getString("name");

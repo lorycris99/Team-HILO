@@ -1,13 +1,12 @@
 package com.hilo.model.adminmanagement.entity;
 
+import com.hilo.model.adminmanagement.repository.AfferireRepository;
 import java.util.List;
 import java.util.Optional;
-
-import javax.persistence.Embedded;
-
-import com.hilo.model.adminmanagement.repository.AfferireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AfferireManager {
   public AfferireManager() {}
 

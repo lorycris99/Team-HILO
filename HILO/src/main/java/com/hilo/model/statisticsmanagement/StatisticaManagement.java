@@ -4,6 +4,12 @@ import com.hilo.model.swabmanagement.entity.EffettuaAsManager;
 import com.hilo.model.swabmanagement.entity.EffettuapManager;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -106,6 +112,37 @@ public class StatisticaManagement {
 
   }
 
+  public boolean saveStats(Statistica stat) {
+
+    File file = new File(FILE_PATH);
+    try (ObjectOutputStream out = new ObjectOutputStream(
+            new FileOutputStream(file))) {
+
+      out.writeObject(stat);
+
+    } catch (IOException e) {
+      e.printStackTrace();
+      return false;
+    }
+    return true;
+  }
+
+  public Statistica readStats() {
+
+    Statistica stat = null;
+    try (ObjectInputStream in = new ObjectInputStream(
+            new FileInputStream(FILE_PATH))) {
+
+      stat = (Statistica) in.readObject();
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+    return stat;
+  }
+
   public Statistica getStatistiche(Map<String, Integer> esitiTamponi) {
 
     return new Statistica(esitiTamponi.get("Positivo"), esitiTamponi.get("Negativo"),
@@ -123,4 +160,6 @@ public class StatisticaManagement {
   private EffettuapManager swabP;
   @Autowired
   private SwabManager swab;
+
+  private static final String FILE_PATH = "res/stats.bin";
 }

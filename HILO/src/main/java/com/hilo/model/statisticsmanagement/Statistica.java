@@ -1,45 +1,48 @@
 package com.hilo.model.statisticsmanagement;
 
-public class Statistica {
+import java.io.Serializable;
+
+public class Statistica implements Serializable {
 
   public Statistica() {
   }
 
-  public Statistica(int nPositivi, int nNegativi, int nInconcludenti) {
-    this.nPositivi = nPositivi;
-    this.nNegativi = nNegativi;
-    this.nInconcludenti = nInconcludenti;
+  public Statistica(int numPositivi, int numNegativi, int numInconcludenti) {
+    this.numPositivi = numPositivi;
+    this.numNegativi = numNegativi;
+    this.numInconcludenti = numInconcludenti;
   }
 
   public int getnPositivi() {
-    return nPositivi;
+    return numPositivi;
   }
 
-  public void setnPositivi(int nPositivi) {
-    this.nPositivi = nPositivi;
+  public void setnPositivi(int numPositivi) {
+    this.numPositivi = numPositivi;
   }
 
-  public int getnNegativi() {
-    return nNegativi;
+  public int getnumNegativi() {
+    return numNegativi;
   }
 
-  public void setnNegativi(int nNegativi) {
-    this.nNegativi = nNegativi;
+  public void setnNegativi(int numNegativi) {
+    this.numNegativi = numNegativi;
   }
 
   public int getnInconcludenti() {
-    return nInconcludenti;
+    return numInconcludenti;
   }
 
-  public void setnInconcludenti(int nInconcludenti) {
-    this.nInconcludenti = nInconcludenti;
+  public void setnInconcludenti(int numInconcludenti) {
+    this.numInconcludenti = numInconcludenti;
   }
 
-  public int getTotali(){
-    return nPositivi + nNegativi + nInconcludenti;
+  public int getTotali() {
+    return numPositivi + numNegativi + numInconcludenti;
   }
 
-  private int nPositivi;
-  private int nNegativi;
-  private int nInconcludenti;
+  private int numPositivi;
+  private int numNegativi;
+  private int numInconcludenti;
+  private static final long serialVersionUID = 100L;
 }

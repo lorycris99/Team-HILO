@@ -46,4 +46,8 @@ public class AfferireManager {
   public List<Afferire> findByCfPaziente(String cf) {
     return ar.findByCfPaziente(cf);
   }
+
+  public List<Afferire> findByGiorniGreatherThan(Integer giorni) {
+    return ar.findByGiorniGreatherThan(giorni);
+  }
 }

@@ -11,4 +11,7 @@ public interface AfferireRepository extends JpaRepository<Afferire, EmbeddedAffe
   public List<Afferire> findByIdStruttura(Integer id);
 
   public List<Afferire> findByCfPaziente(String cf);
+
+  public List<Afferire> findByGiorniGreatherThan(Integer giorni);
+  
 }

@@ -31,8 +31,13 @@ public class PatientManager {
     return repo.findAll();
   }
 
-  public Optional<Patient> findById(String id) {
-    return repo.findById(id);
+  public Patient findById(String id) {
+    Optional<Patient> temp = repo.findById(id);
+    if (temp.isPresent()) {
+      return temp.get();
+    } else {
+      return null;
+    }
   }
 
   public Patient findByUsernameAndPassword(String user, String pass) {

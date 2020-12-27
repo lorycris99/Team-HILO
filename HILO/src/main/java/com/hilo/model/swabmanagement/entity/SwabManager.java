@@ -31,8 +31,13 @@ public class SwabManager {
     return repo.findAll();
   }
 
-  public Optional<Swab> findById(int id) {
-    return repo.findById(id);
+  public Swab findById(int id) {
+    Optional<Swab> temp = repo.findById(id);
+    if (temp.isPresent()) {
+      return temp.get();
+    } else {
+      return null;
+    }
   }
 
   public List<Swab> findByEsito(String esito) {

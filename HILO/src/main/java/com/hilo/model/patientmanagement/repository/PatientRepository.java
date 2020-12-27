@@ -8,16 +8,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, String> {
+  Patient findByUsernameAndPassword(String username, String password);
 
-   Patient findByUsernameAndPassword(String username, String password);
+  List<Patient> findByIsInterno(Boolean v);
 
-   List<Patient> findByIsInterno(Boolean v);
+  Patient findByTelefono(String tel);
 
-   Patient findByTelefono(String tel);
+  Patient findByMail(String mail);
 
-   Patient findByMail(String mail);
-
-   List<Patient> findByCognome(String c);
-
-
+  List<Patient> findByCognome(String c);
 }

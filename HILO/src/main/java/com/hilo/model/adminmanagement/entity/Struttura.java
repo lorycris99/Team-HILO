@@ -1,10 +1,10 @@
 package com.hilo.model.adminmanagement.entity;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Objects;
 
 @Entity
 @Table(name = "struttura")
@@ -62,14 +62,18 @@ public class Struttura {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) { return true; }
-    if (o == null || getClass() != o.getClass()) { return false; }
+    if (this == o) { 
+      return true; 
+    }
+    if (o == null || getClass() != o.getClass()) { 
+      return false; 
+    }
     Struttura struttura = (Struttura) o;
-    return id == struttura.id &&
-            Objects.equals(isanalisis, struttura.isanalisis) &&
-            Objects.equals(regione, struttura.regione) &&
-            Objects.equals(nome, struttura.nome) &&
-            Objects.equals(indirizzo, struttura.indirizzo);
+    return id == struttura.id
+            && Objects.equals(isanalisis, struttura.isanalisis)
+            && Objects.equals(regione, struttura.regione)
+            && Objects.equals(nome, struttura.nome)
+            && Objects.equals(indirizzo, struttura.indirizzo);
   }
 
   @Override
@@ -79,12 +83,12 @@ public class Struttura {
 
   @Override
   public String toString() {
-    return "Struttura{" +
-            "id=" + id +
-            ", isanalisis=" + isanalisis +
-            ", regione='" + regione + '\'' +
-            ", nome='" + nome + '\'' +
-            ", indirizzo='" + indirizzo + '\'' +
-            '}';
+    return "Struttura{"
+            + "id=" + id
+            + ", isanalisis=" + isanalisis
+            + ", regione='" + regione + '\''
+            + ", nome='" + nome + '\''
+            + ", indirizzo='" + indirizzo + '\''
+            + '}';
   }
 }

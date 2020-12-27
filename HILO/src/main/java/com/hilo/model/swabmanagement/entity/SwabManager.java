@@ -43,7 +43,7 @@ public class SwabManager {
     return repo.findByIsInterno(valore);
   }
 
-  public List<Swab> findByStruttura(String id) {
+  public List<Swab> findByStruttura(Integer id) {
     return repo.findByIdStruttura(id);
   }
 

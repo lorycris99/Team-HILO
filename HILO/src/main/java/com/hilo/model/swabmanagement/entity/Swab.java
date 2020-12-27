@@ -17,7 +17,7 @@ public class Swab {
   @Column
   private Boolean isInterno;
   @Column
-  private String idStruttura;
+  private Integer idStruttura;
 
   public int getId() {
     return id;
@@ -43,11 +43,11 @@ public class Swab {
     this.isInterno = isInterno;
   }
 
-  public String getIdStruttura() {
+  public Integer getIdStruttura() {
     return idStruttura;
   }
 
-  public void setIdStruttura(String idStruttura) {
+  public void setIdStruttura(Integer idStruttura) {
     this.idStruttura = idStruttura;
   }
 

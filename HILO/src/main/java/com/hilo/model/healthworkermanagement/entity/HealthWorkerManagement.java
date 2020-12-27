@@ -39,4 +39,29 @@ public class HealthWorkerManagement {
   public List<HealthWorker> findAll() {
     return hwr.findAll();
   }
+
+  public HealthWorker findByUsername(String username) {
+    return hwr.findByUsername(username);
+  }
+
+  public List<HealthWorker> findByCognome(String cognome) {
+    return hwr.findByCognome(cognome);
+  }
+
+  public List<HealthWorker> findByIdStruttura(Integer id) {
+    return hwr.findByIdstruttura(id);
+  }
+
+  public List<HealthWorker> findByRuolo(String ruolo) {
+    return hwr.findByRuolo(ruolo);
+  }
+
+  public HealthWorker findByMail(String ruolo) {
+    return hwr.findByMail(ruolo);
+  }
+
+  public List<HealthWorker> findByTelefono(String telefono) {
+    return hwr.findByTelefono(telefono);
+  }
+
 }

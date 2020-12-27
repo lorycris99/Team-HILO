@@ -1,7 +1,10 @@
 package com.hilo.controller;
 
-import com.hilo.model.patientmanagement.entity.*;
-
+import com.hilo.model.patientmanagement.entity.Pagina;
+import com.hilo.model.patientmanagement.entity.PaginaDiarioClinico;
+import com.hilo.model.patientmanagement.entity.PaginaDiarioClinicoManager;
+import com.hilo.model.patientmanagement.entity.PaginaManager;
+import com.hilo.model.patientmanagement.entity.Patient;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +23,7 @@ public class PatientController {
   @Autowired
 
   @GetMapping("/patient/all")
-  public List<Patient> getAll(){
+  public List<Patient> getAll() {
     return null;
   }
 

@@ -10,15 +10,15 @@ import javax.persistence.Table;
 @Table(name = "struttura")
 public class Struttura {
   @Id
-  int id;
+  private int id;
   @Column
-  Boolean isanalisis;
+  private Boolean isanalisis;
   @Column
-  String regione;
+  private String regione;
   @Column
-  String nome;
+  private String nome;
   @Column
-  String indirizzo;
+  private String indirizzo;
 
   public int getId() {
     return id;

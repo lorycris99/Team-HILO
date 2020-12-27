@@ -1,7 +1,6 @@
 package com.hilo.model.swabmanagement.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 
 public class EmbeddedEffettuaAs implements Serializable {

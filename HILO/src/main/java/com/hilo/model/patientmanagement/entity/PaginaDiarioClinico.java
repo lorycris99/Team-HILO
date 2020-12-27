@@ -24,7 +24,7 @@ public class PaginaDiarioClinico {
   @Column
   private String terapia;
   @Column
-  private String temperatura;
+  private Double temperatura;
   @Column
   private String sintomi;
 
@@ -46,11 +46,11 @@ public class PaginaDiarioClinico {
     this.terapia = terapia;
   }
 
-  public String getTemperatura() {
+  public Double getTemperatura() {
     return temperatura;
   }
 
-  public void setTemperatura(String temperatura) {
+  public void setTemperatura(Double temperatura) {
     this.temperatura = temperatura;
   }
 

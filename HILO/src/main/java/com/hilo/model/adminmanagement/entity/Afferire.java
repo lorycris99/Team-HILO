@@ -15,30 +15,30 @@ import javax.persistence.Table;
 public class Afferire {
 
   @Id
-  @Column
-  int idstruttura;
+  @Column(name = "idstruttura")
+  int idStruttura;
 
   @Id
-  @Column
-  String cfpaziente;
+  @Column(name = "cfpaziente")
+  String cfPaziente;
 
   @Column
   int giorni;
 
   public int getIdstruttura() {
-    return idstruttura;
+    return idStruttura;
   }
 
   public void setIdstruttura(int idstruttura) {
-    this.idstruttura = idstruttura;
+    this.idStruttura = idstruttura;
   }
 
   public String getCfpaziente() {
-    return cfpaziente;
+    return cfPaziente;
   }
 
   public void setCfpaziente(String cfpaziente) {
-    this.cfpaziente = cfpaziente;
+    this.cfPaziente = cfpaziente;
   }
 
   public int getGiorni() {
@@ -58,18 +58,19 @@ public class Afferire {
       return false;
     }
     Afferire afferire = (Afferire) o;
-    return idstruttura == afferire.idstruttura && giorni == afferire.giorni
-            && Objects.equals(cfpaziente, afferire.cfpaziente);
+    return idStruttura == afferire.idStruttura && giorni == afferire.giorni
+        && Objects.equals(cfPaziente, afferire.cfPaziente);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idstruttura, cfpaziente, giorni);
+    return Objects.hash(idStruttura, cfPaziente, giorni);
   }
 
   @Override
   public String toString() {
-    return "Afferire{" + "idstruttura=" + idstruttura + ", cfpaziente='"
-            + cfpaziente + '\'' + ", giorni=" + giorni + '}';
+    return "Afferire{" + "idstruttura=" + idStruttura +
+      ", cfpaziente='" + cfPaziente + '\'' + ", giorni=" + giorni
+        + '}';
   }
 }

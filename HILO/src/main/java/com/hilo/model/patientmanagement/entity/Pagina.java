@@ -19,7 +19,7 @@ public class Pagina {
   @Column
   private String note;
   @Column
-  private String temperatura;
+  private Double temperatura;
   @Column
   private String sintomi;
 
@@ -49,11 +49,11 @@ public class Pagina {
     this.note = note;
   }
 
-  public String getTemperatura() {
+  public Double getTemperatura() {
     return temperatura;
   }
 
-  public void setTemperatura(String temperatura) {
+  public void setTemperatura(Double temperatura) {
     this.temperatura = temperatura;
   }
 

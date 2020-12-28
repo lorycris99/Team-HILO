@@ -25,8 +25,8 @@ public class PatientController {
   @Autowired
   private PatientManager patientManager;
 
-  @PostMapping("/patient/register")
-  public void registerPatient(@RequestParam(name = "User") String user) throws JSONException {
+  
+  public void registerPatient(String user) throws JSONException {
     JSONObject obj = new JSONObject(user);
     String cf = obj.getString("cf");
     String name = obj.getString("name");
@@ -37,7 +37,8 @@ public class PatientController {
     String telefono = obj.getString("telefono");
     Boolean isInterno = obj.getBoolean("isInterno");
     String indirizzo = obj.getString("indirizzo");
-    Patient p = new Patient(cf, username, password, mail, telefono, isInterno, indirizzo, name, surname);
+    Patient p = new Patient(cf, username, password, mail, telefono, isInterno, 
+        indirizzo, name, surname);
     System.out.println(p);
     patientManager.creaPaziente(p);
   }

@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EffettuaAsRepository extends JpaRepository<EffettuaAs, EmbeddedEffettuaAs> {
   List<EffettuaAs> findByTimestampBetween(String t1, String t2);
+
+  List<EffettuaAs> findByCfAs(String cf);
+  
 }

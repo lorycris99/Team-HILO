@@ -45,4 +45,8 @@ public class EffettuaAsManager {
     }
     return list;
   }
+
+  public List<EffettuaAs> findByCfAs(String cf) {
+    return ear.findByCfAs(cf);
+  }
 }

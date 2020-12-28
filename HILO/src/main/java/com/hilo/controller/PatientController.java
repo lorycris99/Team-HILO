@@ -1,16 +1,17 @@
 package com.hilo.controller;
 
-import com.hilo.model.patientmanagement.entity.*;
 
+import com.hilo.model.patientmanagement.entity.Pagina;
+import com.hilo.model.patientmanagement.entity.PaginaDiarioClinico;
+import com.hilo.model.patientmanagement.entity.PaginaDiarioClinicoManager;
+import com.hilo.model.patientmanagement.entity.PaginaManager;
+import com.hilo.model.patientmanagement.entity.Patient;
+import com.hilo.model.patientmanagement.entity.PatientManager;
 import java.util.List;
-
 import net.bytebuddy.utility.RandomString;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -25,6 +26,9 @@ public class PatientController {
   @Autowired
   private PatientManager patientManager;
 
+  @Autowired
+  private ErrorController ec;
+
   
   public void registerPatient(String user) throws JSONException {
     JSONObject obj = new JSONObject(user);
@@ -37,36 +41,38 @@ public class PatientController {
     String telefono = obj.getString("telefono");
     Boolean isInterno = obj.getBoolean("isInterno");
     String indirizzo = obj.getString("indirizzo");
-    Patient p = new Patient(cf, username, password, mail, telefono, isInterno, 
+    Patient p = new Patient(cf, username, password, mail, telefono, isInterno,
         indirizzo, name, surname);
-    System.out.println(p);
-    patientManager.creaPaziente(p);
+    try {
+      patientManager.creaPaziente(p);
+    } catch (IllegalStateException e) {
+      ec.manageError(e);
+    }
   }
 
-  @GetMapping("/patient/all")
+
   public List<Patient> getAll() {
 
     return patientManager.findAll();
   }
 
-  @GetMapping("/patient/diarioClinico/all")
+
   public List<PaginaDiarioClinico> getAllPagineDiarioClinico() {
     return pdcm.findAll();
   }
 
-  @GetMapping("/patient/diarioPaziente/all")
+
   public List<Pagina> getAllPagineDiarioPaziente() {
     return pm.findAll();
   }
 
-  @GetMapping("/patient/diarioPaziente/byId")
-  public Pagina getPaginaByIds(@RequestParam(name = "cf") String cf, 
-                              @RequestParam(name = "numero") Integer numero) {
+
+  public Pagina getPaginaByIds(String cf, Integer numero) {
     return pm.findById(numero, cf);
   }
 
-  @GetMapping("/patient/diarioPaziente/byCF")
-  public List<Pagina> getPaginaByCf(@RequestParam(name = "cf") String cf) {
+
+  public List<Pagina> getPaginaByCf(String cf) {
     return pm.findByCf(cf);
   }
 

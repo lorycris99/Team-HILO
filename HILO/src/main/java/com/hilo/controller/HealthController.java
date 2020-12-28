@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthController {
   @Autowired
-  HealthWorkerRepository hwr;
+  private HealthWorkerRepository hwr;
 
-  @GetMapping("/health_worker/all")
+
   List<HealthWorker> getAll() {
     return hwr.findAll();
   }

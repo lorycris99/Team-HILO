@@ -11,5 +11,5 @@ public interface EffettuaAsRepository extends JpaRepository<EffettuaAs, Embedded
   List<EffettuaAs> findByTimestampBetween(String t1, String t2);
 
   List<EffettuaAs> findByCfAs(String cf);
-  
+
 }

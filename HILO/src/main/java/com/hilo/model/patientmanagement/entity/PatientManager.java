@@ -16,6 +16,9 @@ public class PatientManager {
   private PatientRepository repo;
 
   public void creaPaziente(Patient p) {
+    if (findById(p.getCf()) != null) {
+      throw new IllegalStateException("CF gia' presente");
+    }
     repo.save(p);
   }
 

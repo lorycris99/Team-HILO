@@ -57,7 +57,7 @@ image_gen = ImageDataGenerator(rotation_range=20,
 # kernel size = dimensione del kernel
 # activation = applica la funzione di attivazione rectified linear unit in questo caso
 
-# maxpooling2d = campiona la rappresentazione dell'input prendendo il valore massimo all'interno dell afinistra dfinita da pool_size
+# maxpooling2d = campiona la rappresentazione dell'input prendendo il valore massimo all'interno della finestra definita da pool_size
 
 # Flatten = appiattisce l'output senza modificare la batch size
 

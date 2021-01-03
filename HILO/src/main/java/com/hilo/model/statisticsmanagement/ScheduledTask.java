@@ -11,9 +11,9 @@ import java.util.Map;
 @Component
 public class ScheduledTask {
   @Autowired
-  StatisticaManagement sm;
+  private StatisticaManagement sm;
 
-  @Scheduled(cron = "0 1 0 * * *")
+  @Scheduled(cron = "0 52 15 * * *")
   public void saveTask() {
     List<Swab> tamponi = sm.retreiveTamponi();
     Map<String, Integer> tamponiMappa = sm.getSommaEsiti(tamponi);

@@ -15,7 +15,7 @@ public class SwabQueue {
 
   public AbstractQueue<Swab> getInstance() {
     if (coda == null) {
-      coda = new PriorityQueue<>();
+      coda = new PriorityQueue<>(new SwabComparator());
     }
     return coda;
   }

@@ -23,6 +23,9 @@ public class FacadeController implements RequestController {
   @Autowired
   private StatisticsController sc;
 
+  @Autowired
+  private AdminController ac;
+
   private static Gson gson = new Gson();
 
   @PostMapping("/patient/register")
@@ -70,5 +73,26 @@ public class FacadeController implements RequestController {
   public String inserisciRisultato(@RequestParam(name = "idTampone") String id, 
                                  @RequestParam(name = "risultato") String risultato) {
     return gson.toJson(hc.inserisciRisultato(Integer.valueOf(id), risultato));
+  }
+
+  @GetMapping("/admin/inserisciStruttura")
+  public String inserisciStruttura(@RequestParam(name = "struttura") String strutturaJson) 
+                                  throws JSONException {
+    return gson.toJson(ac.aggiungiStruttura(strutturaJson));
+  }
+
+  @GetMapping("/admin/rimuoviStruttura")
+  public String rimuoviStruttura(@RequestParam(name = "idStruttura") Integer idStruttura) {
+    return gson.toJson(ac.removeStruttura(idStruttura));
+  }
+
+  @GetMapping("/admin/getStrutturaById")
+  public String getById(@RequestParam(name = "idStruttura") Integer id) {
+    return gson.toJson(ac.getById(id));
+  }
+
+  @GetMapping("/admin/getAll")
+  public String getAll() {
+    return gson.toJson(ac.getAll());
   }
 }

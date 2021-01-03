@@ -7,10 +7,9 @@ import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
 
-
-@RestController
+@Component
 public class HealthController {
   @Autowired
   private HealthWorkerManagement hwm;

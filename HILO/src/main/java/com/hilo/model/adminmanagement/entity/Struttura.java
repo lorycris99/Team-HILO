@@ -20,6 +20,8 @@ public class Struttura {
   @Column
   private String indirizzo;
 
+  public Struttura() {}
+
   public int getId() {
     return id;
   }

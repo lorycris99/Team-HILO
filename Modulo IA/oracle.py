@@ -1,5 +1,6 @@
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import sys
 
 import os
 for dirname, _, filenames in os.walk('/kaggle/input'):
@@ -24,13 +25,13 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 from tensorflow.keras.preprocessing import image
 
-test_image = image.load_img('prova/PNEUMONIA(3566).jpg', target_size=(100,100), color_mode='grayscale')
+test_image = image.load_img('valuta/' + sys.argv[0], target_size=(100,100), color_mode='grayscale')
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image,axis=0)
 
 model = Sequential()
 
-model = keras.models.load_model('Ryan91,65')
+model = keras.models.load_model('Ryan92,5')
 
 y = model.predict_proba(test_image, verbose=1)
 print("Predicted=%s" % (y[0]))

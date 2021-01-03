@@ -69,6 +69,7 @@ public class EffettuaAsManager {
   }
 
   public EffettuaAs findEffettuaAsByIdTampone(int id) {
+
     return ear.findByIdTampone(id);
   }
 }

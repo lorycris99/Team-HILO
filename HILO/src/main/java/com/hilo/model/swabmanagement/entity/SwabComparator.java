@@ -1,5 +1,8 @@
 package com.hilo.model.swabmanagement.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
@@ -64,6 +67,7 @@ public class SwabComparator implements Comparator<Swab> {
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
     epMan = new EffettuapManager();
     asMan = new EffettuaAsManager();
+   // System.out.println("asMan: " + asMan);
 
     EffettuaAs as1 = asMan.findEffettuaAsByIdTampone(o1.getId());
     EffettuaAs as2 = asMan.findEffettuaAsByIdTampone(o2.getId());
@@ -104,7 +108,9 @@ public class SwabComparator implements Comparator<Swab> {
     }
   }
 
+  //@Autowired
   private EffettuapManager epMan;
+  //@Autowired
   private EffettuaAsManager asMan;
   private static final double TRESHOLD = 0.8;
 }

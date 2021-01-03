@@ -2,6 +2,7 @@ package com.hilo.controller;
 
 import com.google.gson.Gson;
 import com.hilo.model.swabmanagement.entity.Swab;
+import com.hilo.model.swabmanagement.entity.SwabQueueTest;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -94,5 +95,12 @@ public class FacadeController implements RequestController {
   @GetMapping("/admin/getAll")
   public String getAll() {
     return gson.toJson(ac.getAll());
+  }
+
+  @GetMapping("/test/lista")
+  public String test() {
+    SwabQueueTest test = new SwabQueueTest();
+    test.testFunzione();
+    return "ok";
   }
 }

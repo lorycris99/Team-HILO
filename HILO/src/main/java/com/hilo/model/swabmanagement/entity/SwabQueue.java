@@ -20,6 +20,7 @@ public class SwabQueue {
 
   public boolean enqueue(Swab s) {
 
+    System.out.println(coda);
     return coda.add(s);
   }
 
@@ -31,8 +32,8 @@ public class SwabQueue {
     return coda.size();
   }
 
-  public Swab[] getQueueArray() {
-    return (Swab[]) coda.toArray();
+  public Object[] getQueueArray() {
+    return  coda.toArray();
   }
 
   private PriorityQueue<Swab> coda;

@@ -32,6 +32,7 @@ public class SwabManager {
   }
 
   public Swab findById(int id) {
+
     Optional<Swab> temp = repo.findById(id);
     if (temp.isPresent()) {
       return temp.get();
@@ -52,6 +53,9 @@ public class SwabManager {
     return repo.findByIdStruttura(id);
   }
 
-
+  public String test() {
+    System.out.println("Ci sono");
+    return "funziona";
+  }
 
 }

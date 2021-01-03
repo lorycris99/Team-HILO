@@ -1,22 +1,27 @@
 package com.hilo.model.swabmanagement.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 
 
 @Component
 public class SwabComparator implements Comparator<Swab> {
+  @Autowired
+  private EffettuapManager epMan;
+  @Autowired
+  private EffettuaAsManager asMan;
 
-  public SwabComparator() {
+  
 
-  }
   @Override
   public int compare(Swab o1, Swab o2) {
+    System.out.println(asMan);
+    System.out.println(epMan);
     double proba1 = Double.MIN_VALUE;
     double proba2 = Double.MIN_VALUE;
     boolean interno1 = false;
@@ -66,7 +71,6 @@ public class SwabComparator implements Comparator<Swab> {
 
   private int compareDates(Swab o1, Swab o2) {
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-
     EffettuaAs as1 = asMan.findEffettuaAsByIdTampone(o1.getId());
     EffettuaAs as2 = asMan.findEffettuaAsByIdTampone(o2.getId());
     //estraggo le date dai tamponi
@@ -106,9 +110,6 @@ public class SwabComparator implements Comparator<Swab> {
     }
   }
 
-  @Autowired
-  private EffettuapManager epMan;
-  @Autowired
-  private EffettuaAsManager asMan;
+  
   private static final double TRESHOLD = 0.8;
 }

@@ -1,17 +1,23 @@
 package com.hilo.model.swabmanagement.entity;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 @Component
 public class SwabQueue {
 
+  @Autowired
+  private SwabComparator sc;
+
   private SwabQueue() {
-    coda = new PriorityQueue<>(new SwabComparator());
+    coda = new PriorityQueue<Swab>(sc);
   }
 
-  public synchronized static SwabQueue getInstance() {
+  public static SwabQueue getInstance() {
     if (istanza == null) {
       istanza = new SwabQueue();
     }

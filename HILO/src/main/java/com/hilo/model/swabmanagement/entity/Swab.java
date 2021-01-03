@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tampone")
-public class Swab {
+public class Swab implements Comparable {
   public Swab() {}
 
   @Id
@@ -62,6 +62,8 @@ public class Swab {
             + '}';
   }
 
-
-
+  @Override
+  public int compareTo(Object o) {
+    return 0;
+  }
 }

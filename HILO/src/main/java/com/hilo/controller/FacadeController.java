@@ -5,6 +5,7 @@ import com.hilo.model.patientmanagement.entity.Pagina;
 import com.hilo.model.patientmanagement.entity.PaginaDiarioClinico;
 import com.hilo.model.patientmanagement.entity.Patient;
 import com.hilo.model.statisticsmanagement.Statistica;
+import com.hilo.model.swabmanagement.entity.Swab;
 import java.util.List;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +67,11 @@ public class FacadeController implements RequestController {
   @GetMapping("/api/statistics/")
   public Statistica getStatistiche() {
     return sc.getStatistiche();
+  }
+
+  @GetMapping("/swab/inserisciRisultato")
+  public Swab inserisciRisultato(@RequestParam(name = "idTampone") String id, 
+                                 @RequestParam(name = "risultato") String risultato) {
+    return hc.inserisciRisultato(Integer.valueOf(id), risultato);
   }
 }

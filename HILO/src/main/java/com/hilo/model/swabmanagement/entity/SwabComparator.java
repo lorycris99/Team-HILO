@@ -8,12 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 
+
+@Component
 public class SwabComparator implements Comparator<Swab> {
 
   public SwabComparator() {
 
   }
-
   @Override
   public int compare(Swab o1, Swab o2) {
     double proba1 = Double.MIN_VALUE;
@@ -65,9 +66,6 @@ public class SwabComparator implements Comparator<Swab> {
 
   private int compareDates(Swab o1, Swab o2) {
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-    epMan = new EffettuapManager();
-    asMan = new EffettuaAsManager();
-   // System.out.println("asMan: " + asMan);
 
     EffettuaAs as1 = asMan.findEffettuaAsByIdTampone(o1.getId());
     EffettuaAs as2 = asMan.findEffettuaAsByIdTampone(o2.getId());
@@ -108,9 +106,9 @@ public class SwabComparator implements Comparator<Swab> {
     }
   }
 
-  //@Autowired
+  @Autowired
   private EffettuapManager epMan;
-  //@Autowired
+  @Autowired
   private EffettuaAsManager asMan;
   private static final double TRESHOLD = 0.8;
 }

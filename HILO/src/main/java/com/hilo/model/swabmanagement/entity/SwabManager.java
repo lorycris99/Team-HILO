@@ -53,9 +53,5 @@ public class SwabManager {
     return repo.findByIdStruttura(id);
   }
 
-  public String test() {
-    System.out.println("Ci sono");
-    return "funziona";
-  }
 
 }

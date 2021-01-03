@@ -9,6 +9,6 @@ N.B. - nella presente consegna non è stato possibile includere il dataset in qu
 La classificazione di una radiografia si effettua inserendo quest'ultima nella cartella valuta/ e lanciando lo script "oracle.py" (Nella cartella valuta sono presenti tre campioni appartenenti alle tre categorie possibili prese in esame (Covid, No Covid e Polmonite "standard" senza presenza di Covid) per dimostrarne il corretto funzionamento.)
 
 Team Hilo "ristretto" ;)
-Hermann Senatore - matricola 0512105743
-Ivan Carmine Adamo - matricola 0512105755
-Lorenzo Criscuolo - matricola 0512105737
+- Hermann Senatore - matricola 0512105743
+- Ivan Carmine Adamo - matricola 0512105755
+- Lorenzo Criscuolo - matricola 0512105737

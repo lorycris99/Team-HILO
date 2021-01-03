@@ -96,7 +96,7 @@ public class SwabComparator implements Comparator<Swab> {
 
       }
     }
-
+  return 0;
   }
 
   private EffettuapManager pMan;

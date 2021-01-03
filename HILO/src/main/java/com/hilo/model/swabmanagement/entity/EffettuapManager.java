@@ -66,10 +66,6 @@ public class EffettuapManager {
     }
   }
 
-<<<<<<< Updated upstream
-  public EffettuaP findByIdTampone(int id) {
-    return epr.findByIdTampone(id);
-=======
   public Swab findByIdTampone(int id) {
     EffettuaP eff = epr.findByIdTampone(id);
     List<Swab> listaTamponi = swabRepo.findAll();
@@ -83,7 +79,6 @@ public class EffettuapManager {
     }
 
     return null;
->>>>>>> Stashed changes
   }
 
   public EffettuaP findEffettuapByIdTampone(int id) {

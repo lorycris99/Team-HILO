@@ -53,7 +53,26 @@ public class EffettuaAsManager {
     return ear.findByCfAs(cf);
   }
 
+<<<<<<< Updated upstream
   public EffettuaAs findByIdTampone(int id) {
+    return ear.findByIdTampone(id);
+=======
+  public Swab findByIdTampone(int id) {
+    EffettuaAs temp = ear.findByIdTampone(id);
+    List<Swab> all = sr.findAll();
+
+    Swab filter = null;
+
+    for (int i = 0; i < all.size(); i++) {
+      if (temp.getIdTampone() == all.get(i).getId()) {
+        return all.get(i);
+      }
+    }
+    return null;
+>>>>>>> Stashed changes
+  }
+
+  public EffettuaAs findEffettuaAsByIdTampone(int id) {
     return ear.findByIdTampone(id);
   }
 }

@@ -16,6 +16,7 @@ public class SwabComparator implements Comparator<Swab> {
     double proba2 = Double.MIN_VALUE;
     boolean interno1 = false;
     boolean interno2 = false;
+    SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 
     Ryan ryan = new Ryan();
 
@@ -44,31 +45,28 @@ public class SwabComparator implements Comparator<Swab> {
       pMan = new EffettuapManager();
       asMan = new EffettuaAsManager();
 
-      List<EffettuaAs> allAs = asMan.findAll();
-      List<EffettuaP> allP = pMan.findAll();
-
+      EffettuaAs as1 = asMan.findEffettuaAsByIdTampone(o1.getId());
+      EffettuaAs as2 = asMan.findEffettuaAsByIdTampone(o2.getId());
       //estraggo le date dai tamponi
       String timestamp1 = null;
       String timestamp2 = null;
-      for(int i = 0; i < allAs.size(); i++) {
-        if (allAs.get(i).getIdTampone() == o1.getId()) {
-          timestamp1 = allAs.get(i).getTimestamp();
-        } else if (allAs.get(i).getIdTampone() == o2.getId()) {
-          timestamp2 = allAs.get(i).getTimestamp();
-        }//if
-      }// for i
 
-      //se non ho trovato uno dei due timestamp devo controllare anche l'altra lista
-      if (timestamp1 == null || timestamp2 == null) {
-        for (int i = 0; i < allP.size(); i++) {
-          if (allP.get(i).getIdTampone() == o1.getId()) {
-            timestamp1 = allP.get(i).getTimestamp();
-          } else if (allP.get(i).getIdTampone() == o2.getId()) {
-            timestamp2 = allP.get(i).getTimestamp();
-          }//if
-        }//for i
-      }//if timestamp
-      SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+      //se non trovo un tampone in effettuaAs allora devo cercare in EffettuaP
+      try {
+        timestamp1 = as1.getTimestamp();
+
+      } catch (NullPointerException e) {
+        EffettuaP p = pMan.findEffettuapByIdTampone(o1.getId());
+        timestamp1 = p.getTimestamp();
+      }
+
+      try {
+        timestamp2 = as2.getTimestamp();
+      } catch (NullPointerException e) {
+        EffettuaP p = pMan.findEffettuapByIdTampone(o2.getId());
+        timestamp2 = p.getTimestamp();
+      }
+
       Date t1 = null;
       Date t2 = null;
       try {
@@ -79,16 +77,29 @@ public class SwabComparator implements Comparator<Swab> {
       }
       if (t1.after(t2)) {
         return -1;
-      }else if (t1.before(t2)) {
+      } else if (t1.before(t2)) {
         return 1;
-      }else{
+      } else {
         return 0;
       }
-    }//if main
-    return 0;
+    } //if main
+
+    /*  se solo uno dei due e' interno allora ha la precedenza se la
+        probabilita' e' maggiore di una soglia, altrimenti chi arriva
+        prima
+     */
+    if (interno1 && !interno2) {
+
+      if (proba1 > TRESHOLD) {
+        return 1;
+      } else {
+
+      }
+    }
 
   }
 
   private EffettuapManager pMan;
   private EffettuaAsManager asMan;
+  private static final double TRESHOLD = 0.8;
 }

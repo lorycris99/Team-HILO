@@ -21,9 +21,9 @@ from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import classification_report, confusion_matrix
 
 # Ricerca directory
-my_data_dir = '/mnt/c/Users/ivanc/Desktop/progetti/py/FIA/Data'
-test_path = my_data_dir+'/test/'
-train_path = my_data_dir+'/train/'
+my_data_dir = 'Data/'
+test_path = my_data_dir+'test/'
+train_path = my_data_dir+'train/'
 
 # Settaggio Pre-processing immagini, 
 # image_shape = 100 pixel x 100pixel, 1 canale quindi in bianco e nero

@@ -1,0 +1,1 @@
+Le radiografie da testare vanno inserite in questa cartella

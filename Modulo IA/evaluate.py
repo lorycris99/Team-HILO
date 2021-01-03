@@ -22,8 +22,8 @@ from tensorflow import keras
 
 from sklearn.metrics import classification_report, confusion_matrix
 
-my_data_dir = '/mnt/c/Users/ivanc/Desktop/progetti/py/FIA/Data'
-test_path = my_data_dir+'/test/'
+my_data_dir = 'Data/'
+test_path = my_data_dir+'test/'
 
 image_shape = (100,100,1)
 image_gen = ImageDataGenerator(rotation_range=20,
@@ -37,7 +37,7 @@ image_gen = ImageDataGenerator(rotation_range=20,
 
 model = Sequential()
 
-model = keras.models.load_model('Ryan91,65')
+model = keras.models.load_model('Ryan92,5')
 
 test_image_gen = image_gen.flow_from_directory(test_path,
                                                target_size=(100,100),

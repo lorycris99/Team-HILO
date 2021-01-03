@@ -1,15 +1,6 @@
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
-import os
-for dirname, _, filenames in os.walk('/kaggle/input'):
-    for filename in filenames:
-        print(os.path.join(dirname, filename))
-
-import pandas as pd
-import numpy as np 
-import seaborn as sns
-import matplotlib.pyplot as plt 
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -18,7 +9,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Activation, Dropout, Flatten, Dense, Conv2D, MaxPooling2D
 from tensorflow.keras.callbacks import EarlyStopping
 
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import confusion_matrix
 
 # Ricerca directory
 my_data_dir = 'Data/'
@@ -52,7 +43,7 @@ image_gen = ImageDataGenerator(rotation_range=20,
 
 # conv2d = La convoluzione 2D è un'operazione abbastanza semplice in fondo: si inizia con un kernel, che è semplicemente una piccola matrice di pesi. 
 # Questo kernel "scorre" sui dati di input 2D, eseguendo una moltiplicazione incentrata sull'elemento con la parte dell'input su cui si trova attualmente, 
-# e quindi sommando i risultati in un singolo pixel di output. More info: https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1
+# e quindi sommando i risultati in un singolo pixel di output. Più informazioni: https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1
 # filters = dimensionalità dello spazio di output
 # kernel size = dimensione del kernel
 # activation = applica la funzione di attivazione rectified linear unit in questo caso
@@ -63,7 +54,7 @@ image_gen = ImageDataGenerator(rotation_range=20,
 
 # Dense = densely-connected NN layer di n unità con funzione di attivazione rectified linear unit o softmax (converte un reale vettore in un vettore di probabilità di categoria)
 
-# Dropout = randomicamente setta unita di input a 0, con una frequenza settata da input, a ogni passo durante l'addestramento, questo previene l'overfitting. 
+# Dropout = randomicamente setta unità di input a 0, con una frequenza settata da input, a ogni passo durante l'addestramento, questo previene l'overfitting. 
 # Inputs non settati a 0 sono scalati di 1/(1 - rate) in modo da non variare la media di ogni input.
 
 # model.compile (loss = funzione obiettivo, optimizer = Ottimizzatore che implementa l'algoritmo Adam, metrics = lista delle metriche da considerare durante l'addestramento 
@@ -124,7 +115,7 @@ model.save('Ryan')
 
 #Stampa dati addestramento
 loss_df = pd.DataFrame(model.history.history)
-loss_df
+print(loss_df)
 
 #Inserisco predizioni in un array
 predictions = np.argmax(model.predict(test_image_gen), axis = -1)

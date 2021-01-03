@@ -24,6 +24,7 @@ public class StatisticaManagement {
   public StatisticaManagement(){
 
   }
+
   //TODO: capire se fare lo storico
   /**
    * Serve per ottenere tutti i tamponi effettuati in un arco di tempo che va dall'ultimo richiamo
@@ -40,7 +41,8 @@ public class StatisticaManagement {
 
     //TODO: cercare un modo più efficiente di fare questa operazione di filtering
     //recupero tutti i tamponi effettuati
-    List<Swab> tempAll = swab.findAll();
+    List<Swab> tempAll;
+    tempAll = swab.findAll();
 
     /*
      * se è la prima volta che richiamo il metodo e quindi non esiste una data di fine
@@ -68,7 +70,8 @@ public class StatisticaManagement {
     }
 
     //prendo la data finale alla quale si riferivano le precedenti statistiche
-    String t1 = anno + mese + giorno;
+    String t1;
+    t1 = anno + mese + giorno;
 
     //prendo la data nella quale viene chiamato il metodo
     GregorianCalendar dataAttuale = new GregorianCalendar();

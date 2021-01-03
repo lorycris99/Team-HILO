@@ -1,5 +1,5 @@
 <h1>RyanAI</h1>
-In questa cartella compressa sono presenti (quasi) tutti i file necessari per il funzionamento del modulo di IA:
+In questa cartella sono presenti (quasi) tutti i file necessari per il funzionamento del modulo di IA:
 
 <ul>
   <li>oracle.py: realizza effettivamente le predizioni data una radiografia in input</li>

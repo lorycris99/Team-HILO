@@ -7,7 +7,7 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import Sequential
 
-test_image = image.load_img('valuta/' + sys.argv[0], target_size=(100,100), color_mode='grayscale') #l'argomento da riga di comando rappresenta la radiografia da analizzare
+test_image = image.load_img('valuta/' + sys.argv[1], target_size=(100,100), color_mode='grayscale') #l'argomento da riga di comando rappresenta la radiografia da analizzare
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image,axis=0)
 

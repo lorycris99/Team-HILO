@@ -1,12 +1,7 @@
 package com.hilo.controller;
 
-import com.hilo.model.healthworkermanagement.entity.HealthWorker;
-import com.hilo.model.patientmanagement.entity.Pagina;
-import com.hilo.model.patientmanagement.entity.PaginaDiarioClinico;
-import com.hilo.model.patientmanagement.entity.Patient;
-import com.hilo.model.statisticsmanagement.Statistica;
+import com.google.gson.Gson;
 import com.hilo.model.swabmanagement.entity.Swab;
-import java.util.List;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,50 +23,52 @@ public class FacadeController implements RequestController {
   @Autowired
   private StatisticsController sc;
 
+  private static Gson gson = new Gson();
+
   @PostMapping("/patient/register")
-  public void register(@RequestParam(name = "User") String user) throws JSONException {
-    pc.registerPatient(user);
+  public String register(@RequestParam(name = "User") String user) throws JSONException {
+    return gson.toJson(pc.registerPatient(user));
   }
 
   @GetMapping("/health_worker/all")
-  public List<HealthWorker> getAllHealthWorker() {
-    return hc.getAll();
+  public String getAllHealthWorker() {
+    return gson.toJson(hc.getAll());
   }
 
   @GetMapping("/patient/all")
-  public List<Patient> getAllPatient() {
-    return pc.getAll();
+  public String getAllPatient() {
+    return gson.toJson(pc.getAll());
   }
 
   @GetMapping("/patient/diarioClinico/all")
-  public List<PaginaDiarioClinico> getAllPagineDiarioClinico() {
-    return pc.getAllPagineDiarioClinico();
+  public String getAllPagineDiarioClinico() {
+    return gson.toJson(pc.getAllPagineDiarioClinico());
   }
 
   @GetMapping("/patient/diarioPaziente/all")
-  public List<Pagina> getAllPagineDiarioPaziente() {
-    return pc.getAllPagineDiarioPaziente();
+  public String getAllPagineDiarioPaziente() {
+    return gson.toJson(pc.getAllPagineDiarioPaziente());
   }
 
   @GetMapping("/patient/diarioPaziente/byId")
-  public Pagina getPaginaByIds(@RequestParam(name = "cf") String cf,
+  public String getPaginaByIds(@RequestParam(name = "cf") String cf,
                                @RequestParam(name = "numero") Integer numero) {
-    return pc.getPaginaByIds(cf, numero);
+    return gson.toJson(pc.getPaginaByIds(cf, numero));
   }
 
   @GetMapping("/patient/diarioPaziente/byCF")
-  public List<Pagina> getPaginaByCf(@RequestParam(name = "cf") String cf) {
-    return pc.getPaginaByCf(cf);
+  public String getPaginaByCf(@RequestParam(name = "cf") String cf) {
+    return gson.toJson(pc.getPaginaByCf(cf));
   }
 
   @GetMapping("/api/statistics/")
-  public Statistica getStatistiche() {
-    return sc.getStatistiche();
+  public String getStatistiche() {
+    return gson.toJson(sc.getStatistiche());
   }
 
   @GetMapping("/swab/inserisciRisultato")
-  public Swab inserisciRisultato(@RequestParam(name = "idTampone") String id, 
+  public String inserisciRisultato(@RequestParam(name = "idTampone") String id, 
                                  @RequestParam(name = "risultato") String risultato) {
-    return hc.inserisciRisultato(Integer.valueOf(id), risultato);
+    return gson.toJson(hc.inserisciRisultato(Integer.valueOf(id), risultato));
   }
 }

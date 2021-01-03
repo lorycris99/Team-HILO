@@ -27,9 +27,9 @@ public class HealthController {
 
   public Swab inserisciRisultato(Integer idTampone, String risultato) {
     Swab s = sm.findById(idTampone);
-    sender.sendMail(s);
     s.setRisultato(risultato);
     sm.updateSwab(s);
+    sender.sendMail(s);
     return s;
   }
 }

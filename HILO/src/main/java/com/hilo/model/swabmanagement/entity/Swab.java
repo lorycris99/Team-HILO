@@ -14,9 +14,9 @@ public class Swab {
   private int id;
   @Column
   private String risultato;
-  @Column
+  @Column(name = "isinterno")
   private Boolean isInterno;
-  @Column
+  @Column(name = "idstruttura")
   private Integer idStruttura;
 
   public int getId() {

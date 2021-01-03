@@ -25,16 +25,19 @@ public class InterceptorMail {
   public void sendMail(Swab s) {
     String cf = "";
     Patient destinatario;
-    EffettuaP temp = epm.findByIdTampone(s.getId());
+    EffettuaP temp = epm.findEffettuapByIdTampone(s.getId());
     if (temp == null) {
-      EffettuaAs tempAs = eam.findByIdTampone(s.getId());
+      EffettuaAs tempAs = eam.findEffettuaAsByIdTampone(s.getId());
       cf = tempAs.getCfAs();
       destinatario = pm.findById(cf);
       String to = destinatario.getMail();
       String subject = "Risultato tampone svolto il: " + tempAs.getTimestamp();
       String message = "Comunicazione risultato tampone effettuato da " + destinatario.getNome()
-              + destinatario.getCognome() + " il " + tempAs.getTimestamp() + " è "
+              + " " + destinatario.getCognome() + " il " + tempAs.getTimestamp() + " è "
               + s.getRisultato();
+      if (s.getRisultato().equalsIgnoreCase("positivo")) {
+        message = message + ".\nDovresti seguire queste linee guida: http://www.salute.gov.it/portale/nuovocoronavirus/dettaglioNotizieNuovoCoronavirus.jsp?lingua=italiano&id=5117";
+      }
       sender.sendSimpleMessage(to, subject, message);
     }
     cf = temp.getCfP();
@@ -42,8 +45,11 @@ public class InterceptorMail {
     String to = destinatario.getMail();
     String subject = "Risultato tampone svolto il: " + temp.getTimestamp();
     String message = "Comunicazione risultato tampone effettuato da " + destinatario.getNome()
-            + destinatario.getCognome() + " il " + temp.getTimestamp() + " è "
+            + " " + destinatario.getCognome() + " il " + temp.getTimestamp() + " è "
             + s.getRisultato();
+    if (s.getRisultato().equalsIgnoreCase("positivo")) {
+      message = message + ".\nDovresti seguire queste linee guida: http://www.salute.gov.it/portale/nuovocoronavirus/dettaglioNotizieNuovoCoronavirus.jsp?lingua=italiano&id=5117";
+    }
     sender.sendSimpleMessage(to, subject, message);
   }
 }

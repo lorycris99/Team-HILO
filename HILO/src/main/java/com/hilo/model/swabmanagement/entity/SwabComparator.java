@@ -10,6 +10,7 @@ public class SwabComparator implements Comparator<Swab> {
   public SwabComparator() {
 
   }
+
   @Override
   public int compare(Swab o1, Swab o2) {
     double proba1 = Double.MIN_VALUE;

@@ -12,4 +12,5 @@ public interface EffettuaAsRepository extends JpaRepository<EffettuaAs, Embedded
 
   List<EffettuaAs> findByCfAs(String cf);
 
+  List<EffettuaAs> findByIdTampone(int id);
 }

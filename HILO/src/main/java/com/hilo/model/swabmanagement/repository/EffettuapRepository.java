@@ -15,4 +15,5 @@ public interface EffettuapRepository extends JpaRepository<EffettuaP, EmbeddedEf
   List<EffettuaP> findByTimestamp(String timestamp);
   
   List<EffettuaP> findByIdTampone(int idTampone);
+
 }

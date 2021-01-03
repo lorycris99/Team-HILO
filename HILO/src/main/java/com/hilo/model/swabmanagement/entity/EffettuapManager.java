@@ -66,23 +66,24 @@ public class EffettuapManager {
     }
   }
 
-  public List<Swab> findByIdTampone(int id) {
+  public Swab findByIdTampone(int id) {
     List<EffettuaP> listaEff = epr.findByIdTampone(id);
     List<Swab> listaTamponi = swabRepo.findAll();
 
-    List<Swab> filter = new ArrayList<>();
+    Swab filter = null;
 
     for (EffettuaP e : listaEff) {
       int idTemp = e.getIdTampone();
 
       for (int i = 0; i < listaTamponi.size(); i++) {
         if (listaTamponi.get(i).getId() == idTemp) {
-          filter.add(listaTamponi.get(i));
-          break;
+          filter = listaTamponi.get(i);
+          return filter;
         } //if
       } //for interno
     } //for esterno
 
-    return filter;
+    return null;
   }
+
 }

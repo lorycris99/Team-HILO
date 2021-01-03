@@ -1,6 +1,7 @@
 package com.hilo.controller;
 
 
+import com.hilo.model.patientmanagement.email.InterceptorMailRegister;
 import com.hilo.model.patientmanagement.entity.Pagina;
 import com.hilo.model.patientmanagement.entity.PaginaDiarioClinico;
 import com.hilo.model.patientmanagement.entity.PaginaDiarioClinicoManager;
@@ -28,6 +29,8 @@ public class PatientController {
   @Autowired
   private ErrorController ec;
 
+  @Autowired
+  private InterceptorMailRegister interceptor;
   
   public boolean registerPatient(String user) throws JSONException {
     JSONObject obj = new JSONObject(user);
@@ -42,13 +45,7 @@ public class PatientController {
     String indirizzo = obj.getString("indirizzo");
     Patient p = new Patient(cf, username, password, mail, telefono, isInterno,
         indirizzo, name, surname);
-    try {
-      patientManager.creaPaziente(p);
-      return true;
-    } catch (IllegalStateException e) {
-      ec.manageError(e);
-      return false;
-    }
+    return interceptor.sendRegisteredMail(p);
   }
 
 

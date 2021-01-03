@@ -3,14 +3,17 @@ package com.hilo.model.statisticsmanagement;
 import com.hilo.model.swabmanagement.entity.Swab;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class ScheduledTask {
   @Autowired
   StatisticaManagement sm;
 
-  @Scheduled(fixedRate = 5000)
+  @Scheduled(cron = "0 1 0 * * *")
   public void saveTask() {
     List<Swab> tamponi = sm.retreiveTamponi();
     Map<String, Integer> tamponiMappa = sm.getSommaEsiti(tamponi);

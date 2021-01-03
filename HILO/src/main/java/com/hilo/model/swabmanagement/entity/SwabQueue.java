@@ -13,11 +13,12 @@ public class SwabQueue {
 
   }
 
-  public AbstractQueue<Swab> getInstance() {
-    if (coda == null) {
-      coda = new PriorityQueue<>(new SwabComparator());
+  public static SwabQueue getInstance() {
+    if (istanza == null) {
+      istanza = new SwabQueue();
+      //coda = new PriorityQueue<>(new SwabComparator());
     }
-    return coda;
+    return istanza;
   }
 
   public boolean enqueue(Swab s) {
@@ -25,7 +26,8 @@ public class SwabQueue {
     return coda.add(s);
   }
 
-  private static PriorityQueue<Swab> coda = null;
+  private PriorityQueue<Swab> coda;
+  private static SwabQueue istanza = null;
   @Autowired
   private SwabManager swabManager;
 }

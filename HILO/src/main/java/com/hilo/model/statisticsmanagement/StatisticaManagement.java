@@ -51,23 +51,48 @@ public class StatisticaManagement {
       dataFineRiferimento.set(GregorianCalendar.DAY_OF_MONTH,
               dataFineRiferimento.get(GregorianCalendar.DAY_OF_MONTH) - 1);
     }
+    String anno = dataFineRiferimento.get(GregorianCalendar.YEAR) + "-";
+
+    String mese;
+    if ((dataFineRiferimento.get(GregorianCalendar.MONTH) + 1) < 10) {
+      mese = "0" + (dataFineRiferimento.get(GregorianCalendar.MONTH) + 1) + "-";
+    } else {
+      mese = (dataFineRiferimento.get(GregorianCalendar.MONTH) + 1) + "-";
+    }
+
+    String giorno;
+    if (dataFineRiferimento.get(GregorianCalendar.DAY_OF_MONTH) < 10) {
+      giorno = "0" + dataFineRiferimento.get(GregorianCalendar.DAY_OF_MONTH);
+    } else {
+      giorno = "" + dataFineRiferimento.get(GregorianCalendar.DAY_OF_MONTH);
+    }
 
     //prendo la data finale alla quale si riferivano le precedenti statistiche
-    String t1 = dataFineRiferimento.get(GregorianCalendar.YEAR) + "-"
-            + (dataFineRiferimento.get(GregorianCalendar.MONTH) + 1) + "-"
-            + dataFineRiferimento.get(GregorianCalendar.DAY_OF_MONTH);
+    String t1 = anno + mese + giorno;
 
     //prendo la data nella quale viene chiamato il metodo
     GregorianCalendar dataAttuale = new GregorianCalendar();
 
-    String t2 = dataAttuale.get(GregorianCalendar.YEAR) + "-"
-            + (dataAttuale.get(GregorianCalendar.MONTH) + 1) + "-"
-            + dataAttuale.get(GregorianCalendar.DAY_OF_MONTH);
+    anno = dataAttuale.get(GregorianCalendar.YEAR) + "-";
+
+    if ((dataAttuale.get(GregorianCalendar.MONTH) + 1) < 10) {
+      mese = "0" + (dataAttuale.get(GregorianCalendar.MONTH) + 1) + "-";
+    } else {
+      mese = (dataAttuale.get(GregorianCalendar.MONTH) + 1) + "-";
+    }
+
+    if (dataAttuale.get(GregorianCalendar.DAY_OF_MONTH) < 10) {
+      giorno = "0" + dataAttuale.get(GregorianCalendar.DAY_OF_MONTH);
+    } else {
+      giorno = "" + dataAttuale.get(GregorianCalendar.DAY_OF_MONTH);
+    }
+    String t2 = anno + mese + giorno;
 
     /*
      * ottengo gli id dei tamponi effettuati nel periodo che va tra la fine del periodo precedente
      * e la data di oggi
      */
+
     List<Integer> swapPazienti = swabP.findTimestampBetween(t1, t2);
     List<Integer> swabOperatori = swabAs.findTimestampBetween(t1, t2);
 

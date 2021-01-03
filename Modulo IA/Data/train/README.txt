@@ -1,0 +1,1 @@
+I dati per l'allenamento del modello vanno qui

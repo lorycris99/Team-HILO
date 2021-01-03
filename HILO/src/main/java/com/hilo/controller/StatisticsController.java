@@ -6,7 +6,7 @@ import com.hilo.model.statisticsmanagement.Statistica;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 
 
 @RestController
@@ -14,6 +14,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 public class StatisticsController {
 
   public Statistica getStatistiche() {
-    throw new NotImplementedException();
+    //throw new NotImplementedException();
+    return null;
   }
 }

@@ -24,7 +24,7 @@ public class StatisticaManagement {
   public StatisticaManagement(){
 
   }
-
+  //TODO: capire se fare lo storico
   /**
    * Serve per ottenere tutti i tamponi effettuati in un arco di tempo che va dall'ultimo richiamo
    * del metodo alla data in cui è richiamato nuovamente il metodo. Nel caso in cui viene
@@ -165,5 +165,5 @@ public class StatisticaManagement {
   @Autowired
   private SwabManager swab;
 
-  private static final String FILE_PATH = "res/stats.bin";
+  private static final String FILE_PATH = "resources/stats.bin";
 }

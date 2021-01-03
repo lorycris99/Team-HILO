@@ -32,4 +32,8 @@ public class HealthController {
     sender.sendMail(s);
     return s;
   }
+
+  public List<Swab> findAll() {
+    return sm.findAll();
+  }
 }

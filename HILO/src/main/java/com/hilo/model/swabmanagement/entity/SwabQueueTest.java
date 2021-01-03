@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Component
 public class SwabQueueTest {
 
-  @Autowired
+  @Autowired(required = true)
   private SwabManager sm;
-  @Autowired
+  @Autowired(required = true)
   private EffettuapManager epm;
-  @Autowired
+  @Autowired(required = true)
   private EffettuaAsManager eam;
 
   public void testFunzione() {

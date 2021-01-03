@@ -103,4 +103,9 @@ public class FacadeController implements RequestController {
     test.testFunzione();
     return "ok";
   }
+
+  @GetMapping("/test/swab")
+  public String testAll() {
+    return gson.toJson(hc.findAll());
+  }
 }

@@ -30,7 +30,7 @@ public class PatientController {
   private ErrorController ec;
 
   
-  public Patient registerPatient(String user) throws JSONException {
+  public boolean registerPatient(String user) throws JSONException {
     JSONObject obj = new JSONObject(user);
     String cf = obj.getString("cf");
     String name = obj.getString("name");
@@ -45,9 +45,10 @@ public class PatientController {
         indirizzo, name, surname);
     try {
       patientManager.creaPaziente(p);
-      return p;
+      return true;
     } catch (IllegalStateException e) {
       ec.manageError(e);
+      return false;
     }
   }
 

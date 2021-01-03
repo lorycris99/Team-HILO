@@ -147,43 +147,37 @@ public class StatisticaManagement {
 
   }
 
-  public boolean saveStats(Statistica stat) throws IOException {
+  public boolean saveStats(Statistica stat) {
 
     File file = new File(FILE_PATH);
     Gson gson = new Gson();
-//    try (ObjectOutputStream out = new ObjectOutputStream(
-//            new FileOutputStream(file))) {
-//
-//      out.writeObject(stat);
-//
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//      return false;
-//    }
-//    return true;
+    FileWriter out;
 
-    FileWriter out = new FileWriter(file);
-    System.out.println("test: " + gson.toJson(stat));
-    out.append(gson.toJson(stat));
-    out.close();
-    return true;
+    try {
+      out = new FileWriter(file);
+      out.append(gson.toJson(stat));
+      out.close();
+      return true;
+
+    } catch (IOException e) {
+      e.printStackTrace();
+      return false;
+    }
   }
 
-  public Statistica readStats() throws FileNotFoundException {
+  public Statistica readStats() {
 
     Statistica stat = null;
-//    try (ObjectInputStream in = new ObjectInputStream(
-//            new FileInputStream(FILE_PATH))) {
-//
-//      stat = (Statistica) in.readObject();
-//
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    } catch (ClassNotFoundException e) {
-//      e.printStackTrace();
-//    }
     File file = new File(FILE_PATH);
-    Scanner in = new Scanner(file);
+    Scanner in = null;
+
+    try {
+      in = new Scanner(file);
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+      return null;
+    }
+
     String temp = "";
     Gson gson = new Gson();
     while(in.hasNext()) {

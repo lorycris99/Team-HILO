@@ -15,22 +15,12 @@ public class ScheduledTask {
   @Autowired
   private StatisticaManagement sm;
 
-  @Scheduled(cron = "50 06 17 * * *")
+  @Scheduled(cron = "0 1 0 * * *")
   public void saveTask() {
     List<Swab> tamponi = sm.retreiveTamponi();
     Map<String, Integer> tamponiMappa = sm.getSommaEsiti(tamponi);
     Statistica s = sm.getStatistiche(tamponiMappa);
     System.out.println("\n\n\nTask Schedulato fatto\n\n\n");
-    try {
-      sm.saveStats(s);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    try {
-      System.out.println(sm.readStats() + "");
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
+    sm.saveStats(s);
   }
 }

@@ -12,11 +12,10 @@ public class EmailServiceImpl {
 
   public void sendSimpleMessage(String to, String subject, String text) {
     SimpleMailMessage message = new SimpleMailMessage();
-    message.setFrom("noreply@baeldung.com");
+    message.setFrom("hilo.result@gmail.com");
     message.setTo(to);
     message.setSubject(subject);
     message.setText(text);
     emailSender.send(message);
-
   }
 }

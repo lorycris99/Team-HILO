@@ -1,20 +1,27 @@
 package com.hilo.model.statisticsmanagement;
 
+import com.google.gson.Gson;
 import com.hilo.model.swabmanagement.entity.EffettuaAsManager;
 import com.hilo.model.swabmanagement.entity.EffettuapManager;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -140,35 +147,50 @@ public class StatisticaManagement {
 
   }
 
-  public boolean saveStats(Statistica stat) {
+  public boolean saveStats(Statistica stat) throws IOException {
 
     File file = new File(FILE_PATH);
-    try (ObjectOutputStream out = new ObjectOutputStream(
-            new FileOutputStream(file))) {
+    Gson gson = new Gson();
+//    try (ObjectOutputStream out = new ObjectOutputStream(
+//            new FileOutputStream(file))) {
+//
+//      out.writeObject(stat);
+//
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//      return false;
+//    }
+//    return true;
 
-      out.writeObject(stat);
-
-    } catch (IOException e) {
-      e.printStackTrace();
-      return false;
-    }
+    FileWriter out = new FileWriter(file);
+    System.out.println("test: " + gson.toJson(stat));
+    out.append(gson.toJson(stat));
+    out.close();
     return true;
   }
 
-  public Statistica readStats() {
+  public Statistica readStats() throws FileNotFoundException {
 
     Statistica stat = null;
-    try (ObjectInputStream in = new ObjectInputStream(
-            new FileInputStream(FILE_PATH))) {
-
-      stat = (Statistica) in.readObject();
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
+//    try (ObjectInputStream in = new ObjectInputStream(
+//            new FileInputStream(FILE_PATH))) {
+//
+//      stat = (Statistica) in.readObject();
+//
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    } catch (ClassNotFoundException e) {
+//      e.printStackTrace();
+//    }
+    File file = new File(FILE_PATH);
+    Scanner in = new Scanner(file);
+    String temp = "";
+    Gson gson = new Gson();
+    while(in.hasNext()) {
+      temp += in.nextLine();
     }
-    return stat;
+    in.close();
+    return gson.fromJson(temp, Statistica.class);
   }
 
   public Statistica getStatistiche(Map<String, Integer> esitiTamponi) {
@@ -193,5 +215,5 @@ public class StatisticaManagement {
   @Autowired
   private SwabManager swab;
 
-  private static final String FILE_PATH = "resources/stats.bin";
+  private static final String FILE_PATH = "stats.txt";
 }

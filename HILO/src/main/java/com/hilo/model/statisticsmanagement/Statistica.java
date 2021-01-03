@@ -41,6 +41,15 @@ public class Statistica implements Serializable {
     return numPositivi + numNegativi + numInconcludenti;
   }
 
+  @Override
+  public String toString() {
+    return "Statistica{"
+            + "numPositivi=" + numPositivi
+            + ", numNegativi=" + numNegativi
+            + ", numInconcludenti=" + numInconcludenti
+            + '}';
+  }
+
   private int numPositivi;
   private int numNegativi;
   private int numInconcludenti;

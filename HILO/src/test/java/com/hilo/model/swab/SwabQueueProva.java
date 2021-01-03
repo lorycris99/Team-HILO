@@ -27,10 +27,7 @@ public class SwabQueueProva {
   @Test
   public void testFunzione() {
     SwabQueue queue = SwabQueue.getInstance();
-//    SwabManager sm = new SwabManager();
     System.out.println("###" + sm);
-//    EffettuaAsManager eam = new EffettuaAsManager();
-//    EffettuapManager epm = new EffettuapManager();
     Assert.assertNotNull(queue);
 
     Swab s1 = sm.findById(4);

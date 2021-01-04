@@ -1,11 +1,8 @@
 package com.hilo.controller;
 
 import com.google.gson.Gson;
-<<<<<<< Updated upstream
 import com.hilo.model.swabmanagement.entity.SwabQueueProva;
-=======
 import javax.servlet.http.HttpSession;
->>>>>>> Stashed changes
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,11 @@
 package com.hilo.controller;
 
 import com.google.gson.Gson;
+<<<<<<< Updated upstream
 import com.hilo.model.swabmanagement.entity.SwabQueueProva;
+=======
+import javax.servlet.http.HttpSession;
+>>>>>>> Stashed changes
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+
 
 
 @RestController
@@ -26,10 +32,30 @@ public class FacadeController implements RequestController {
   @Autowired
   private AdminController ac;
 
+  @Autowired
+  private LoginController lc;
+
+  @Autowired
+  private HttpSession session;
+
   private static Gson gson = new Gson();
+
+  @GetMapping("/logout")
+  public void doLogout() {
+    lc.doLogout();
+  }
+
+  @PostMapping("/login")
+  public String doLogin(@RequestParam(name = "parameter") String parameter) throws JSONException {
+    return gson.toJson(lc.doLogin(parameter));
+  }
 
   @PostMapping("/patient/register")
   public String register(@RequestParam(name = "User") String user) throws JSONException {
+    String role = (String) session.getAttribute("role");
+    if (!role.equalsIgnoreCase("healthworker")) {
+      return "Accesso negato";
+    }
     return gson.toJson(pc.registerPatient(user));
   }
 

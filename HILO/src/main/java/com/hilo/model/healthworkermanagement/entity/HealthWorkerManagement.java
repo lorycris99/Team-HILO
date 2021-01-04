@@ -65,4 +65,8 @@ public class HealthWorkerManagement {
     return hwr.findByTelefono(telefono);
   }
 
+  public HealthWorker findByUsernameAndPassword(String username, String password) {
+    return hwr.findByUsernameAndPassword(username, password);
+  }
+
 }

@@ -21,4 +21,6 @@ public interface HealthWorkerRepository extends JpaRepository<HealthWorker, Stri
 
   public List<HealthWorker> findByTelefono(String telefono);
 
+  public HealthWorker findByUsernameAndPassword(String username, String password);
+
 }

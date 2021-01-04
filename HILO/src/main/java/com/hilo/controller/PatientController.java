@@ -33,6 +33,9 @@ public class PatientController {
   private InterceptorMailRegister interceptor;
   
   public boolean registerPatient(String user) throws JSONException {
+    if (user.equalsIgnoreCase("Accesso negato")) {
+      return false;
+    }
     JSONObject obj = new JSONObject(user);
     String cf = obj.getString("cf");
     String name = obj.getString("name");

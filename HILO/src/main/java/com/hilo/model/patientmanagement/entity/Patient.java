@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "paziente")
@@ -125,6 +126,31 @@ public class Patient {
 
   public void setCognome(String cognome) {
     this.cognome = cognome;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Patient patient = (Patient) o;
+    return Objects.equals(cf, patient.cf)
+            && Objects.equals(username, patient.username)
+            && Objects.equals(password, patient.password)
+            && Objects.equals(mail, patient.mail)
+            && Objects.equals(telefono, patient.telefono)
+            && Objects.equals(isInterno, patient.isInterno)
+            && Objects.equals(indirizzo, patient.indirizzo)
+            && Objects.equals(nome, patient.nome)
+            && Objects.equals(cognome, patient.cognome);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(cf, username, password, mail, telefono, isInterno, indirizzo, nome, cognome);
   }
 
   @Override

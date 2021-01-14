@@ -5,15 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 @Component
 public class ScheduledTask {
   @Autowired
-  private StatisticaManagement sm;
+  private StatisticaManager sm;
 
   @Scheduled(cron = "0 1 0 * * *")
   public void saveTask() {

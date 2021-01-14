@@ -1,7 +1,7 @@
 package com.hilo.controller;
 
 import com.hilo.model.healthworkermanagement.entity.HealthWorker;
-import com.hilo.model.healthworkermanagement.entity.HealthWorkerManagement;
+import com.hilo.model.healthworkermanagement.entity.HealthWorkerManager;
 import com.hilo.model.swabmanagement.email.InterceptorMail;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class HealthController {
   @Autowired
-  private HealthWorkerManagement hwm;
+  private HealthWorkerManager hwm;
 
   @Autowired
   private SwabManager sm;

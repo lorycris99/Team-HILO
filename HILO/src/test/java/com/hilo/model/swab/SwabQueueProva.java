@@ -1,6 +1,5 @@
 package com.hilo.model.swab;
 
-import com.hilo.HiloApplicationTests;
 import com.hilo.model.swabmanagement.entity.EffettuaAs;
 import com.hilo.model.swabmanagement.entity.EffettuaAsManager;
 import com.hilo.model.swabmanagement.entity.EffettuaP;

@@ -1,7 +1,5 @@
 package com.hilo.model.patientmanagement.entity;
 
-
-import com.hilo.HiloApplicationTests;
 import com.hilo.model.patientmanagement.repository.PatientRepository;
 import junit.framework.TestCase;
 import org.junit.After;

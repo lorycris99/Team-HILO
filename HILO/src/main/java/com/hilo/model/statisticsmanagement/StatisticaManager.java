@@ -21,7 +21,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -180,7 +179,7 @@ public class StatisticaManager {
 
     String temp = "";
     Gson gson = new Gson();
-    while(in.hasNext()) {
+    while (in.hasNext()) {
       temp += in.nextLine();
     }
     in.close();

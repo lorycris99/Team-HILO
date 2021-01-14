@@ -18,7 +18,7 @@ public class InterceptorMailRegister {
   public boolean sendRegisteredMail(Patient p){
     boolean result;
     try {
-      patientManager.creaPaziente(p);
+      patientManager.createPatient(p);
       result = true;
     } catch (IllegalStateException e) {
       ec.manageError(e);

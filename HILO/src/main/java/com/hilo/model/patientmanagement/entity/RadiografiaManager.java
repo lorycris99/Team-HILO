@@ -17,7 +17,7 @@ public class RadiografiaManager {
     rr.save(r);
   }
 
-  public void delteRadiografia(Radiografia r) {
+  public void deleteRadiografia(Radiografia r) {
     rr.delete(r);
   }
 

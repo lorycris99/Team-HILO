@@ -1,4 +1,6 @@
 os: linux
 distro: xenial
 language: java
+before_install:
+  - chmod +x ./HILO/mvnw
 script: ./HILO/mvnw test -B

@@ -22,14 +22,14 @@ public class TestPatientManager extends TestCase {
 
   @After
   public void deletePaziente(){
-    manager.deletePaziente(manager.findById("4321"));
+    manager.deletePatient(manager.findById("4321"));
   }
 
   @Test
   public void creaPazienteTest(){
     Patient p = new Patient("4321", "user", "pass", "lmao@yeah.lol", "33333", false, "via kek 24", "lmao", "yeah");
 
-    manager.creaPaziente(p);
+    manager.createPatient(p);
     Assert.assertEquals(p, manager.findById("4321"));
   }
 

@@ -1,5 +1,6 @@
 package com.hilo.model.swab;
 
+import com.hilo.HiloApplicationTests;
 import com.hilo.model.swabmanagement.entity.EffettuaAs;
 import com.hilo.model.swabmanagement.entity.EffettuaAsManager;
 import com.hilo.model.swabmanagement.entity.EffettuaP;
@@ -7,6 +8,7 @@ import com.hilo.model.swabmanagement.entity.EffettuapManager;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import com.hilo.model.swabmanagement.entity.SwabQueue;
+import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SwabQueueProva {
+public class SwabQueueProva extends TestCase {
   @Autowired
   private SwabManager sm;
   @Autowired

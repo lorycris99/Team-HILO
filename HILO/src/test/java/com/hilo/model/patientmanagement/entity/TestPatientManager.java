@@ -1,6 +1,9 @@
 package com.hilo.model.patientmanagement.entity;
 
+
+import com.hilo.HiloApplicationTests;
 import com.hilo.model.patientmanagement.repository.PatientRepository;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class TestPatientManager {
+public class TestPatientManager extends TestCase {
 
   @Autowired
   private PatientRepository repo;

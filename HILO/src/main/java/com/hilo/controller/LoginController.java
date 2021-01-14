@@ -1,7 +1,7 @@
 package com.hilo.controller;
 
 import com.hilo.model.healthworkermanagement.entity.HealthWorker;
-import com.hilo.model.healthworkermanagement.entity.HealthWorkerManagement;
+import com.hilo.model.healthworkermanagement.entity.HealthWorkerManager;
 import com.hilo.model.patientmanagement.entity.Patient;
 import com.hilo.model.patientmanagement.entity.PatientManager;
 import javax.servlet.http.HttpSession;
@@ -17,7 +17,7 @@ public class LoginController {
   private PatientManager pm;
 
   @Autowired
-  private HealthWorkerManagement hwm;
+  private HealthWorkerManager hwm;
 
   @Autowired
   private HttpSession session;

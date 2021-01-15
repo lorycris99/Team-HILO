@@ -10,7 +10,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tampone")
-public class Swab implements Comparable {
+public class Swab  {
   public Swab() {}
 
   @Id
@@ -103,32 +103,6 @@ public class Swab implements Comparable {
             + ", isInterno='" + isInterno
             + ", idStruttura='" + idStruttura
             + '}';
-  }
-
-  /**
-   * Metodo necessario in quanto la classe implemtenta comparable
-   * ma dal momento che esegue tutto la classe SwabComparator il
-   * metodo non serve.
-   *
-   * @param o l'oggeto con il quale effettuare la comparazione
-   *
-   * @return 0
-   */
-  @Override
-  public int compareTo(Object o) {
-    Swab s = null;
-    if(o instanceof Swab) {
-      s = (Swab) o;
-    }
-
-    if (s.getIsInterno()) {
-      return -1;
-
-    } else {
-      System.out.println("esterno");
-      return 1;
-    }
-
   }
 
 }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@DisplayName("JUnit 5 Example2")
+@DisplayName("JUnit 5 Example3")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class TestPatient {

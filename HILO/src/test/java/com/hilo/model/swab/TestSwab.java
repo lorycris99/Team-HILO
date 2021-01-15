@@ -8,6 +8,7 @@ import java.util.List;
 
 @SpringBootTest
 @DisplayName("JUnit 5 Example3")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestSwab {
     @Autowired
     private SwabManager sm;
@@ -20,6 +21,7 @@ public class TestSwab {
     
 
     @Test
+    @Order(1)
     public void testLista(){
         Swab interno, esternoP, esternoA, internoTest;
         interno = sm.findById(1);
@@ -40,4 +42,40 @@ public class TestSwab {
         Assertions.assertEquals(esternoP, swq.getTop());
 
     }
+
+    @Test
+    @Order(1)
+    public void testId(){
+        Swab s=new Swab();
+        s.setId(12);
+        Assertions.assertEquals(s.getId(),12);
+    }
+
+    @Test
+    @Order(2)
+    public void testResultato(){
+        Swab s=new Swab();
+        s.setRisultato("test");
+        Assertions.assertEquals(s.getRisultato(),"test");
+    }
+
+    @Test
+    @Order(3)
+    public void testInterno(){
+        Swab s=new Swab();
+        s.setIsInterno(true);
+        Assertions.assertEquals(s.getIsInterno(),true);
+    }
+
+    @Test
+    @Order(4)
+    public void testIdStruttura(){
+        Swab s=new Swab();
+        s.setIdStruttura(100);
+        Assertions.assertEquals(s.getIdStruttura(),100);
+    }
+
+
+
+
 }

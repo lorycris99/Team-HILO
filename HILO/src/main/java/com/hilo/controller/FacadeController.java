@@ -2,7 +2,6 @@ package com.hilo.controller;
 
 import com.google.gson.Gson;
 import com.hilo.model.swabmanagement.entity.Ryan;
-import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import com.hilo.model.swabmanagement.entity.SwabQueueProva;
 import javax.servlet.http.HttpSession;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 
 @RestController
@@ -135,7 +132,7 @@ public class FacadeController implements RequestController {
 
   @GetMapping("/test/swab")
   public String testAll() {
-    return gson.toJson(hc.findAll());
+    return gson.toJson(hc.findAllSwab());
   }
 
   @GetMapping("/test/Ryan")

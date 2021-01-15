@@ -7,7 +7,16 @@ public class ErrorController {
 
   public void manageError(Throwable t) {
     if (t instanceof IllegalStateException) {
-      return;
+      System.out.println("Stato non consistente: ");
+      t.printStackTrace();
+
+    } else if (t instanceof IllegalArgumentException) {
+      System.out.println("Argomento Sbagliato: ");
+      t.printStackTrace();
+
+    } else {
+      System.out.println("Errore Generico: ");
+      t.printStackTrace();
     }
   }
 }

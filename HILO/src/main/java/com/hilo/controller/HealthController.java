@@ -33,7 +33,7 @@ public class HealthController {
     return s;
   }
 
-  public List<Swab> findAll() {
+  public List<Swab> findAllSwab() {
     return sm.findAll();
   }
 }

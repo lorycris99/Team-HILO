@@ -108,13 +108,17 @@ public class Swab  {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     Swab swab = (Swab) o;
-    return id == swab.id &&
-            Objects.equals(risultato, swab.risultato) &&
-            Objects.equals(isInterno, swab.isInterno) &&
-            Objects.equals(idStruttura, swab.idStruttura);
+    return id == swab.id
+            && Objects.equals(risultato, swab.risultato)
+            && Objects.equals(isInterno, swab.isInterno)
+            && Objects.equals(idStruttura, swab.idStruttura);
   }
 
   @Override

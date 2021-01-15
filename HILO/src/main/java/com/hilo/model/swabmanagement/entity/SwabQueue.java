@@ -40,8 +40,6 @@ public class SwabQueue {
    * posizione determinata dal timestamp e dalla percentuale di positivita'.
    *
    * @param s il tampone da accodare
-   *
-   * @return true se l'inserimento e' andato a buon fine, false altrimenti
    */
   public void enqueue(Swab s) {
     System.out.println("enqueue");
@@ -54,7 +52,7 @@ public class SwabQueue {
    * @return un tampone da analizzare
    */
   public Swab getTop() {
-    return coda.poll();
+    return coda.getTop();
   }
 
   /**

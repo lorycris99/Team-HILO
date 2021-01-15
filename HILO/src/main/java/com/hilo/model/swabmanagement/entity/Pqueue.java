@@ -1,13 +1,15 @@
 package com.hilo.model.swabmanagement.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+/**
+ * Questa classe rappresenta una coda di tamponi da schedulare.
+ */
 @Component
 public class Pqueue {
 
@@ -15,36 +17,56 @@ public class Pqueue {
     queue = new ArrayList<>();
   }
 
+  /**
+   * Questo metodo aggiunge un tampone alla coda dei tamponi da analizzare.
+   *
+   * @param s il tampone da aggiungere
+   */
   public void add(Swab s) {
 
     if (queue.size() == 0) {
       queue.add(s);
-      return ;
+      return;
     }
     for (int i = 0; i < queue.size(); i++) {
 
       if (check(s, queue.get(i)) > 0) {
         queue.add(i, s);
-        return ;
+        return;
       }
     }
     queue.add(s);
   }
 
+  /**
+   * Restituisce la lunghezza della coda dei tamponi.
+   *
+   * @return la lunghezza della coda
+   */
   public int size() {
     return queue.size();
   }
 
+  /**
+   * Restituisce il primo tampone della coda.
+   *
+   * @return il tampone in testa
+   */
   public Swab getTop() {
     Swab s = queue.get(0);
     queue.remove(s);
     return s;
   }
 
-  public Swab poll() {
-    return getTop();
-  }
-
+  /**
+   * Esegue la comparazione tra due tamponi per capire quale schedulare prima.
+   *
+   * @param o1 primo tampone
+   *
+   * @param o2 secondo tampone
+   *
+   * @return 1 se il o1 viene prima di o2, -1 se o1 viene dopo o2, 0 altrimenti
+   */
   public int check(Swab o1, Swab o2) {
 
     double proba1 = Double.MIN_VALUE;
@@ -132,7 +154,6 @@ public class Pqueue {
       t1 = f.parse(timestamp1);
       t2 = f.parse(timestamp2);
     } catch (ParseException e) {
-//      error.manageError(e);
       e.printStackTrace();
     }
     if (t1.after(t2)) {

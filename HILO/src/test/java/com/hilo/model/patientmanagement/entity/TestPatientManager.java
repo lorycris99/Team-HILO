@@ -2,19 +2,14 @@ package com.hilo.model.patientmanagement.entity;
 
 import com.hilo.model.patientmanagement.repository.PatientRepository;
 import junit.framework.TestCase;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.event.annotation.AfterTestClass;
-import org.springframework.test.context.event.annotation.AfterTestExecution;
-import org.springframework.test.context.event.annotation.AfterTestMethod;
-import org.springframework.test.context.junit4.SpringRunner;
-
+import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -50,6 +45,38 @@ public class TestPatientManager extends TestCase {
     Patient x=manager.findByUsernameAndPassword("user","pass");
     Assert.assertEquals(x,manager.findById("4321"));
 
+  }
+
+  @Test
+  public void findByIsInternoTest(){
+    List<Patient> lista=manager.findByIsInterno(true);
+    List<Patient> all=manager.findAll();
+    List<Patient> temp=new ArrayList<>();
+    boolean result=true;
+    for(int i=0;i<lista.size() && result==true ;i++){
+      if (all.contains(lista.get(i))){
+        result=true;
+        temp.add(lista.get(i));
+      }
+      else{
+        result=false;
+      }
+    }
+    Assert.assertEquals(lista,temp);
+
+  }
+
+  @Test
+  public void findByTelefonoTest(){
+    Patient x=manager.findByTelefono("33333");
+    String cf=x.getCf();
+    Assert.assertEquals(x,manager.findById(cf));
+  }
+  @Test
+  public void findByEmail(){
+    Patient x=manager.findByMail("lmao@yeah.lol");
+    String cf=x.getCf();
+    Assert.assertEquals(x,manager.findById(cf));
   }
 
 }

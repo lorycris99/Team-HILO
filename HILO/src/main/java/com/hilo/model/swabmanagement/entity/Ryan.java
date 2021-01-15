@@ -3,22 +3,22 @@ package com.hilo.model.swabmanagement.entity;
 
 import com.hilo.model.patientmanagement.entity.Radiografia;
 import com.hilo.model.patientmanagement.entity.RadiografiaManager;
-import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
-import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
-import org.datavec.image.loader.NativeImageLoader;
-import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
-import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
+import javax.imageio.ImageIO;
+import org.datavec.image.loader.NativeImageLoader;
+import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
+import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
+import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
+import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 
 @Component
 public class Ryan {
@@ -30,11 +30,11 @@ public class Ryan {
   public double getProba(Swab s) {
     EffettuaP temp = ep.findEffettuapByIdTampone(s.getId());
     List<Radiografia> list = rm.findByCfPaziente(temp.getCfP());
-    Radiografia rad = list.get(list.size()-1);
+    Radiografia rad = list.get(list.size() - 1);
     double prediction = 12;
     File f = null;
     try {
-      BufferedImage imageT = ImageIO.read( new ByteArrayInputStream( rad.getImg() ) );
+      BufferedImage imageT = ImageIO.read(new ByteArrayInputStream(rad.getImg()));
       ImageIO.write(imageT, "JPG", new File("temp.jpg"));
       f = new File("temp.jpg");
       NativeImageLoader loader = new NativeImageLoader(100, 100, 1);

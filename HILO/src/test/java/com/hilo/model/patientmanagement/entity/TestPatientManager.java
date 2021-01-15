@@ -11,6 +11,8 @@ import java.util.List;
 
 @SpringBootTest
 @DisplayName("JUnit 5 Example")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 public class TestPatientManager{
 
   @Autowired
@@ -18,13 +20,14 @@ public class TestPatientManager{
 
   @Autowired
   private PatientManager manager;
-
   @Test
-  public void deletePaziente(){
+  @Order(7)
+  public  void deletePaziente(){
     manager.deletePatient(manager.findById("4321"));
   }
 
   @Test
+  @Order(1)
   public void creaPazienteTest(){
     Patient p = new Patient("4321", "user", "pass", "lmao@yeah.lol", "33333", false, "via kek 24", "lmao", "yeah");
 
@@ -33,12 +36,14 @@ public class TestPatientManager{
   }
 
   @Test
+  @Order(2)
   public void findByIdTest(){
     Patient x=manager.findById("4321");
     Assert.assertEquals(x,manager.findByUsernameAndPassword("user","pass"));
   }
 
   @Test
+  @Order(3)
   public void findByUsernameAndPasswordTest(){
     Patient x=manager.findByUsernameAndPassword("user","pass");
     Assert.assertEquals(x,manager.findById("4321"));
@@ -46,6 +51,7 @@ public class TestPatientManager{
   }
 
   @Test
+  @Order(4)
   public void findByIsInternoTest(){
     List<Patient> lista=manager.findByIsInterno(true);
     List<Patient> all=manager.findAll();
@@ -65,12 +71,14 @@ public class TestPatientManager{
   }
 
   @Test
+  @Order(5)
   public void findByTelefonoTest(){
     Patient x=manager.findByTelefono("33333");
     String cf=x.getCf();
     Assert.assertEquals(x,manager.findById(cf));
   }
   @Test
+  @Order(6)
   public void findByEmail(){
     Patient x=manager.findByMail("lmao@yeah.lol");
     String cf=x.getCf();

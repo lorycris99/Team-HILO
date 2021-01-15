@@ -1,23 +1,11 @@
 package com.hilo.model.swab;
-
-import com.hilo.model.swabmanagement.entity.EffettuaAs;
 import com.hilo.model.swabmanagement.entity.EffettuaAsManager;
-import com.hilo.model.swabmanagement.entity.EffettuaP;
 import com.hilo.model.swabmanagement.entity.EffettuapManager;
-import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
-import com.hilo.model.swabmanagement.entity.SwabQueue;
-import junit.framework.TestCase;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class SwabQueueProva extends TestCase {
+//@SpringBootTest
+public class SwabQueueProva  {
   @Autowired
   private SwabManager sm;
   @Autowired
@@ -25,7 +13,7 @@ public class SwabQueueProva extends TestCase {
   @Autowired
   private EffettuaAsManager eam;
 
-  @Test
+ /* @Test
   public void testFunzione() {
     SwabQueue queue = SwabQueue.getInstance();
     System.out.println("###" + sm);
@@ -40,5 +28,5 @@ public class SwabQueueProva extends TestCase {
     Assert.assertTrue(queue.enqueue(s1));
 
     System.out.println(queue.getQueueArray());
-  }
+  }*/
 }

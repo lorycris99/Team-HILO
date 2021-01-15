@@ -1,16 +1,18 @@
 package com.hilo.model.swabmanagement.entity;
 
+import com.hilo.controller.ErrorController;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
-
-import com.hilo.controller.ErrorController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-
+/**
+ * Questa classe stabilisce la relazione d'ordine tra i tamponi che sono all'
+ * interno della coda dei tamponi da effettuare.
+ */
 @Component
 public class SwabComparator implements Comparator<Swab> {
   @Autowired
@@ -19,8 +21,18 @@ public class SwabComparator implements Comparator<Swab> {
   private EffettuaAsManager asMan;
   @Autowired
   private ErrorController error;
-  
 
+
+  /**
+   * Questo metodo viene richiamato ad ogni aggiunta di un nuovo tampone su tutti i tamponi
+   * per poter stabilire quale deve essere schedulato per prima.
+   *
+   * @param o1 primo tampone da effettuare
+   *
+   * @param o2 secondo tampone da effettuare
+   *
+   * @return 1 se o1 viene prima di o2, -1 se o1 viene dopo o2, 0 altrimenti
+   */
   @Override
   public int compare(Swab o1, Swab o2) {
     System.out.println(asMan);
@@ -72,6 +84,15 @@ public class SwabComparator implements Comparator<Swab> {
 
   }
 
+  /**
+   * Permette di fare un confronto sulle date dei tamponi.
+   *
+   * @param o1 primo tampone
+   *
+   * @param o2 secondo tampone
+   *
+   * @return 1 se o1 viene prima di o2, -1 se o1 viene dopo o2, 0 altrimenti
+   */
   private int compareDates(Swab o1, Swab o2) {
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
     EffettuaAs as1 = asMan.findEffettuaAsByIdTampone(o1.getId());

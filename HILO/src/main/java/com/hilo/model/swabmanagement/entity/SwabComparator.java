@@ -1,16 +1,18 @@
 package com.hilo.model.swabmanagement.entity;
 
+import com.hilo.controller.ErrorController;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
-
-import com.hilo.controller.ErrorController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-
+/**
+ * Questa classe stabilisce la relazione d'ordine tra i tamponi che sono all'
+ * interno della coda dei tamponi da effettuare.
+ */
 @Component
 public class SwabComparator implements Comparator<Swab> {
   @Autowired
@@ -19,8 +21,18 @@ public class SwabComparator implements Comparator<Swab> {
   private EffettuaAsManager asMan;
   @Autowired
   private ErrorController error;
-  
 
+
+  /**
+   * Questo metodo viene richiamato ad ogni aggiunta di un nuovo tampone su tutti i tamponi
+   * per poter stabilire quale deve essere schedulato per prima.
+   *
+   * @param o1 primo tampone da effettuare
+   *
+   * @param o2 secondo tampone da effettuare
+   *
+   * @return 1 se o1 viene prima di o2, -1 se o1 viene dopo o2, 0 altrimenti
+   */
   @Override
   public int compare(Swab o1, Swab o2) {
     System.out.println(asMan);
@@ -29,16 +41,15 @@ public class SwabComparator implements Comparator<Swab> {
     double proba2 = Double.MIN_VALUE;
     boolean interno1 = false;
     boolean interno2 = false;
-    Ryan ryan = new Ryan();
 
     //se sono interni allora avro' una probabilita' di positivita'
     if (o1.getIsInterno()) {
-      proba1 = ryan.getProba(o1);
+      proba1 = epMan.findEffettuapByIdTampone(o1.getId()).getGravity();
       interno1 = true;
     }
 
     if (o2.getIsInterno()) {
-      proba2 = ryan.getProba(o2);
+      proba2 = epMan.findEffettuapByIdTampone(o2.getId()).getGravity();
       interno2 = true;
     }
 
@@ -55,7 +66,7 @@ public class SwabComparator implements Comparator<Swab> {
     } else if (!interno1 && !interno2) { //se sono entrambi esterni devo gestire le date
       return compareDates(o1, o2);
 
-    } else if (interno1 && !interno2) {
+    } else if (!interno2 && interno1) {
 
       if (proba1 > TRESHOLD) {
         return 1;
@@ -72,6 +83,15 @@ public class SwabComparator implements Comparator<Swab> {
 
   }
 
+  /**
+   * Permette di fare un confronto sulle date dei tamponi.
+   *
+   * @param o1 primo tampone
+   *
+   * @param o2 secondo tampone
+   *
+   * @return 1 se o1 viene prima di o2, -1 se o1 viene dopo o2, 0 altrimenti
+   */
   private int compareDates(Swab o1, Swab o2) {
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
     EffettuaAs as1 = asMan.findEffettuaAsByIdTampone(o1.getId());
@@ -114,5 +134,5 @@ public class SwabComparator implements Comparator<Swab> {
   }
 
   
-  private static final double TRESHOLD = 0.8;
+  private static final double TRESHOLD = 0.49;
 }

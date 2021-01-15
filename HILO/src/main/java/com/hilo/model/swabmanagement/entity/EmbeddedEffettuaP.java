@@ -4,6 +4,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+/**
+ * Classe che rappresenta la chiave primaria dell'entita' EffettuaP.
+ */
 @Embeddable
 public class EmbeddedEffettuaP implements Serializable {
 
@@ -18,18 +21,38 @@ public class EmbeddedEffettuaP implements Serializable {
 
   public EmbeddedEffettuaP() {}
 
+  /**
+   * Permette di ottenere l'id del tampone.
+   *
+   * @return l'id del tampone
+   */
   public Integer getIdTampone() {
     return idTampone;
   }
 
+  /**
+   * Permette di settare l'id del tampone.
+   *
+   * @param idTampone l'id del tampone da impostare
+   */
   public void setIdTampone(Integer idTampone) {
     this.idTampone = idTampone;
   }
 
+  /**
+   * Permette di ottenere il codice fiscale associato.
+   *
+   * @return il codice fiscale
+   */
   public String getCfP() {
     return cfP;
   }
 
+  /**
+   * Permette di impostare il codice fiscale.
+   *
+   * @param cfP il codice fiscale da impostare
+   */
   public void setCfP(String cfP) {
     this.cfP = cfP;
   }

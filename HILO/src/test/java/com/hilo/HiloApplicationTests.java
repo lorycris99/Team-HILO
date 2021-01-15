@@ -1,13 +1,14 @@
 package com.hilo;
 
+import com.hilo.model.patientmanagement.entity.TestPatient;
 import com.hilo.model.patientmanagement.entity.TestPatientManager;
+import com.hilo.model.swab.TestSwab;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @RunWith(JUnitPlatform.class)
-@SelectClasses({TestPatientManager.class})
+@SelectClasses({TestPatient.class, TestPatientManager.class,TestSwab.class})
 public class HiloApplicationTests {}

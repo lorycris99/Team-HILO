@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Classe che modella un tampone per il Covid-19.
+ */
 @Entity
 @Table(name = "tampone")
 public class Swab implements Comparable {
@@ -19,34 +22,74 @@ public class Swab implements Comparable {
   @Column(name = "idstruttura")
   private Integer idStruttura;
 
+  /**
+   * Restituisce l'identificativo associato al tampone.
+   *
+   * @return l'id del tampone
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   * Permette di impostare un identificativo per il tampone.
+   *
+   * @param id l'id da impostare per il tampone
+   */
   public void setId(int id) {
     this.id = id;
   }
 
+  /**
+   * Permette di ottenere il risultato associato al tampone.
+   *
+   * @return il risultato associato al tampone
+   */
   public String getRisultato() {
     return risultato;
   }
 
+  /**
+   * Permette di impostare il risultato dell'analisi al tampone.
+   *
+   * @param risultato il risultato (Positivo, Negativo o Inconcludente)
+   */
   public void setRisultato(String risultato) {
     this.risultato = risultato;
   }
 
+  /**
+   * Permette di capire se il tampone si riferisce ad un paziente esterno o interno.
+   *
+   * @return true se interno, false altrimenti
+   */
   public Boolean getIsInterno() {
     return isInterno;
   }
 
+  /**
+   * Permette di impostare la provenienza del tampone in base alla provenoenza del paziente.
+   *
+   * @param isInterno true se il paziente e' interno, false se esterno
+   */
   public void setIsInterno(Boolean isInterno) {
     this.isInterno = isInterno;
   }
 
+  /**
+   * Permette di ottenere la struttura dal quale proviene il tampone.
+   *
+   * @return l'id della struttra di provenineza
+   */
   public Integer getIdStruttura() {
     return idStruttura;
   }
 
+  /**
+   * Permette di impostare l'id della struttura di provenienza del tampone.
+   *
+   * @param idStruttura l'id della struttura di provenienza
+   */
   public void setIdStruttura(Integer idStruttura) {
     this.idStruttura = idStruttura;
   }
@@ -62,12 +105,16 @@ public class Swab implements Comparable {
             + '}';
   }
 
-  @Override
   /**
    * Metodo necessario in quanto la classe implemtenta comparable
    * ma dal momento che esegue tutto la classe SwabComparator il
-   * metodo non serve
+   * metodo non serve.
+   *
+   * @param o l'oggeto con il quale effettuare la comparazione
+   *
+   * @return 0
    */
+  @Override
   public int compareTo(Object o) {
     return 0;
   }

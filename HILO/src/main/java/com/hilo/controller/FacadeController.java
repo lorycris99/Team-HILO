@@ -1,6 +1,9 @@
 package com.hilo.controller;
 
 import com.google.gson.Gson;
+import com.hilo.model.swabmanagement.entity.Ryan;
+import com.hilo.model.swabmanagement.entity.Swab;
+import com.hilo.model.swabmanagement.entity.SwabManager;
 import com.hilo.model.swabmanagement.entity.SwabQueueProva;
 import javax.servlet.http.HttpSession;
 import org.json.JSONException;
@@ -11,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import java.util.List;
 
 
 @RestController
@@ -34,6 +37,10 @@ public class FacadeController implements RequestController {
 
   @Autowired
   private HttpSession session;
+
+  @Autowired
+  private SwabManager sm;
+
 
   private static Gson gson = new Gson();
 
@@ -131,6 +138,11 @@ public class FacadeController implements RequestController {
     return gson.toJson(hc.findAll());
   }
 
+  @GetMapping("/test/Ryan")
+  public String ryanTest() {
+    Ryan r = new Ryan();
+    return gson.toJson(r.getProba(sm.findById(2)));
+  }
   @Autowired
   private SwabQueueProva test;
 }

@@ -1,32 +1,46 @@
 package com.hilo.model.swabmanagement.entity;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.util.Random;
-import java.util.Scanner;
+import org.datavec.image.loader.NativeImageLoader;
+import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
+import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
+import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.dataset.api.preprocessor.DataNormalization;
+import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class Ryan {
 
   public double getProba(Swab s) {
-    Random gen = new Random();
-    if (s.getIsInterno()) {
-      return gen.nextDouble();
-    }else {
-//      throw new UnsupportedOperationException("Operazione ancora non implementata");
-      try {
-        System.out.println("DENTRO");
-        Process p = Runtime.getRuntime().exec(new String[]{"python", "C:\\Users\\Lorenzo\\Desktop\\UniSa\\Lezioni Materiali\\Anno 3 - I Semestre\\Ingegneria del Software\\Team-HILO\\Modulo IA\\test.py"});
-        Scanner in = new Scanner(p.getInputStream());
-        while (p.isAlive()) {
-        }
+    double prediction = 12;
+    try {
+      File f=new File("valuta\\test.jpg");
 
-        System.out.println(in.nextLine());
-        System.out.println(p.exitValue());
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+      //Use the nativeImageLoader to convert to numerical matrix
+      NativeImageLoader loader = new NativeImageLoader(100, 100, 1);
 
+      //put image into INDArray
+      INDArray image = loader.asMatrix(f, false);
+
+      //values need to be scaled
+      DataNormalization scalar = new ImagePreProcessingScaler(0, 1);
+
+      //then call that scalar on the image dataset
+      scalar.transform(image);
+
+
+
+      InputStream inputStream = new FileInputStream("Ryan92,5");
+      MultiLayerNetwork model = KerasModelImport.importKerasSequentialModelAndWeights(inputStream);
+
+      prediction = model.output(image).getDouble(0);
+
+    } catch (Exception e){
+      e.printStackTrace();
     }
-    return 0;
+    return prediction;
   }
+
 }

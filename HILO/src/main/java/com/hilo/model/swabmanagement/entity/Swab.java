@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 /**
  * Classe che modella un tampone per il Covid-19.
@@ -105,4 +106,19 @@ public class Swab  {
             + '}';
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Swab swab = (Swab) o;
+    return id == swab.id &&
+            Objects.equals(risultato, swab.risultato) &&
+            Objects.equals(isInterno, swab.isInterno) &&
+            Objects.equals(idStruttura, swab.idStruttura);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, risultato, isInterno, idStruttura);
+  }
 }

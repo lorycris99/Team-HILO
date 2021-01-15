@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-@DisplayName("JUnit 5 Example3")
+@DisplayName("JUnit 5 SwabTest")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestSwab {
     @Autowired
@@ -44,7 +44,7 @@ public class TestSwab {
     }
 
     @Test
-    @Order(1)
+    @Order(2)
     public void testId(){
         Swab s=new Swab();
         s.setId(12);
@@ -52,7 +52,7 @@ public class TestSwab {
     }
 
     @Test
-    @Order(2)
+    @Order(3)
     public void testResultato(){
         Swab s=new Swab();
         s.setRisultato("test");
@@ -60,7 +60,7 @@ public class TestSwab {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     public void testInterno(){
         Swab s=new Swab();
         s.setIsInterno(true);
@@ -68,11 +68,18 @@ public class TestSwab {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     public void testIdStruttura(){
         Swab s=new Swab();
         s.setIdStruttura(100);
         Assertions.assertEquals(s.getIdStruttura(),100);
+    }
+
+    @Test
+    @Order(6)
+    public void testEsempio(){
+        Assertions.assertEquals(3,3);
+
     }
 
 

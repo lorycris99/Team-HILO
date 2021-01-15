@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-@DisplayName("JUnit 5 Example")
+@DisplayName("JUnit 5 PatientManager")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class TestPatientManager{

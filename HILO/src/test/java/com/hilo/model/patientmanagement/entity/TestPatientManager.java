@@ -120,9 +120,10 @@ public class TestPatientManager{
   @Test
   @Order(9)
   public void creaPazienteTest2(){
-    Assertions.assertThrows(IllegalStateException.class,
-            manager.createPatient(new Patient("4321", "user", "pass", "lmao@yeah.lol", "33333", false, "via kek 24", "lmao", "yeah")
-            ));
+    Patient p = new Patient("4321", "user", "pass", "lmao@yeah.lol", "33333", false, "via kek 24", "lmao", "yeah");
+    Assertions.assertThrows(IllegalStateException.class, () -> {
+      manager.createPatient(p);
+    });
 
   }
 

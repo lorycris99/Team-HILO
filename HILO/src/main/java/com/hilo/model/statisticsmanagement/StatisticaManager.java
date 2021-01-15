@@ -1,20 +1,15 @@
 package com.hilo.model.statisticsmanagement;
 
 import com.google.gson.Gson;
+import com.hilo.controller.ErrorController;
 import com.hilo.model.swabmanagement.entity.EffettuaAsManager;
 import com.hilo.model.swabmanagement.entity.EffettuapManager;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -159,7 +154,7 @@ public class StatisticaManager {
       return true;
 
     } catch (IOException e) {
-      e.printStackTrace();
+      error.manageError(e);
       return false;
     }
   }
@@ -173,7 +168,7 @@ public class StatisticaManager {
     try {
       in = new Scanner(file);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      error.manageError(e);
       return null;
     }
 
@@ -207,6 +202,8 @@ public class StatisticaManager {
   private EffettuapManager swabP;
   @Autowired
   private SwabManager swab;
+  @Autowired
+  private ErrorController error;
 
   private static final String FILE_PATH = "stats.txt";
 }

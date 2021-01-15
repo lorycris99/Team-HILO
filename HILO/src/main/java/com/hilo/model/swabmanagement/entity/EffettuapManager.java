@@ -1,5 +1,6 @@
 package com.hilo.model.swabmanagement.entity;
 
+import com.hilo.controller.ErrorController;
 import com.hilo.model.swabmanagement.repository.EffettuapRepository;
 import com.hilo.model.swabmanagement.repository.SwabRepository;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ public class EffettuapManager {
   private EffettuapRepository epr;
   @Autowired
   private SwabRepository swabRepo;
+  @Autowired
+  private ErrorController error;
 
   public void createEffettuaP(EffettuaP ep) {
     epr.save(ep);
@@ -50,7 +53,8 @@ public class EffettuapManager {
       }
       return list;
     } else {
-      throw new IllegalArgumentException("Una delle date non e' nel formato YYYY-MM-DD");
+      error.manageError(new IllegalArgumentException("Una delle date non e' nel formato YYYY-MM-DD"));
+      return null;
     }
   }
 
@@ -62,7 +66,8 @@ public class EffettuapManager {
     if (timestamp.matches("\\d{4}-\\d{2}-\\d{2}")) {
       return epr.findByTimestamp(timestamp);
     } else {
-      throw new IllegalArgumentException("La data non e' nel formato YYYY-MM-DD");
+      error.manageError(new IllegalArgumentException("La data non e' nel formato YYYY-MM-DD"));
+      return null;
     }
   }
 

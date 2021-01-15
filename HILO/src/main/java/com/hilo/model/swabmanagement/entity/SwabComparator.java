@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
+
+import com.hilo.controller.ErrorController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +17,8 @@ public class SwabComparator implements Comparator<Swab> {
   private EffettuapManager epMan;
   @Autowired
   private EffettuaAsManager asMan;
-
+  @Autowired
+  private ErrorController error;
   
 
   @Override
@@ -99,7 +102,7 @@ public class SwabComparator implements Comparator<Swab> {
       t1 = f.parse(timestamp1);
       t2 = f.parse(timestamp2);
     } catch (ParseException e) {
-      e.printStackTrace();
+      error.manageError(e);
     }
     if (t1.after(t2)) {
       return -1;

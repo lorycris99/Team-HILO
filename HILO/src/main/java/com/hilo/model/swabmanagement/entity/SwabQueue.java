@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 public class SwabQueue {
 
   @Autowired
-  private SwabComparator sc;
+  private static SwabQueue queue;
 
   /**
    * Costruttore privato per rispettare il design pattern Singleton.
    */
   private SwabQueue() {
-    coda = new PriorityQueue<Swab>(sc);
+
   }
 
   /**
@@ -30,7 +30,7 @@ public class SwabQueue {
    */
   public static SwabQueue getInstance() {
     if (istanza == null) {
-      istanza = new SwabQueue();
+      istanza = queue;
     }
     return istanza;
   }
@@ -43,9 +43,9 @@ public class SwabQueue {
    *
    * @return true se l'inserimento e' andato a buon fine, false altrimenti
    */
-  public boolean enqueue(Swab s) {
-
-    return coda.add(s);
+  public void enqueue(Swab s) {
+    System.out.println("enqueue");
+    coda.add(s);
   }
 
   /**
@@ -66,16 +66,8 @@ public class SwabQueue {
     return coda.size();
   }
 
-  /**
-   * Restituisce interamente la coda sottoforma di array di Object.
-   *
-   * @return la coda sottoforma di array
-   */
-  public Object[] getQueueArray() {
-    return coda.toArray();
-  }
-
-  private PriorityQueue<Swab> coda;
+  @Autowired
+  private Pqueue coda;
   private static SwabQueue istanza = null;
 
 }

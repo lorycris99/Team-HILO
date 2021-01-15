@@ -1,7 +1,5 @@
 package com.hilo.model.patientmanagement.entity;
 
-import com.hilo.model.swabmanagement.entity.Swab;
-import com.hilo.model.swabmanagement.entity.SwabComparator;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class TestPatient {
-    @Autowired
-    SwabComparator x;
     @Autowired
     SwabManager man;
     Patient p;

@@ -116,6 +116,19 @@ public class Swab implements Comparable {
    */
   @Override
   public int compareTo(Object o) {
-    return 0;
+    Swab s = null;
+    if(o instanceof Swab) {
+      s = (Swab) o;
+    }
+
+    if (s.getIsInterno()) {
+      return -1;
+
+    } else {
+      System.out.println("esterno");
+      return 1;
+    }
+
   }
+
 }

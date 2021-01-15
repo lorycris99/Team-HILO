@@ -29,23 +29,31 @@ public class TestSwab {
         Swab s2 = sm.findById(2);
         EffettuaP ep2 = epm.findEffettuapByIdTampone(2);
 
-        Assertions.assertTrue(queue.enqueue(s2));
-        Assertions.assertTrue(queue.enqueue(s1));
-
-        System.out.println(queue.getQueueArray());
+//        Assertions.assertTrue(queue.enqueue(s2));
+//        Assertions.assertTrue(queue.enqueue(s1));
+//
+//        System.out.println(queue.getQueueArray());
     }
 
     @Test
     public void testLista(){
-        Swab interno, esternoP, esternoA;
+        Swab interno, esternoP, esternoA, internoTest;
         interno = sm.findById(1);
         esternoP = sm.findById(7);
         esternoA = sm.findById(2);
+        internoTest = sm.findById(4);
         swq.enqueue(esternoA);
+        System.out.println("Inserito 1");
         swq.enqueue(esternoP);
+        System.out.println("Inserito 2");
         swq.enqueue(interno);
+        System.out.println("Inserito 3");
+        swq.enqueue(internoTest);
+//        System.out.println(swq.);
+        Assertions.assertEquals(internoTest, swq.getTop());
         Assertions.assertEquals(interno, swq.getTop());
-        Assertions.assertEquals(interno, swq.getTop());
+        Assertions.assertEquals(esternoA, swq.getTop());
         Assertions.assertEquals(esternoP, swq.getTop());
+
     }
 }

@@ -1,42 +1,52 @@
 package com.hilo.model.swabmanagement.entity;
 
-import com.hilo.controller.ErrorController;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Comparator;
-import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
-/**
- * Questa classe stabilisce la relazione d'ordine tra i tamponi che sono all'
- * interno della coda dei tamponi da effettuare.
- */
 @Component
-public class SwabComparator implements Comparator<Swab> {
-  @Autowired
-  private EffettuapManager epMan;
-  @Autowired
-  private EffettuaAsManager asMan;
-  @Autowired
-  private ErrorController error;
+public class Pqueue {
 
+  public Pqueue() {
+    queue = new ArrayList<>();
+  }
 
-  /**
-   * Questo metodo viene richiamato ad ogni aggiunta di un nuovo tampone su tutti i tamponi
-   * per poter stabilire quale deve essere schedulato per prima.
-   *
-   * @param o1 primo tampone da effettuare
-   *
-   * @param o2 secondo tampone da effettuare
-   *
-   * @return 1 se o1 viene prima di o2, -1 se o1 viene dopo o2, 0 altrimenti
-   */
-  @Override
-  public int compare(Swab o1, Swab o2) {
-    System.out.println(asMan);
-    System.out.println(epMan);
+  public void add(Swab s) {
+
+    if (queue.size() == 0) {
+      queue.add(s);
+      return ;
+    }
+    for (int i = 0; i < queue.size(); i++) {
+
+      if (check(s, queue.get(i)) > 0) {
+        queue.add(i, s);
+        return ;
+      }
+    }
+    queue.add(s);
+  }
+
+  public int size() {
+    return queue.size();
+  }
+
+  public Swab getTop() {
+    Swab s = queue.get(0);
+    queue.remove(s);
+    return s;
+  }
+
+  public Swab poll() {
+    return getTop();
+  }
+
+  public int check(Swab o1, Swab o2) {
+
     double proba1 = Double.MIN_VALUE;
     double proba2 = Double.MIN_VALUE;
     boolean interno1 = false;
@@ -44,12 +54,12 @@ public class SwabComparator implements Comparator<Swab> {
 
     //se sono interni allora avro' una probabilita' di positivita'
     if (o1.getIsInterno()) {
-      proba1 = epMan.findEffettuapByIdTampone(o1.getId()).getGravity();
+      proba1 = epm.findEffettuapByIdTampone(o1.getId()).getGravity();
       interno1 = true;
     }
 
     if (o2.getIsInterno()) {
-      proba2 = epMan.findEffettuapByIdTampone(o2.getId()).getGravity();
+      proba2 = epm.findEffettuapByIdTampone(o2.getId()).getGravity();
       interno2 = true;
     }
 
@@ -66,7 +76,7 @@ public class SwabComparator implements Comparator<Swab> {
     } else if (!interno1 && !interno2) { //se sono entrambi esterni devo gestire le date
       return compareDates(o1, o2);
 
-    } else if (!interno2 && interno1) {
+    } else if (interno1 && !interno2) {
 
       if (proba1 > TRESHOLD) {
         return 1;
@@ -94,8 +104,8 @@ public class SwabComparator implements Comparator<Swab> {
    */
   private int compareDates(Swab o1, Swab o2) {
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-    EffettuaAs as1 = asMan.findEffettuaAsByIdTampone(o1.getId());
-    EffettuaAs as2 = asMan.findEffettuaAsByIdTampone(o2.getId());
+    EffettuaAs as1 = eam.findEffettuaAsByIdTampone(o1.getId());
+    EffettuaAs as2 = eam.findEffettuaAsByIdTampone(o2.getId());
     //estraggo le date dai tamponi
     String timestamp1 = null;
     String timestamp2 = null;
@@ -105,14 +115,14 @@ public class SwabComparator implements Comparator<Swab> {
       timestamp1 = as1.getTimestamp();
 
     } catch (NullPointerException e) {
-      EffettuaP p = epMan.findEffettuapByIdTampone(o1.getId());
+      EffettuaP p = epm.findEffettuapByIdTampone(o1.getId());
       timestamp1 = p.getTimestamp();
     }
 
     try {
       timestamp2 = as2.getTimestamp();
     } catch (NullPointerException e) {
-      EffettuaP p = epMan.findEffettuapByIdTampone(o2.getId());
+      EffettuaP p = epm.findEffettuapByIdTampone(o2.getId());
       timestamp2 = p.getTimestamp();
     }
 
@@ -122,7 +132,8 @@ public class SwabComparator implements Comparator<Swab> {
       t1 = f.parse(timestamp1);
       t2 = f.parse(timestamp2);
     } catch (ParseException e) {
-      error.manageError(e);
+//      error.manageError(e);
+      e.printStackTrace();
     }
     if (t1.after(t2)) {
       return -1;
@@ -133,6 +144,10 @@ public class SwabComparator implements Comparator<Swab> {
     }
   }
 
-  
+  @Autowired
+  private EffettuaAsManager eam;
+  @Autowired
+  private EffettuapManager epm;
   private static final double TRESHOLD = 0.49;
+  private ArrayList<Swab> queue;
 }

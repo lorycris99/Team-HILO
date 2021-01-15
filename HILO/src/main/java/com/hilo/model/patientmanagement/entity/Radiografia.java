@@ -17,7 +17,7 @@ public class Radiografia {
   private Integer numero;
 
   @Lob
-  private Byte[] img;
+  private byte[] img;
 
   public Radiografia() {
   }
@@ -38,11 +38,11 @@ public class Radiografia {
     this.numero = numero;
   }
 
-  public Byte[] getImg() {
+  public byte[] getImg() {
     return img;
   }
 
-  public void setImg(Byte[] img) {
+  public void setImg(byte[] img) {
     this.img = img;
   }
 

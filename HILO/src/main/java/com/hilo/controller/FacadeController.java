@@ -41,6 +41,9 @@ public class FacadeController implements RequestController {
   @Autowired
   private SwabManager sm;
 
+  @Autowired
+  private Ryan r;
+
 
   private static Gson gson = new Gson();
 
@@ -137,12 +140,7 @@ public class FacadeController implements RequestController {
   public String testAll() {
     return gson.toJson(hc.findAll());
   }
-
-  @GetMapping("/test/Ryan")
-  public String ryanTest() {
-    Ryan r = new Ryan();
-    return gson.toJson(r.getProba(sm.findById(2)));
-  }
+  
   @Autowired
   private SwabQueueProva test;
 }

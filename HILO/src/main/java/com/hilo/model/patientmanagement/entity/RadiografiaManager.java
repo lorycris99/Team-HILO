@@ -4,7 +4,9 @@ import com.hilo.model.patientmanagement.repository.RadiografiaRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RadiografiaManager {
   public RadiografiaManager(){
 

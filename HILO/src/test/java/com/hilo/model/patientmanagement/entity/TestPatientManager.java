@@ -1,6 +1,7 @@
 package com.hilo.model.patientmanagement.entity;
 
 import com.hilo.model.patientmanagement.repository.PatientRepository;
+import org.junit.jupiter.api.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-//@RunWith(SpringRunner.class)
-public class TestPatientManager {
+@DisplayName("JUnit 5 Example")
+public class TestPatientManager{
 
   @Autowired
   private PatientRepository repo;

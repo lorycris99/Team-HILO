@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SwabComparator implements Comparator<Swab> {
   @Autowired
+  Ryan ryan;
+  @Autowired
   private EffettuapManager epMan;
   @Autowired
   private EffettuaAsManager asMan;
@@ -41,7 +43,6 @@ public class SwabComparator implements Comparator<Swab> {
     double proba2 = Double.MIN_VALUE;
     boolean interno1 = false;
     boolean interno2 = false;
-    Ryan ryan = new Ryan();
 
     //se sono interni allora avro' una probabilita' di positivita'
     if (o1.getIsInterno()) {

@@ -16,8 +16,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class SwabComparator implements Comparator<Swab> {
   @Autowired
-  Ryan ryan;
-  @Autowired
   private EffettuapManager epMan;
   @Autowired
   private EffettuaAsManager asMan;
@@ -46,12 +44,12 @@ public class SwabComparator implements Comparator<Swab> {
 
     //se sono interni allora avro' una probabilita' di positivita'
     if (o1.getIsInterno()) {
-      proba1 = ryan.getProba(o1);
+      proba1 = epMan.findEffettuapByIdTampone(o1.getId()).getGravity();
       interno1 = true;
     }
 
     if (o2.getIsInterno()) {
-      proba2 = ryan.getProba(o2);
+      proba2 = epMan.findEffettuapByIdTampone(o2.getId()).getGravity();
       interno2 = true;
     }
 
@@ -68,7 +66,7 @@ public class SwabComparator implements Comparator<Swab> {
     } else if (!interno1 && !interno2) { //se sono entrambi esterni devo gestire le date
       return compareDates(o1, o2);
 
-    } else if (interno1 && !interno2) {
+    } else if (!interno2 && interno1) {
 
       if (proba1 > TRESHOLD) {
         return 1;
@@ -136,5 +134,5 @@ public class SwabComparator implements Comparator<Swab> {
   }
 
   
-  private static final double TRESHOLD = 0.8;
+  private static final double TRESHOLD = 0.49;
 }

@@ -17,23 +17,7 @@ public class TestSwab {
     private EffettuaAsManager eam;
     @Autowired
     private SwabQueue swq;
-
-    @Test
-    public void testFunzione() {
-        SwabQueue queue = SwabQueue.getInstance();
-        System.out.println("###" + sm);
-        Assertions.assertNotNull(queue);
-
-        Swab s1 = sm.findById(4);
-        EffettuaAs as1 = eam.findEffettuaAsByIdTampone(4);
-        Swab s2 = sm.findById(2);
-        EffettuaP ep2 = epm.findEffettuapByIdTampone(2);
-
-//        Assertions.assertTrue(queue.enqueue(s2));
-//        Assertions.assertTrue(queue.enqueue(s1));
-//
-//        System.out.println(queue.getQueueArray());
-    }
+    
 
     @Test
     public void testLista(){

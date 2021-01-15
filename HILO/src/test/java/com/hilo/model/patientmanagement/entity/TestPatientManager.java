@@ -45,4 +45,11 @@ public class TestPatientManager extends TestCase {
     Assert.assertEquals(x,manager.findByUsernameAndPassword("user","pass"));
   }
 
+  @Test
+  public void findByUsernameAndPasswordTest(){
+    Patient x=manager.findByUsernameAndPassword("user","pass");
+    Assert.assertEquals(x,manager.findById("4321"));
+
+  }
+
 }

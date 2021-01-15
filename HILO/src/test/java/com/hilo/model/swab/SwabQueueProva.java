@@ -1,19 +1,11 @@
 package com.hilo.model.swab;
-
-import com.hilo.model.swabmanagement.entity.EffettuaAs;
 import com.hilo.model.swabmanagement.entity.EffettuaAsManager;
-import com.hilo.model.swabmanagement.entity.EffettuaP;
 import com.hilo.model.swabmanagement.entity.EffettuapManager;
-import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
-import junit.framework.TestCase;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@SpringBootTest
-public class SwabQueueProva extends TestCase {
+//@SpringBootTest
+public class SwabQueueProva  {
   @Autowired
   private SwabManager sm;
   @Autowired

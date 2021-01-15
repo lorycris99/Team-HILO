@@ -1,19 +1,16 @@
 package com.hilo.model.patientmanagement.entity;
 
 import com.hilo.model.patientmanagement.repository.PatientRepository;
-import junit.framework.TestCase;
-import org.junit.*;
-import org.junit.runner.RunWith;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Test;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
-public class TestPatientManager extends TestCase {
+//@RunWith(SpringRunner.class)
+public class TestPatientManager {
 
   @Autowired
   private PatientRepository repo;

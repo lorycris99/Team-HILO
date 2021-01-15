@@ -63,6 +63,11 @@ public class Swab implements Comparable {
   }
 
   @Override
+  /**
+   * Metodo necessario in quanto la classe implemtenta comparable
+   * ma dal momento che esegue tutto la classe SwabComparator il
+   * metodo non serve
+   */
   public int compareTo(Object o) {
     return 0;
   }

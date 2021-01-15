@@ -13,12 +13,12 @@ public class AfferireManager {
   @Autowired
   private AfferireRepository ar;
 
-  public void creaAfferire(Afferire a) {
+  public void createAfferire(Afferire a) {
     ar.save(a);
   }
 
   public void updateAfferire(Afferire a) {
-    creaAfferire(a);
+    createAfferire(a);
   }
 
   public void deleteAfferire(Afferire a) {

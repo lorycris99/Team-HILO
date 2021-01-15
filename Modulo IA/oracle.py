@@ -3,6 +3,7 @@ import sys
 import os
 import numpy as np 
 import warnings
+import json
 warnings.filterwarnings('ignore')
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
@@ -18,3 +19,5 @@ for file in os.listdir("valuta/"):
 
   y = model.predict_proba(test_image, verbose=1)
   print("Predicted=%s" % (y[0]))
+  f = open('result.json', 'w')
+  f.write(json.dumps(y[0]))

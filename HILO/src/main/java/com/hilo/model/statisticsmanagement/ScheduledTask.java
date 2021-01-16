@@ -18,7 +18,7 @@ public class ScheduledTask {
   /**
    * Esegue tutti i giorni alle 00:01 il salvataggio di un resoconto dei contagi.
    */
-  @Scheduled(cron = "0 1 0 * * *")
+  @Scheduled(cron = "0 23 16 * * *")
   public void saveTask() {
     List<Swab> tamponi = sm.retreiveTamponi();
     Map<String, Integer> tamponiMappa = sm.getSommaEsiti(tamponi);

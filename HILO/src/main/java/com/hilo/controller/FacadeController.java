@@ -36,12 +36,6 @@ public class FacadeController implements RequestController {
   @Autowired
   private HttpSession session;
 
-  @Autowired
-  private SwabManager sm;
-
-  @Autowired
-  private Ryan r;
-
 
   private static Gson gson = new Gson();
 
@@ -131,6 +125,11 @@ public class FacadeController implements RequestController {
   public String getView(Model m) {
     m.addAttribute("list", new String[]{"oh", "yeah", "si"});
     return "index";
+  }
+  @GetMapping("/statistics")
+  public String getViewStatistics(Model m) {
+    m.addAttribute("statistics", gson.toJson(sc.getStatistiche()));
+    return "statistics";
   }
 
   @GetMapping("/view/landing")

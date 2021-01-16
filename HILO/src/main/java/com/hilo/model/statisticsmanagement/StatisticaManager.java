@@ -117,24 +117,26 @@ public class StatisticaManager {
     elenco.put("Positivo", 0);
     elenco.put("Negativo", 0);
     elenco.put("Inconcludente", 0);
+    elenco.put("Non analizzato", 0);
 
     //controllo per ogni tampone l'esito e sommo ogni volta il totale
     for (Swab s : listaTamponi) {
 
-      if (s.getRisultato().equals("Positivo")) {
+      if (s.getRisultato().equals("positivo")) {
 
         elenco.put("Positivo", elenco.get("Positivo") + 1);
 
-      } else if (s.getRisultato().equals("Negativo")) {
+      } else if (s.getRisultato().equals("negativo")) {
 
         elenco.put("Negativo", elenco.get("Negativo") + 1);
 
-      } else {
+      } else if (s.getRisultato().equals("inconcludente")) {
 
         elenco.put("Inconcludente", elenco.get("Inconcludente") + 1);
 
-      }
+      } else
 
+        elenco.put("Non analizzato", elenco.get("Non analizzato") + 1);
     }
 
     return elenco;
@@ -184,7 +186,7 @@ public class StatisticaManager {
   public Statistica getStatistiche(Map<String, Integer> esitiTamponi) {
 
     return new Statistica(esitiTamponi.get("Positivo"), esitiTamponi.get("Negativo"),
-            esitiTamponi.get("Inconcludente"));
+            esitiTamponi.get("Inconcludente"), esitiTamponi.get("Non analizzato"));
   }
 
   public GregorianCalendar getDataFineRiferimento() {

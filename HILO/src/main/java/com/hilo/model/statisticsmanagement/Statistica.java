@@ -7,10 +7,11 @@ public class Statistica implements Serializable {
   public Statistica() {
   }
 
-  public Statistica(int numPositivi, int numNegativi, int numInconcludenti) {
+  public Statistica(int numPositivi, int numNegativi, int numInconcludenti, int numNonAnalizzato) {
     this.numPositivi = numPositivi;
     this.numNegativi = numNegativi;
     this.numInconcludenti = numInconcludenti;
+    this.numNonAnalizzato = numNonAnalizzato;
   }
 
   public int getnPositivi() {
@@ -37,8 +38,16 @@ public class Statistica implements Serializable {
     this.numInconcludenti = numInconcludenti;
   }
 
+  public int getNumNonAnalizzato() {
+    return numNonAnalizzato;
+  }
+
+  public void setNumNonAnalizzato(int numNonAnalizzato) {
+    this.numNonAnalizzato = numNonAnalizzato;
+  }
+
   public int getTotali() {
-    return numPositivi + numNegativi + numInconcludenti;
+    return numPositivi + numNegativi + numInconcludenti + numNonAnalizzato;
   }
 
   @Override
@@ -47,11 +56,13 @@ public class Statistica implements Serializable {
             + "numPositivi=" + numPositivi
             + ", numNegativi=" + numNegativi
             + ", numInconcludenti=" + numInconcludenti
+            + ", numNonAnalizzato=" + numNonAnalizzato
             + '}';
   }
 
   private int numPositivi;
   private int numNegativi;
   private int numInconcludenti;
+  private int numNonAnalizzato;
   private static final long serialVersionUID = 100L;
 }

@@ -90,12 +90,5 @@ public class TestSwab {
     Assertions.assertEquals(false,a.equals(b));
     b.setIsInterno(true); b.setRisultato("ok");
     Assertions.assertEquals(false,a.equals(b));
-
-
-
-
-
-
-
   }
 }

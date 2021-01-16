@@ -16,12 +16,16 @@
   background-image: none;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
   animation-duration: 1000ms;
-  margin: 20px auto 60px 0;
+  margin: 20px 492px 60px 0;
 }
 
 @media (max-width: 1199px) {
   .u-section-1 .u-sheet-1 {
     min-height: 412px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-right: 292px;
   }
 }
 
@@ -29,11 +33,19 @@
   .u-section-1 .u-sheet-1 {
     min-height: 316px;
   }
+
+  .u-section-1 .u-text-2 {
+    margin-right: 72px;
+  }
 }
 
 @media (max-width: 767px) {
   .u-section-1 .u-sheet-1 {
     min-height: 237px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-right: 0;
   }
 }
 

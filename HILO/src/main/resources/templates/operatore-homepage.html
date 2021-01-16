@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>operatore</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="css/operatore-homepage.css" th:href="@{/css/operatore-homepage.css}">
 </head>
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-        <div class="container"><img class="img-fluid d-flex" src="assets/img/logo.jpg" width="15%" height="15%"><a class="navbar-brand" href="#"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><img class="img-fluid d-flex" src="img/logo.jpg" th:src="@{/img/logo.jpg}" width="15%" height="15%"><a class="navbar-brand" href="#"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1" style="background: #dadada;">
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/api/statistics">Statistiche</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/statistics">Statistiche</a></li>
                     <li class="nav-item"><a class="nav-link" href="/view/about">Su di Noi</a></li>
                 </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="/view/landing">Accedi</a></span></div>
         </div>
@@ -24,16 +24,23 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center"><button class="btn btn-primary" type="button">Inserisci Tampone</button></div>
-                <div class="col-md-6 text-center"><button class="btn btn-primary" type="button">Inserisci Paziente</button></div>
+                <div class="col-md-6 text-center">
+                    <a class="btn btn-primary" role="button" href="/view/swab/add">Inserisci Tampone</a>
+                <div class="col-md-6 text-center">
+                    <a class="btn btn-primary" role="button" href="/view/patient/add">Inserisci Paziente</a>
+                </div>
             </div>
         </div>
     </div>
     <div style="margin-top: 5%;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center"><button class="btn btn-primary" type="button">Cerca tampone</button></div>
-                <div class="col-md-6 offset-sm-0 text-center"><button class="btn btn-primary" type="button">cerca paziente</button></div>
+                <div class="col-md-6 text-center">
+                    <a class="btn btn-primary" role="button" href="/view/swab/find">Cerca tampone</a>
+                </div>
+                <div class="col-md-6 offset-sm-0 text-center">
+                    <a class="btn btn-primary" role="button" href="/view/patient/find">cerca paziente</a>
+                </div>
             </div>
         </div>
     </div>
@@ -41,8 +48,12 @@
     <div style="margin-top: 5%;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center"><button class="btn btn-primary" type="button">Pubblica esito</button></div>
-                <div class="col-md-6 text-center"><button class="btn btn-primary" type="button">Ottieni tampone da Analizzare</button></div>
+                <div class="col-md-6 text-center">
+                    <a class="btn btn-primary" role="button" href="/view/swab/add">Pubblica esito</a>
+                </div>
+                <div class="col-md-6 text-center">
+                    <a class="btn btn-primary" role="button" href="/swab/gettop">Ottieni tampone da Analizzare</a>
+                </div>
             </div>
         </div>
     </div>
@@ -50,8 +61,12 @@
     <div style="margin-top: 5%;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center"><button class="btn btn-primary" type="button">Ottieni pagina Cartella Clinica</button></div>
-                <div class="col-md-6 text-center"><button class="btn btn-primary text-center" type="button">Ottieni pagina Diario Clinico</button></div>
+                <div class="col-md-6 text-center">
+                    <a class="btn btn-primary" role="button" href="/view/page/find">Ottieni pagina Cartella Clinica</a>
+                </div>
+                <div class="col-md-6 text-center">
+                    <a class="btn btn-primary" role="button" href="/view/pagediary">Ottieni pagina Diario Clinico</a>
+                </div>
             </div>
         </div>
     </div>

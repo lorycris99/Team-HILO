@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -45,7 +46,67 @@ public class FacadeController implements RequestController {
   public String doLogin(@RequestParam(name = "username") String user,
                         @RequestParam(name = "password") String pass) throws JSONException {
     System.out.println(lc.doLogin(user, pass));
-    return "HomePage";
+    return "homepage";
+  }
+
+  @GetMapping("/forgot")
+  public String requestForgot() {
+    return "recover";
+  }
+
+  @GetMapping("/view/swab/add")
+  public String requestAddSwab() {
+    return "aggiungi-tampone";
+  }
+
+  @GetMapping("/view/patient/add")
+  public String requestPatientAdd() {
+    return "aggiungi-paziente";
+  }
+
+  @GetMapping("/view/swab/find")
+  public String requestFindSwab() {
+    return "ricerca-tampone-utente";
+  }
+
+  @GetMapping("/view/patient/find")
+  public @ResponseBody String requestFindPatient() {
+    return "Not implemented yet";
+  }
+
+  @GetMapping("/swab/gettop")
+  public @ResponseBody String requestGetTop() {
+    return "Not implemented yet";
+  }
+
+  @GetMapping("/view/page/find")
+  public @ResponseBody String requestFindPage() {
+    return "Not implemented yet";
+  }
+
+  @GetMapping("/view/pagediary")
+  public @ResponseBody String requestFindPageDiary() {
+    return "Not implemented yet";
+  }
+
+  @PostMapping("/swab/bypatient")
+  public @ResponseBody String findSwabByPatient(Model m) {
+    return "Da implementare";
+  }
+
+  @GetMapping("/view/healthworker")
+  public String requestHealthWorkerHomepage() {
+    return "operatore-homepage";
+  }
+
+  @PostMapping("/patient/loadradiography")
+  public @ResponseBody String loadRadiography(Model m) {
+    return "Da implementare";
+  }
+
+  @PostMapping("/swab/add")
+  public @ResponseBody String addSwab(Model m) {
+    return "Da implementare";
   }
 
   @PostMapping("/patient/register")
@@ -129,7 +190,7 @@ public class FacadeController implements RequestController {
   @GetMapping("/statistics")
   public String getViewStatistics(Model m) {
     m.addAttribute("statistics", gson.toJson(sc.getStatistiche()));
-    return "Statistiche";
+    return "Statistiche (vecchia)";
   }
 
   @GetMapping("/view/landing")

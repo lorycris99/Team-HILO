@@ -7,6 +7,8 @@ import com.hilo.model.swabmanagement.entity.SwabManager;
 import javax.servlet.http.HttpSession;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+@Controller
 @RequestMapping("/")
 public class FacadeController implements RequestController {
   @Autowired
@@ -126,5 +128,9 @@ public class FacadeController implements RequestController {
     return gson.toJson(ac.getAll());
   }
 
-
+  @GetMapping("/test/view/test")
+  public String getView(Model m) {
+    m.addAttribute("lmao", "yeah");
+    return "test";
+  }
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>aggiungi-paziente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+        <div class="container"><img class="img-fluid d-flex" src="assets/img/logo.jpg" width="15%" height="15%"><a class="navbar-brand" href="#"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1" style="background: #dadada;">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/api/statistics">Statistiche</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/view/about">Su di Noi<br></a></li>
+                </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="/view/landing">Accedi</a></span></div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-7 offset-md-3 text-center">
+            <h2>Aggiunta nuovo paziente</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 offset-md-4">
+            <form class="text-center" action="/patient/add" method="post"><label for="cf" style="margin-top: 12px;">CF</label><input class="form-control" type="text" id="cf" name="cf" placeholder="Inserisci codice fiscale"><label for="idStruttura">Email</label><input class="form-control form-control-sm" type="text"
+                    id="idStruttura" name="email" placeholder="Inserisci email"><label>Tipo strada</label><select class="custom-select" name="via"><option value="via" selected="">Via</option><option value="viale">Viale</option><option value="piazza">Piazza</option><option value="corso">Corso</option><option value="lungomare">Lungomare</option></select><label>Nome strada</label>
+                <input
+                    class="form-control" type="text" name="strada" placeholder="Inserisci nome della strada"><label>Numero civico</label><input class="form-control" type="text" name="civico" placeholder="Inserisci numero civico"><label>Telefono</label><input class="form-control" type="text" name="telefono" placeholder="Inserisci numero di telefono"><label>Nome</label>
+                    <input
+                        class="form-control" type="text" name="nome" placeholder="Inserisci il nome"><label>Cognome</label><input class="form-control" type="text" name="cognome" placeholder="Inserisci il cognome"><label>Città</label><input class="form-control" type="text" name="citta" placeholder="Inserisci città"><label for="isInterno"
+                            style="margin-top: 12px;">Provenienza</label><select class="custom-select" id="isInterno" name="isInterno"><option value="true">Interno</option><option value="false">Esterno</option></select><button class="btn btn-primary" type="submit"
+                            style="margin-top: 17px;">Invia</button></form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 offset-md-4 text-center"><a class="btn btn-primary" role="button" style="margin-top: 50px;" href="/view/healthworker"><i class="fa fa-caret-left"></i></a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>su-di-noi</title>
+    <title>aggiungi-radiografia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -15,21 +16,31 @@
             <div
                 class="collapse navbar-collapse" id="navcol-1" style="background: #dadada;">
                 <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/api/statistics">Statistiche</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/view/about">Su di Noi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/view/about">Su di Noi<br></a></li>
                 </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="/view/landing">Accedi</a></span></div>
         </div>
     </nav>
     <div class="row">
-        <div class="col">
-            <h2 class="text-center">Su di noi</h2>
+        <div class="col-md-7 offset-md-3 text-center">
+            <h2>Aggiuta Radiografia</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-8 mx-auto">
-            <p class="text-center"><br>Siamo degli studenti dell'univerisità degli studi di Salerno che stanno realizzando questa piattaforma come progetto di Ingegneria del Software<br><br></p>
+        <div class="col-md-5 offset-md-4">
+            <form class="text-center" action="/patient/loadradiography" method="post"><label for="cf" style="margin-top: 12px;">CF</label><input class="form-control" type="text" id="cf" name="cf" placeholder="Inserisci codice fiscale"><label>Radiografia</label>
+                <div class="form-row">
+                    <div class="col"><input type="file" name="img"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col"><button class="btn btn-primary" type="submit" style="margin-top: 17px;">Invia</button></div>
+                </div>
+            </form>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 offset-md-4 text-center"><a class="btn btn-primary" role="button" style="margin-top: 50px;" href="/view/healthworker"><i class="fa fa-caret-left"></i></a></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

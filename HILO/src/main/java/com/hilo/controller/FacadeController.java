@@ -45,7 +45,7 @@ public class FacadeController implements RequestController {
   public String doLogin(@RequestParam(name = "username") String user,
                         @RequestParam(name = "password") String pass) throws JSONException {
     System.out.println(lc.doLogin(user, pass));
-    return "redirect:/";
+    return "HomePage";
   }
 
   @PostMapping("/patient/register")

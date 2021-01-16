@@ -1,10 +1,10 @@
 package com.hilo.model.healthworkermanagement.entity;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Objects;
 
 
 @Entity
@@ -30,6 +30,21 @@ public class HealthWorker {
   private String indirizzo;
   @Column
   private int idstruttura;
+
+  public HealthWorker(String cf, String username, String password,
+                      String mail, String telefono, String ruolo, String cognome,
+                      String nome, String indirizzo, int idstruttura) {
+    this.cf = cf;
+    this.username = username;
+    this.password = password;
+    this.mail = mail;
+    this.telefono = telefono;
+    this.ruolo = ruolo;
+    this.cognome = cognome;
+    this.nome = nome;
+    this.indirizzo = indirizzo;
+    this.idstruttura = idstruttura;
+  }
 
   public String getCf() {
     return cf;
@@ -147,6 +162,7 @@ public class HealthWorker {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cf, username, password, mail, telefono, ruolo, cognome, nome, indirizzo, idstruttura);
+    return Objects.hash(cf, username, password, mail, telefono,
+            ruolo, cognome, nome, indirizzo, idstruttura);
   }
 }

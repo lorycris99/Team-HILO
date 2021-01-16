@@ -1,0 +1,10 @@
+@media (min-width: 576px) {
+  .btn.btn-primary {
+    margin-top: 5%;
+  }
+}
+
+.btn.btn-primary.text-center {
+  margin-bottom: 5%;
+}
+

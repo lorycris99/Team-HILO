@@ -21,6 +21,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 @DisplayName("JUnit 5 PatientManager")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -107,7 +109,7 @@ public class HealthWorkerTest {
   }
 
   @Test
-  @Order(4)
+  @Order(7)
   public void delete() {
     epm.removeEffettuaP(epm.findEffettuapByIdTampone(25));
     epm.removeEffettuaP(epm.findEffettuapByIdTampone(26));
@@ -123,5 +125,30 @@ public class HealthWorkerTest {
     Assertions.assertNull(epm.findEffettuapByIdTampone(25));
     Assertions.assertNull(epm.findEffettuapByIdTampone(26));
     Assertions.assertNull(eam.findEffettuaAsByIdTampone(27));
+  }
+
+  @Test
+  @Order(4)
+  public void getAllWorkers(){
+    List<HealthWorker> list = controller.getAll();
+    for(HealthWorker t : list){
+      Assertions.assertEquals(t, hwm.findById(t.getCf()));
+    }
+  }
+
+  @Test
+  @Order(5)
+  public void inserisciRisultato(){
+    controller.inserisciRisultato(26, "positivo");
+    Assertions.assertEquals(sm.findById(26).getRisultato(), "positivo");
+  }
+
+  @Test
+  @Order(6)
+  public void findAllSwab(){
+    List<Swab> list = controller.findAllSwab();
+    for(Swab t : list){
+      Assertions.assertEquals(t, sm.findById(t.getId()));
+    }
   }
 }

@@ -11,5 +11,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @RunWith(JUnitPlatform.class)
-@SelectClasses({TestPatient.class, TestPatientManager.class,TestSwab.class, TestSwabManager.class})
+@SelectClasses({TestPatient.class, TestPatientManager.class, TestSwab.class, TestSwabManager.class})
 public class HiloApplicationTests {}

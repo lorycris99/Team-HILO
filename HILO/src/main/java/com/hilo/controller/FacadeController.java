@@ -1,8 +1,6 @@
 package com.hilo.controller;
 
 import com.google.gson.Gson;
-import com.hilo.model.swabmanagement.entity.Ryan;
-import com.hilo.model.swabmanagement.entity.SwabManager;
 
 import javax.servlet.http.HttpSession;
 import org.json.JSONException;
@@ -134,7 +132,12 @@ public class FacadeController implements RequestController {
 
   @GetMapping("/view/landing")
   public String showLogin() {
-    return "login";
+    return "Login";
+  }
+
+  @GetMapping("/view/about")
+  public String showAboutUs() {
+    return "Su-di-noi";
   }
 
 }

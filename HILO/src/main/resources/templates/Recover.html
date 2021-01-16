@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
+<html style="font-size: 16px;" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -7,10 +7,10 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Recover</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="Recover.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+      <link rel="stylesheet" href="css/nicepage.css" th:href="@{/css/nicepage.css}" media="screen">
+      <link rel="stylesheet" href="css/HomePage.css" th:href="@{/css/HomePage.css}" media="screen">
+      <script class="u-script" type="text/javascript" src="js/jquery.js" th:src="@{/js/jquery.js}" defer=""></script>
+      <script class="u-script" type="text/javascript" src="js/nicepage.js" th:src="@{/js/nicepage.js}" defer=""></script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     
@@ -25,12 +25,12 @@
     <meta property="og:title" content="Recover">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#478ac9">
-    <link rel="canonical" href="index.html">
+    <link rel="canonical" href="HomePage.html">
     <meta property="og:url" content="index.html">
   </head>
   <body class="u-body"><header class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs u-clearfix u-header u-header" id="sec-6288"><div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-sheet-1">
-        <a href="localhost:8080" class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xs u-image u-logo u-image-1" title="Hilo" data-image-width="1250" data-image-height="1250">
-          <img src="images/logo.jpg" class="u-logo-image u-logo-image-1" data-image-width="106.923">
+        <a href="/" class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xs u-image u-logo u-image-1" title="Hilo" data-image-width="1250" data-image-height="1250">
+          <img src="img/logo.jpg" class="u-logo-image u-logo-image-1" data-image-width="106.923">
         </a>
         <nav class="u-align-center-lg u-align-center-xl u-align-left-md u-align-left-sm u-align-left-xs u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 700; text-transform: uppercase;">
@@ -51,16 +51,16 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="HomePage.html" style="padding: 10px 48px;">HomePage</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Statistiche.html" style="padding: 10px 48px;">Statistiche</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Su-di-noi.html" style="padding: 10px 48px;">Su di noi</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 48px;">HomePage</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/statistics" style="padding: 10px 48px;">Statistiche</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/view/about" style="padding: 10px 48px;">Su di noi</a>
 </li></ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
         </nav>
-        <a href="Su-di-noi.html" data-page-id="197382510" class="u-align-right-lg u-align-right-md u-align-right-sm u-align-right-xs u-btn u-btn-round u-button-style u-radius-30 u-btn-1">Login</a>
+        <a href="/view/landing" data-page-id="197382510" class="u-align-right-lg u-align-right-md u-align-right-sm u-align-right-xs u-btn u-btn-round u-button-style u-radius-30 u-btn-1">Login</a>
       </div></header>
     <section class="u-clearfix u-section-1" id="sec-4964">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
@@ -85,17 +85,7 @@
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-0e38"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">Powerded by Hilo inc.</p>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/templates" target="_blank">
-        <span>Templates</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="https://nicepage.com/" target="_blank">
-        <span>Website Builder Software</span>
-      </a>. 
-    </section>
+      </div>
+    </footer>
   </body>
 </html>

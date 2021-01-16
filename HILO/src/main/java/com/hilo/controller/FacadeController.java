@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @Controller
@@ -128,9 +127,15 @@ public class FacadeController implements RequestController {
     return gson.toJson(ac.getAll());
   }
 
-  @GetMapping("/test/view/test")
+  @GetMapping("/")
   public String getView(Model m) {
-    m.addAttribute("lmao", "yeah");
-    return "test";
+    m.addAttribute("list", new String[]{"oh", "yeah", "si"});
+    return "index";
   }
+
+  @GetMapping("/view/landing")
+  public String showLogin() {
+    return "login";
+  }
+
 }

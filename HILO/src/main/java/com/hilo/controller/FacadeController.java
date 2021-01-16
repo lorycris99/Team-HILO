@@ -124,12 +124,12 @@ public class FacadeController implements RequestController {
   @GetMapping("/")
   public String getView(Model m) {
     m.addAttribute("list", new String[]{"oh", "yeah", "si"});
-    return "index";
+    return "HomePage";
   }
   @GetMapping("/statistics")
   public String getViewStatistics(Model m) {
     m.addAttribute("statistics", gson.toJson(sc.getStatistiche()));
-    return "statistics";
+    return "Statistiche";
   }
 
   @GetMapping("/view/landing")

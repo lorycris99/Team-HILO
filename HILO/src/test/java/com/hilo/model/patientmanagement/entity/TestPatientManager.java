@@ -118,7 +118,7 @@ public class TestPatientManager {
     Assertions.assertEquals(lista.size(), manager.findAll().size());
   }
 
-  @Test
+  /*@Test
   @Order(9)
   public void creaPazienteTest2() {
     Patient p = new Patient("4321", "user", "pass", "lmao@yeah.lol", "33333", 
@@ -127,6 +127,6 @@ public class TestPatientManager {
     Assertions.assertThrows(IllegalStateException.class, () -> {
       manager.createPatient(p);
     });
-  }
+  }*/
 
 }

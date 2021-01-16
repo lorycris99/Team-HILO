@@ -42,7 +42,7 @@ public class TestSwab {
 
   @Test
   @Order(2)
-  public void testId() {
+  public void idTest() {
     Swab s = new Swab();
     s.setId(12);
     Assertions.assertEquals(s.getId(), 12);
@@ -50,7 +50,7 @@ public class TestSwab {
 
   @Test
   @Order(3)
-  public void testResultato() {
+  public void risultatoTest() {
     Swab s = new Swab();
     s.setRisultato("test");
     Assertions.assertEquals(s.getRisultato(), "test");
@@ -58,7 +58,7 @@ public class TestSwab {
 
   @Test
   @Order(4)
-  public void testInterno() {
+  public void internoTest() {
     Swab s = new Swab();
     s.setIsInterno(true);
     Assertions.assertEquals(s.getIsInterno(), true);
@@ -66,9 +66,36 @@ public class TestSwab {
 
   @Test
   @Order(5)
-  public void testIdStruttura() {
+  public void idStrutturaTest() {
     Swab s = new Swab();
     s.setIdStruttura(100);
     Assertions.assertEquals(s.getIdStruttura(), 100);
+  }
+
+  @Test
+  @Order(6)
+  public void equalsTest(){
+    Swab a=new Swab();
+    Swab b=new Swab();
+    a.setId(1); a.setRisultato("");a.setIsInterno(true); a.setIdStruttura(10);
+    b.setId(1); b.setRisultato("");b.setIsInterno(true); b.setIdStruttura(10);
+    Assertions.assertEquals(true,a.equals(b));
+    Assertions.assertEquals(false,a.equals(null));
+    Assertions.assertEquals(false,a.equals(""));
+    b.setId(2);
+    Assertions.assertEquals(false,a.equals(b));
+    b.setId(1); b.setIdStruttura(20);
+    Assertions.assertEquals(false,a.equals(b));
+    b.setIdStruttura(10); b.setIsInterno(false);
+    Assertions.assertEquals(false,a.equals(b));
+    b.setIsInterno(true); b.setRisultato("ok");
+    Assertions.assertEquals(false,a.equals(b));
+
+
+
+
+
+
+
   }
 }

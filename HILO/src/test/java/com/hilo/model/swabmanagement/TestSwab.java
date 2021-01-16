@@ -1,4 +1,4 @@
-package com.hilo.model.swab;
+package com.hilo.model.swabmanagement;
 
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;

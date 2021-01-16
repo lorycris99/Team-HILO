@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@DisplayName("JUnit 5 SwabManagerTest")
+@DisplayName("JUnit 5 PaginaTest")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestPagina {
     private Pagina pagina=null;
@@ -65,10 +65,47 @@ public class TestPagina {
         Assertions.assertEquals(false,a.equals(b));
         b.setSintomi("no"); b.setNote("n");
         Assertions.assertEquals(false,a.equals(b));
-        b.setNote("no"); b.setNumero(10);
+        b.setNote("note"); b.setNumero(10);
         Assertions.assertEquals(false,a.equals(b));
-        b.setCfPaziente("6666");
+        b.setNumero(20); b.setCfPaziente("6666");
         Assertions.assertEquals(false,a.equals(b));
+        b.setCfPaziente("1234"); a.setCfPaziente(null);
+        Assertions.assertEquals(false,a.equals(b));
+        b.setCfPaziente(null);
+        Assertions.assertEquals(true,a.equals(b));
+        b.setCfPaziente("1234"); a.setCfPaziente("1234");
+        b.setNote("note");
+        Assertions.assertEquals(true,a.equals(b));
+        a.setNote(null);
+        Assertions.assertEquals(false,a.equals(b));
+        b.setNote(null);
+        Assertions.assertEquals(true,a.equals(b));
+        a.setNote("note"); b.setNote("note");
+        a.setNumero(null);
+        Assertions.assertEquals(false,a.equals(b));
+        b.setNumero(null);
+        Assertions.assertEquals(true,a.equals(b));
+        a.setNumero(20); b.setNumero(20);
+        a.setSintomi(null);
+        Assertions.assertEquals(false,a.equals(b));
+        b.setSintomi(null);
+        Assertions.assertEquals(true,a.equals(b));
+        a.setSintomi("no"); b.setSintomi("no");
+        a.setTemperatura(null);
+        Assertions.assertEquals(false,a.equals(b));
+        b.setTemperatura(null);
+        Assertions.assertEquals(true,a.equals(b));
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

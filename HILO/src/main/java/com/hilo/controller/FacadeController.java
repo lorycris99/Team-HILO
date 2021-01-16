@@ -1,7 +1,6 @@
 package com.hilo.controller;
 
 import com.google.gson.Gson;
-
 import javax.servlet.http.HttpSession;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +42,10 @@ public class FacadeController implements RequestController {
   }
 
   @PostMapping("/login")
-  public String doLogin(@RequestParam(name = "parameter") String parameter) throws JSONException {
-    return gson.toJson(lc.doLogin(parameter));
+  public String doLogin(@RequestParam(name = "username") String user,
+                        @RequestParam(name = "password") String pass) throws JSONException {
+    System.out.println(lc.doLogin(user, pass));
+    return "redirect:/";
   }
 
   @PostMapping("/patient/register")
@@ -121,9 +122,10 @@ public class FacadeController implements RequestController {
 
   @GetMapping("/")
   public String getView(Model m) {
-    m.addAttribute("list", new String[]{"oh", "yeah", "si"});
+    System.out.println(session.getAttribute("role"));
     return "HomePage";
   }
+
   @GetMapping("/statistics")
   public String getViewStatistics(Model m) {
     m.addAttribute("statistics", gson.toJson(sc.getStatistiche()));

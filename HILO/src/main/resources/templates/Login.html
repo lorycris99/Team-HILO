@@ -22,6 +22,33 @@
 		"url": "index.html",
 		"logo": "images/logo.jpg"
 }</script>
+      <script>
+          document.getElementById('button').onclick = function (e) {
+
+              var error = false;
+
+              if(check('username')) error = true;
+              if(check('password')) error = true;
+
+              if(error){
+                  e.preventDefault();
+              }
+
+          }
+
+          function check(id) {
+
+              if(document.getElementById(id).value == '')
+              {
+                  return true;
+              }
+              else
+              {
+                  return false;
+              }
+
+          }
+      </script>
     <meta property="og:title" content="Login">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#478ac9">
@@ -68,15 +95,15 @@
           <form action="/login" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="custom" name="form">
             <div class="u-form-email u-form-group">
               <label for="username" class="u-label">Username</label>
-              <input type="email" placeholder="Inserisci il tuo username" id="username" name="username" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
+              <input type="text" placeholder="Inserisci il tuo username" id="username" name="username" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
             </div>
             <div class="u-form-group">
               <label for="password" class="u-label">Password</label>
-              <input type="text" placeholder="Inserisci la tua password" id="password" name="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
+              <input type="text" placeholder="Inserisci la tua password" id="password" name="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
             </div>
             <div class="u-align-center u-form-group u-form-submit">
               <a href="#" class="u-btn u-btn-submit u-button-style u-btn-1">Invia</a>
-              <input type="submit" value="submit" class="u-form-control-hidden">
+              <input type="submit" value="submit" id="button" class="u-form-control-hidden">
             </div>
 
           </form>

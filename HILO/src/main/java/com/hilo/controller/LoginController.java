@@ -22,10 +22,9 @@ public class LoginController {
   @Autowired
   private HttpSession session;
 
-  public boolean doLogin(String parameter) throws JSONException {
-    JSONObject obj = new JSONObject(parameter);
-    String username = obj.getString("username");
-    String password = obj.getString("password");
+  public boolean doLogin(String user, String pass) throws JSONException {
+    String username = user;
+    String password = pass;
     Patient p = pm.findByUsernameAndPassword(username, password);
     if (p == null) {
       HealthWorker hw = hwm.findByUsernameAndPassword(username, password);

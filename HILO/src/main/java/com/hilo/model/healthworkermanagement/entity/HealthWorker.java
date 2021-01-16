@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 
 @Entity
@@ -121,5 +122,31 @@ public class HealthWorker {
       + mail + ", nome=" + nome + ", password=" + password 
       + ", ruolo=" + ruolo
       + ", telefono=" + telefono + ", username=" + username + "]";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    HealthWorker that = (HealthWorker) o;
+    return idstruttura == that.idstruttura
+            && Objects.equals(cf, that.cf)
+            && Objects.equals(username, that.username)
+            && Objects.equals(password, that.password)
+            && Objects.equals(mail, that.mail)
+            && Objects.equals(telefono, that.telefono)
+            && Objects.equals(ruolo, that.ruolo)
+            && Objects.equals(cognome, that.cognome)
+            && Objects.equals(nome, that.nome)
+            && Objects.equals(indirizzo, that.indirizzo);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(cf, username, password, mail, telefono, ruolo, cognome, nome, indirizzo, idstruttura);
   }
 }

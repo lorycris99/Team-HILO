@@ -1,10 +1,12 @@
 package com.hilo.model.swabmanagement.entity;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "effettua_p")
@@ -65,6 +67,23 @@ public class EffettuaP {
       + "]";
   }
 
-  
-  
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    EffettuaP effettuaP = (EffettuaP) o;
+    return Objects.equals(cfP, effettuaP.cfP)
+            && Objects.equals(idTampone, effettuaP.idTampone)
+            && Objects.equals(timestamp, effettuaP.timestamp)
+            && Objects.equals(gravity, effettuaP.gravity);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(cfP, idTampone, timestamp, gravity);
+  }
 }

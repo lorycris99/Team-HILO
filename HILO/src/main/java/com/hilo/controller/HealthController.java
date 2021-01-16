@@ -45,11 +45,11 @@ public class HealthController {
     ep.setCfP(p.getCf());
     ep.setTimestamp(timestamp);
     ep.setIdTampone(s.getId());
+    sm.createSwab(s);
+    epm.createEffettuaP(ep);
     if (s.getIsInterno()) {
       ep.setGravity(ryan.getProba(s));
     }
-    epm.createEffettuaP(ep);
-    sm.createSwab(s);
   }
 
   public void insertSwab(Swab s, HealthWorker hw, String timestamp) {
@@ -58,8 +58,8 @@ public class HealthController {
     eas.setCfAs(hw.getCf());
     eas.setTimestamp(timestamp);
     eas.setIdTampone(s.getId());
-    eam.createEffettuaAs(eas);
     sm.createSwab(s);
+    eam.createEffettuaAs(eas);
   }
 
   public List<HealthWorker> getAll() {

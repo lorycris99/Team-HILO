@@ -1,1 +1,1 @@
-{"numPositivi":0,"numNegativi":0,"numInconcludenti":0,"numNonAnalizzato":0}
+{"numPositivi":450,"numNegativi":1200,"numInconcludenti":45,"numNonAnalizzato":600}

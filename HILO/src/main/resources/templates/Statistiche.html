@@ -11,6 +11,44 @@
       <link rel="stylesheet" href="css/HomePage.css" th:href="@{/css/HomePage.css}" media="screen">
       <script class="u-script" type="text/javascript" src="js/jquery.js" th:src="@{/js/jquery.js}" defer=""></script>
       <script class="u-script" type="text/javascript" src="js/nicepage.js" th:src="@{/js/nicepage.js}" defer=""></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/styles.min.css" th:href="@{/css/styles.min.css}">
+      <!--Load the AJAX API-->
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript" th:inline="javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          // Set a callback to run when the Google Visualization API is loaded.
+          google.charts.setOnLoadCallback(drawChart);
+
+          // Callback that creates and populates a data table,
+          // instantiates the pie chart, passes in the data and
+          // draws it.
+          function drawChart() {
+
+              // Create the data table.
+              /*<![CDATA[*/
+              var result = JSON.parse(/*[[${statistics}]]*/);
+              /*]]>*/
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Risultati');
+              data.addColumn('number', 'Numero');
+              data.addRows([
+                  ['Numero Positivi', result.numPositivi],
+                  ['Numero Negativi', result.numNegativi],
+                  ['Numero Inconcludenti', result.numInconcludenti],
+                  ['Numero Non analizzati', result.numNonAnalizzato]
+              ]);
+
+              // Set chart options
+              var options = {'title':'Statistiche territorio',
+                  'width':1200,
+                  'height':600};
+
+              // Instantiate and draw our chart, passing in some options.
+              var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+              chart.draw(data, options);
+          }
+      </script>
     <meta name="generator" content="Nicepage 3.3.7, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     
@@ -60,8 +98,8 @@
           </div>
         </nav>
         <a href="/view/landing" data-page-id="197382510" class="u-align-right-lg u-align-right-md u-align-right-sm u-align-right-xs u-btn u-btn-round u-button-style u-radius-30 u-btn-1">Login</a>
-      </div></header> 
-    
+      </div></header>
+  <div id="chart_div"></div>
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-0e38"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">Powerded by Hilo inc.</p>

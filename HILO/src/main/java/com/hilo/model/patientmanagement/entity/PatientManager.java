@@ -15,11 +15,12 @@ public class PatientManager {
   @Autowired
   private PatientRepository repo;
 
-  public void createPatient(Patient p) {
+  public boolean createPatient(Patient p) {
     if (findById(p.getCf()) != null) {
-      throw new IllegalStateException("CF gia' presente");
+      return false;
     }
     repo.save(p);
+    return true;
   }
 
   public void deletePatient(Patient p) {

@@ -16,8 +16,12 @@ public class HealthWorkerManager {
   @Autowired
   HealthWorkerRepository hwr;
 
-  public void createHwr(HealthWorker hw) {
+  public boolean createHwr(HealthWorker hw) {
+    if (findById(hw.getCf()) != null) {
+      return false;
+    }
     hwr.save(hw);
+    return true;
   }
 
   public void deleteHwr(HealthWorker hw) {

@@ -1,42 +1,46 @@
 package com.hilo.model.swabmanagement;
 
-import com.hilo.model.patientmanagement.entity.Pagina;
 import com.hilo.model.swabmanagement.entity.EffettuaAs;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @DisplayName("JUnit 5 EffettuaAsTest")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestEffettuaAs {
-    EffettuaAs e=null;
+  @Test
+  @Order(1)
+  public void equalsTest() {
+    
+    EffettuaAs f = new EffettuaAs();
+    f.setTimestamp("ok");
+    f.setCfAs("test");
+    f.setIdTampone(10);
 
-    @Test
-    @Order(1)
-    public void equalsTest(){
-        Pagina x=null;
-        e=new EffettuaAs();
-        EffettuaAs f=new EffettuaAs();
-        f.setTimestamp("ok");
-        f.setCfAs("test");
-        f.setIdTampone(10);
-        e.setCfAs("test");
-        e.setIdTampone(10);
-        e.setTimestamp("ok");
-        Assertions.assertEquals(true, e.equals(e));
-        Assertions.assertEquals(false,e.equals(x));
-        Assertions.assertEquals(false, e.equals(""));
-        Assertions.assertEquals(true, e.equals(f));
-        e.setIdTampone(5);
-        Assertions.assertEquals(false, e.equals(f));
-        e.setIdTampone(10); e.setCfAs("test2");
-        Assertions.assertEquals(false, e.equals(f));
-        e.setCfAs("test"); e.setTimestamp("lol");
-        Assertions.assertEquals(false, e.equals(f));
-
-
-
-
-
-    }
+    EffettuaAs effettuaAs = new EffettuaAs();
+    effettuaAs.setCfAs("test");
+    effettuaAs.setIdTampone(10);
+    effettuaAs.setTimestamp("ok");
+        
+    Assertions.assertEquals(true, effettuaAs.equals(effettuaAs));
+    Assertions.assertEquals(false, effettuaAs.equals(null));
+    Assertions.assertEquals(false, effettuaAs.equals(""));
+    Assertions.assertEquals(true, effettuaAs.equals(f));
+    
+    effettuaAs.setIdTampone(5);
+    Assertions.assertEquals(false, effettuaAs.equals(f));
+    
+    effettuaAs.setIdTampone(10); 
+    effettuaAs.setCfAs("test2");
+    Assertions.assertEquals(false, effettuaAs.equals(f));
+    
+    effettuaAs.setCfAs("test"); 
+    effettuaAs.setTimestamp("lol");
+    Assertions.assertEquals(false, effettuaAs.equals(f));
+  }
 }

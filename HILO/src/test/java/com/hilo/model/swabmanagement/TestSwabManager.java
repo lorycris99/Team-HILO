@@ -2,7 +2,6 @@ package com.hilo.model.swabmanagement;
 
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -60,46 +59,43 @@ public class TestSwabManager {
 
   @Test
   @Order(3)
-  public void findEsitoTest(){
-    List<Swab>lista=manager.findByEsito("");
-    List<Swab>all=manager.findAll();
-    List<Swab>temp= new ArrayList<Swab>();
-    for(int i=0;i<all.size();i++){
-      if(all.get(i).getRisultato().equals("")){
+  public void findEsitoTest() {
+    List<Swab> lista = manager.findByEsito("");
+    List<Swab> all = manager.findAll();
+    List<Swab> temp = new ArrayList<Swab>();
+    for (int i = 0; i < all.size(); i++) {
+      if (all.get(i).getRisultato().equals("")) {
         temp.add(all.get(i));
       }
     }
-    Assertions.assertEquals(lista,temp);
+    Assertions.assertEquals(lista, temp);
   }
 
   @Test
   @Order(4)
-  public void findInternoTest(){
-    List<Swab>lista=manager.findByInterno(true);
-    List<Swab>all=manager.findAll();
-    List<Swab>temp= new ArrayList<Swab>();
-    for(int i=0;i<all.size();i++){
-      if(all.get(i).getIsInterno()==true){
+  public void findInternoTest() {
+    List<Swab> lista = manager.findByInterno(true);
+    List<Swab> all = manager.findAll();
+    List<Swab> temp = new ArrayList<Swab>();
+    for (int i = 0; i < all.size(); i++) {
+      if (all.get(i).getIsInterno() == true) {
         temp.add(all.get(i));
       }
     }
-    Assertions.assertEquals(lista,temp);
+    Assertions.assertEquals(lista, temp);
   }
 
   @Test
   @Order(5)
-  public void findStrutturaTest(){
-    List<Swab>lista=manager.findByStruttura(1);
-    List<Swab>all=manager.findAll();
-    List<Swab>temp= new ArrayList<Swab>();
-    for(int i=0;i<all.size();i++){
-      if(all.get(i).getIdStruttura()==1){
+  public void findStrutturaTest() {
+    List<Swab> lista = manager.findByStruttura(1);
+    List<Swab> all = manager.findAll();
+    List<Swab> temp = new ArrayList<Swab>();
+    for (int i = 0; i < all.size(); i++) {
+      if (all.get(i).getIdStruttura() == 1) {
         temp.add(all.get(i));
       }
     }
-    Assertions.assertEquals(lista,temp);
+    Assertions.assertEquals(lista, temp);
   }
-
-
-
 }

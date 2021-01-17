@@ -12,7 +12,30 @@
         /*<![CDATA[*/
         var result = /*[[${lista}]]*/ + "";
         /*]]>*/
-        document.getElementById("result").innerHTML = "lol";
+        function button() {
+            var xhttp;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var obj = JSON.parse(this.responseText);
+                    var result = "";
+                    var i;
+                    for (i=0; i< obj.length; i++) {
+                        result = "ID: " + obj[i].id + " Risultato: " + obj[i].risultato +"\n";
+                    }
+                    document.getElementById("result").value = result;
+                }
+            };
+
+            xhttp.open("POST", "/swab/bypatient", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var str = "cf=" + document.getElementById("cf").value;
+            xhttp.send(str);
+        }
+
+        function iterator(value) {
+            result = "ID: " + value.id + " Risultato: " + value.risultato;
+        }
     </script>
 </head>
 
@@ -35,7 +58,7 @@
     </div>
     <div class="row">
         <div class="col-md-5 offset-md-4">
-            <form class="text-center" action="/view/swab/find/request" method="GET"><label for="cf" style="margin-top: 12px;">CF</label><input class="form-control" type="text" id="cf" name="cf" placeholder="Inserisci codice fiscale"><button class="btn btn-primary" type="submit" style="margin-top: 17px;">Invia</button></form>
+            <div class="text-center"><label for="cf" style="margin-top: 12px;">CF</label><input class="form-control" type="text" id="cf" name="cf" placeholder="Inserisci codice fiscale"><button class="btn btn-primary" type="submit" onclick="button()" style="margin-top: 17px;">Invia</button></div>
         </div>
     </div>
     <div class="row" style="margin-top: 30px;">

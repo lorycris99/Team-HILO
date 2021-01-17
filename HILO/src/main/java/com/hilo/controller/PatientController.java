@@ -32,20 +32,17 @@ public class PatientController {
   @Autowired
   private InterceptorMailRegister interceptor;
   
-  public boolean registerPatient(String user) throws JSONException {
-    if (user.equalsIgnoreCase("Accesso negato")) {
-      return false;
-    }
-    JSONObject obj = new JSONObject(user);
-    String cf = obj.getString("cf");
-    String name = obj.getString("name");
-    String surname = obj.getString("surname");
+  public boolean registerPatient(String cft, String namet, String surnamet,
+                                 String mailt, String telefonot, boolean isInternot, String indirizzot) {
+    String cf = cft;
+    String name = namet;
+    String surname = surnamet;
     String username = RandomString.make(10);
     String password = RandomString.make(10);
-    String mail = obj.getString("mail");
-    String telefono = obj.getString("telefono");
-    Boolean isInterno = obj.getBoolean("isInterno");
-    String indirizzo = obj.getString("indirizzo");
+    String mail = mailt;
+    String telefono = telefonot;
+    Boolean isInterno = isInternot;
+    String indirizzo = indirizzot;
     Patient p = new Patient(cf, username, password, mail, telefono, isInterno,
         indirizzo, name, surname);
     return interceptor.sendRegisteredMail(p);
@@ -75,6 +72,10 @@ public class PatientController {
 
   public List<Pagina> getPaginaByCf(String cf) {
     return pm.findByCf(cf);
+  }
+
+  public Patient getPazienteByCF(String cf) {
+    return patientManager.findById(cf);
   }
 
 

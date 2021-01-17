@@ -13,6 +13,8 @@ import com.hilo.model.swabmanagement.entity.Ryan;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import java.util.List;
+
+import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -79,6 +81,11 @@ public class HealthController {
     return sm.findAll();
   }
 
+  public void insertHealthWorker(HealthWorker hw) {
+    hw.setUsername(RandomString.make(10));
+    hw.setPassword(RandomString.make(10));
+    hwm.createHwr(hw);
+  }
   public List<Swab> findSwabByCF(String cf) {
     return epm.findByCF(cf);
   }

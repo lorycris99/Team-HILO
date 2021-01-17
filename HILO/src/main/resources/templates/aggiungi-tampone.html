@@ -8,6 +8,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/aggiungi-tampone.css" th:href="@{/css/aggiungi-tampone.css}">
+    <script>
+        document.getElementById('button').onclick = function (e) {
+
+            var error = false;
+
+            if(check('cf')) error = true;
+            if(check('idStruttura')) error = true;
+            if(check('isInterno')) error = true;
+
+            if(error) e.preventDefault();
+
+        }
+
+        function check(id) {
+
+            if(document.getElementById(id).value == '')
+            {
+                if(id == 'cf' && document.getElementById(id).value.length !== 16){
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+    </script>
 </head>
 
 <body>

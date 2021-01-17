@@ -3,6 +3,8 @@ package com.hilo.controller;
 import com.google.gson.Gson;
 import javax.servlet.http.HttpSession;
 
+import com.hilo.model.healthworkermanagement.entity.HealthWorker;
+import com.hilo.model.patientmanagement.entity.Patient;
 import com.hilo.model.swabmanagement.entity.Swab;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +66,11 @@ public class FacadeController implements RequestController {
     return "aggiungi-tampone";
   }
 
+  @GetMapping("/view/healthworker/add")
+  public String requestAddSwabHealthWorker() {
+    return "aggiungi-operatore";
+  }
+
   @GetMapping("/view/patient/add")
   public String requestPatientAdd() {
     return "aggiungi-paziente";
@@ -111,17 +118,17 @@ public class FacadeController implements RequestController {
   }
 
   @PostMapping("/swab/add")
-  public @ResponseBody String addSwab(Model m) {
-    return "Da implementare";
-  }
-
-  @PostMapping("/patient/register")
-  public String register(@RequestParam(name = "User") String user) throws JSONException {
-    String role = (String) session.getAttribute("role");
-    if (!role.equalsIgnoreCase("healthworker")) {
-      return "Accesso negato";
-    }
-    return gson.toJson(pc.registerPatient(user));
+  public String addSwab(@RequestParam(name = "cf") String cf,
+                        @RequestParam(name = "idStruttura") String idStruttura,
+                        @RequestParam(name = "isInterno") String isInterno) {
+    Patient p = pc.getPazienteByCF(cf);
+    Swab s = new Swab();
+    s.setIsInterno(Boolean.parseBoolean(isInterno));
+    s.setRisultato("");
+    s.setId(25);
+    s.setIdStruttura(Integer.parseInt(idStruttura));
+    hc.insertSwab(s, p, "10-01-2000 09:00");
+    return "aggiungi-tampone";
   }
 
   @GetMapping("/health_worker/all")
@@ -148,6 +155,41 @@ public class FacadeController implements RequestController {
   public String getPaginaByIds(@RequestParam(name = "cf") String cf,
                                @RequestParam(name = "numero") Integer numero) {
     return gson.toJson(pc.getPaginaByIds(cf, numero));
+  }
+
+  @PostMapping("/patient/add")
+  public String requestAddHealthWorker(@RequestParam(name = "cf") String cf,
+                                       @RequestParam(name = "email") String email,
+                                       @RequestParam(name = "telefono") String telefono,
+                                       @RequestParam(name = "nome") String nome,
+                                       @RequestParam(name = "cognome") String cognome,
+                                       @RequestParam(name = "citta") String citta,
+                                       @RequestParam(name = "strada") String strada,
+                                       @RequestParam(name = "civico") String civico,
+                                       @RequestParam(name = "via") String via,
+                                       @RequestParam(name = "isInterno") String isInterno
+  ) {
+    String indirizzo = via + " " + strada + " " + civico + ", " + citta;
+    pc.registerPatient(cf, nome, cognome, email, telefono, Boolean.parseBoolean(isInterno), indirizzo);
+    return "aggiungi-paziente";
+  }
+
+  @PostMapping("healthworker/add")
+  public void requestAddSwabHealthWorker(@RequestParam(name = "cf") String cf,
+                                           @RequestParam(name = "email") String email,
+                                           @RequestParam(name = "telefono") String telefono,
+                                           @RequestParam(name = "nome") String nome,
+                                           @RequestParam(name = "cognome") String cognome,
+                                           @RequestParam(name = "citta") String citta,
+                                           @RequestParam(name = "strada") String strada,
+                                           @RequestParam(name = "civico") String civico,
+                                           @RequestParam(name = "idStruttura") String idStruttura,
+                                           @RequestParam(name = "via") String via,
+                                           @RequestParam(name = "ruolo") String ruolo) {
+    String indirizzo = via + " " + strada + " " + civico + ", " + citta;
+    HealthWorker hw = new HealthWorker(cf, "", "", email,
+            telefono, ruolo, cognome, nome, indirizzo, Integer.parseInt(idStruttura));
+    hc.insertHealthWorker(hw);
   }
 
   @GetMapping("/patient/diarioPaziente/byCF")

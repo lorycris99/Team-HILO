@@ -30,6 +30,9 @@
             xhttp.open("POST", "/swab/bypatient", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             var str = "cf=" + document.getElementById("cf").value;
+            if(str.length !== 16) {
+                return;
+            }
             xhttp.send(str);
         }
 

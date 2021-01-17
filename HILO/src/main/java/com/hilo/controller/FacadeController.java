@@ -2,6 +2,8 @@ package com.hilo.controller;
 
 import com.google.gson.Gson;
 import javax.servlet.http.HttpSession;
+
+import com.hilo.model.swabmanagement.entity.Swab;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 
 @Controller
@@ -46,7 +50,8 @@ public class FacadeController implements RequestController {
   public String doLogin(@RequestParam(name = "username") String user,
                         @RequestParam(name = "password") String pass) throws JSONException {
     System.out.println(lc.doLogin(user, pass));
-    return "homepage";
+    System.out.println(session.getAttribute("role"));
+    return "HomePage";
   }
 
   @GetMapping("/forgot")
@@ -64,8 +69,15 @@ public class FacadeController implements RequestController {
     return "aggiungi-paziente";
   }
 
+  @GetMapping("/view/swab/find/request")
+  public String requestFindSwabR(@RequestParam(name = "cf") String cf, Model m) {
+    List<Swab> list = hc.findSwabByCF(cf);
+    m.addAttribute("lista", gson.toJson(list));
+    return "ricerca-tampone-utente";
+  }
+
   @GetMapping("/view/swab/find")
-  public String requestFindSwab() {
+  public String requestFindSwab(Model m) {
     return "ricerca-tampone-utente";
   }
 
@@ -183,14 +195,14 @@ public class FacadeController implements RequestController {
 
   @GetMapping("/")
   public String getView(Model m) {
-    System.out.println(session.getAttribute("role"));
+
     return "HomePage";
   }
 
   @GetMapping("/statistics")
   public String getViewStatistics(Model m) {
     m.addAttribute("statistics", gson.toJson(sc.getStatistiche()));
-    return "Statistiche (vecchia)";
+    return "Statistiche";
   }
 
   @GetMapping("/view/landing")

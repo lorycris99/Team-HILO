@@ -78,4 +78,8 @@ public class HealthController {
   public List<Swab> findAllSwab() {
     return sm.findAll();
   }
+
+  public List<Swab> findSwabByCF(String cf) {
+    return epm.findByCF(cf);
+  }
 }

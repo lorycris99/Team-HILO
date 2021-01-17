@@ -16,6 +16,8 @@ public class EffettuapManager {
   @Autowired
   private SwabRepository swabRepo;
   @Autowired
+  private SwabManager sm;
+  @Autowired
   private ErrorController error;
 
   public void createEffettuaP(EffettuaP ep) {
@@ -88,5 +90,14 @@ public class EffettuapManager {
 
   public EffettuaP findEffettuapByIdTampone(int id) {
     return epr.findByIdTampone(id);
+  }
+
+  public List<Swab> findByCF(String cf) {
+    List<Swab> result = new ArrayList<>();
+    List<EffettuaP> list = epr.findByCfP(cf);
+    for(EffettuaP t : list) {
+      result.add(sm.findById(t.getIdTampone()));
+    }
+    return result;
   }
 }

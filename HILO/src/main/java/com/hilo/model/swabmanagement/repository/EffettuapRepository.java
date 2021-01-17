@@ -16,4 +16,6 @@ public interface EffettuapRepository extends JpaRepository<EffettuaP, EmbeddedEf
   
   EffettuaP findByIdTampone(int idTampone);
 
+  List<EffettuaP> findByCfP(String cf);
+
 }

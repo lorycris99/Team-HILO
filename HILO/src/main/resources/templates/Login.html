@@ -8,6 +8,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/navbar-Hilo.css" th:href="@{/css/navbar-Hilo.css}">
     <link rel="stylesheet" href="css/login.css" th:href="@{/css/login.css}">
+    <script>
+        document.getElementById('button').onclick = function (e) {
+
+            var error = false;
+
+            if(check('username')) error = true;
+            if(check('password')) error = true;
+
+            if(error) e.preventDefault();
+
+        }
+
+        function check(id) {
+
+            if(document.getElementById(id).value == '')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+    </script>
 </head>
 
 <body th:style="'background: #475d62 url(/img/star-sky.jpg);'">
@@ -35,7 +60,7 @@
                 <input class="form-control" type="password" name="password" placeholder="Password">
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">Log In</button>
+                <button class="btn btn-primary btn-block" id="button" type="submit">Log In</button>
             </div>
             <a class="forgot" href="/forgot">Dimenticato email o password? Clicca qui</a>
         </form>

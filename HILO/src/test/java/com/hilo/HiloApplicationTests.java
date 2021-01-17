@@ -23,5 +23,5 @@ import org.springframework.boot.test.context.SpringBootTest;
     TestSwabManager.class, HealthWorkerTest.class, TestPagina.class, TestPaginaManager.class, 
     TestEffettuaAs.class, TestEffettuaAsManager.class, TestHealthWorker.class, 
     TestHealthWorkerManager.class, TestStruttura.class, TestStrutturaManager.class, 
-    TestAfferire.class, TestAfferireManager.class, TestEffettuaP.class, TestEffettuaPManager.class})
+    TestAfferire.class, TestAfferireManager.class, TestEffettuaP.class, TestEffettuaPManager.class,TestEmbeddedEffettuaP.class})
 public class HiloApplicationTests {}

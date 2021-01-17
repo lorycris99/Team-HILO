@@ -76,16 +76,17 @@ public class EffettuapManager {
   public Swab findByIdTampone(int id) {
     EffettuaP eff = epr.findByIdTampone(id);
     List<Swab> listaTamponi = swabRepo.findAll();
+    Swab x=null;
 
     Swab filter = null;
 
     for (int i = 0; i < listaTamponi.size(); i++) {
       if (eff.getIdTampone() == listaTamponi.get(i).getId()) {
-        return listaTamponi.get(i);
+         x=listaTamponi.get(i);
       }
     }
 
-    return null;
+    return x;
   }
 
   public EffettuaP findEffettuapByIdTampone(int id) {

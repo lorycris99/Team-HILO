@@ -69,13 +69,6 @@ public class FacadeController implements RequestController {
     return "aggiungi-paziente";
   }
 
-  @GetMapping("/view/swab/find/request")
-  public String requestFindSwabR(@RequestParam(name = "cf") String cf, Model m) {
-    List<Swab> list = hc.findSwabByCF(cf);
-    m.addAttribute("lista", gson.toJson(list));
-    return "ricerca-tampone-utente";
-  }
-
   @GetMapping("/view/swab/find")
   public String requestFindSwab(Model m) {
     return "ricerca-tampone-utente";
@@ -102,8 +95,9 @@ public class FacadeController implements RequestController {
   }
 
   @PostMapping("/swab/bypatient")
-  public @ResponseBody String findSwabByPatient(Model m) {
-    return "Da implementare";
+  public @ResponseBody String findSwabByPatient(Model m, @RequestParam(name = "cf") String cf) {
+    List<Swab> list = hc.findSwabByCF(cf);
+    return gson.toJson(list);
   }
 
   @GetMapping("/view/healthworker")

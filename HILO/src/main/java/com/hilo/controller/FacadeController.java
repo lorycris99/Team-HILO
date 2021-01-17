@@ -44,8 +44,9 @@ public class FacadeController implements RequestController {
   private static Gson gson = new Gson();
 
   @GetMapping("/logout")
-  public void doLogout() {
+  public String doLogout() {
     lc.doLogout();
+    return "HomePage";
   }
 
   @PostMapping("/login")

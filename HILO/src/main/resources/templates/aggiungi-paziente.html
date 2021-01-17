@@ -46,17 +46,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-        <div class="container"><img class="img-fluid d-flex" src="img/logo.jpg" th:src="@{/img/logo.jpg}" width="15%" height="15%"><a class="navbar-brand" href="#"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1" style="background: #dadada;">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/statistics">Statistiche</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/view/about">Su di Noi<br></a></li>
-                </ul><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="/view/landing">Accedi</a></span></div>
-        </div>
-    </nav>
+    <nav th:replace="/navbar :: navbar"></nav>
     <div class="row">
         <div class="col-md-7 offset-md-3 text-center">
             <h2>Aggiunta nuovo paziente</h2>

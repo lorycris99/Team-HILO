@@ -136,5 +136,9 @@ public class TestPagina {
         
     b.setTemperatura(null);
     Assertions.assertEquals(true, a.equals(b));
+    a.setCfPaziente(null);
+    Assertions.assertEquals(false, a.equals(b));
+
+
   }
 }

@@ -15,7 +15,7 @@ public class EmbeddedRadiografia implements Serializable {
   private String cfpaziente;
 
   @NotNull
-  private int numero;
+  private Integer numero;
 
   public EmbeddedRadiografia() {
   }
@@ -32,7 +32,7 @@ public class EmbeddedRadiografia implements Serializable {
     return numero;
   }
 
-  public void setNumero(int numero) {
+  public void setNumero(Integer numero) {
     this.numero = numero;
   }
 

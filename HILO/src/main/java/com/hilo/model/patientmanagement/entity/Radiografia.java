@@ -1,6 +1,7 @@
 package com.hilo.model.patientmanagement.entity;
 
 import java.util.Arrays;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -44,6 +45,20 @@ public class Radiografia {
 
   public void setImg(byte[] img) {
     this.img = img;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Radiografia that = (Radiografia) o;
+    return Objects.equals(cfpaziente, that.cfpaziente)
+            && Objects.equals(numero, that.numero)
+            && Arrays.equals(img, that.img);
   }
 
   @Override

@@ -24,7 +24,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-@DisplayName("JUnit 5 PatientManager")
+@DisplayName("JUnit 5 HealthWorkerControllerTest")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class HealthWorkerTest {
 

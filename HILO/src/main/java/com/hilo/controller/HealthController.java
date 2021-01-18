@@ -4,6 +4,7 @@ import com.hilo.model.healthworkermanagement.entity.HealthWorker;
 import com.hilo.model.healthworkermanagement.entity.HealthWorkerManager;
 import com.hilo.model.patientmanagement.entity.Patient;
 import com.hilo.model.patientmanagement.entity.PatientManager;
+import com.hilo.model.patientmanagement.entity.RadiografiaManager;
 import com.hilo.model.swabmanagement.email.InterceptorMail;
 import com.hilo.model.swabmanagement.entity.EffettuaAs;
 import com.hilo.model.swabmanagement.entity.EffettuaAsManager;
@@ -13,6 +14,7 @@ import com.hilo.model.swabmanagement.entity.Ryan;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import java.util.List;
+import java.util.Random;
 
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,19 +41,28 @@ public class HealthController {
   private PatientManager pm;
 
   @Autowired
+  RadiografiaManager rm;
+
+  @Autowired
   private Ryan ryan;
 
   public void insertSwab(Swab s, Patient p, String timestamp) {
+    Random r = new Random();
     pm.createPatient(p);
     EffettuaP ep = new EffettuaP();
     ep.setCfP(p.getCf());
     ep.setTimestamp(timestamp);
+    s.setId(r.nextInt(Integer.MAX_VALUE));
     ep.setIdTampone(s.getId());
     sm.createSwab(s);
-    epm.createEffettuaP(ep);
     if (s.getIsInterno()) {
+      if(rm.findByCfPaziente(p.getCf()).isEmpty()){
+        epm.createEffettuaP(ep);
+        return;
+      }
       ep.setGravity(ryan.getProba(s));
     }
+    epm.createEffettuaP(ep);
   }
 
   public void insertSwab(Swab s, HealthWorker hw, String timestamp) {

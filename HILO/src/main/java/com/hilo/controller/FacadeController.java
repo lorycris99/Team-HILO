@@ -54,6 +54,9 @@ public class FacadeController implements RequestController {
                         @RequestParam(name = "password") String pass) throws JSONException {
     System.out.println(lc.doLogin(user, pass));
     System.out.println(session.getAttribute("role"));
+    if(session.getAttribute("role").equals("healthworker")) {
+      return "operatore-homepage";
+    }
     return "HomePage";
   }
 
@@ -126,7 +129,6 @@ public class FacadeController implements RequestController {
     Swab s = new Swab();
     s.setIsInterno(Boolean.parseBoolean(isInterno));
     s.setRisultato("");
-    s.setId(25);
     s.setIdStruttura(Integer.parseInt(idStruttura));
     hc.insertSwab(s, p, "10-01-2000 09:00");
     return "aggiungi-tampone";
@@ -232,7 +234,6 @@ public class FacadeController implements RequestController {
 
   @GetMapping("/")
   public String getView(Model m) {
-
     return "HomePage";
   }
 

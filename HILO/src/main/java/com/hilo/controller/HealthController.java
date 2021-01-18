@@ -47,12 +47,10 @@ public class HealthController {
   private Ryan ryan;
 
   public void insertSwab(Swab s, Patient p, String timestamp) {
-    Random r = new Random();
     pm.createPatient(p);
     EffettuaP ep = new EffettuaP();
     ep.setCfP(p.getCf());
     ep.setTimestamp(timestamp);
-    s.setId(r.nextInt(Integer.MAX_VALUE));
     ep.setIdTampone(s.getId());
     sm.createSwab(s);
     if (s.getIsInterno()) {
@@ -60,7 +58,7 @@ public class HealthController {
         epm.createEffettuaP(ep);
         return;
       }
-      ep.setGravity(ryan.getProba(s));
+      ep.setGravity(ryan.getProba(s, p));
     }
     epm.createEffettuaP(ep);
   }

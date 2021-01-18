@@ -1,6 +1,7 @@
 package com.hilo.model.swabmanagement.entity;
 
 
+import com.hilo.model.patientmanagement.entity.Patient;
 import com.hilo.model.patientmanagement.entity.Radiografia;
 import com.hilo.model.patientmanagement.entity.RadiografiaManager;
 import java.awt.image.BufferedImage;
@@ -27,9 +28,8 @@ public class Ryan {
   @Autowired
   RadiografiaManager rm;
 
-  public double getProba(Swab s) {
-    EffettuaP temp = ep.findEffettuapByIdTampone(s.getId());
-    List<Radiografia> list = rm.findByCfPaziente(temp.getCfP());
+  public double getProba(Swab s, Patient p) {
+    List<Radiografia> list = rm.findByCfPaziente(p.getCf());
     Radiografia rad = list.get(list.size() - 1);
     double prediction = 12;
     File f = null;
@@ -49,8 +49,6 @@ public class Ryan {
       MultiLayerNetwork model = KerasModelImport.importKerasSequentialModelAndWeights(inputStream);
 
       prediction = model.output(image).getDouble(0);
-      temp.setGravity(prediction);
-      ep.updateEffettuaP(temp);
     } catch (Exception e) {
       e.printStackTrace();
     } finally {

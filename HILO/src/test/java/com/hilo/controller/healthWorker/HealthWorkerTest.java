@@ -1,5 +1,4 @@
-package com.hilo.controller.healthWorker;
-
+package com.hilo.controller.healthworker;
 
 import com.hilo.controller.HealthController;
 import com.hilo.model.healthworkermanagement.entity.HealthWorker;
@@ -12,6 +11,7 @@ import com.hilo.model.swabmanagement.entity.EffettuaP;
 import com.hilo.model.swabmanagement.entity.EffettuapManager;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
@@ -20,8 +20,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 @SpringBootTest
 @DisplayName("JUnit 5 HealthWorkerControllerTest")
@@ -138,7 +136,7 @@ public class HealthWorkerTest {
 
   @Test
   @Order(5)
-  public void inserisciRisultato(){
+  public void inserisciRisultato() {
     controller.inserisciRisultato(26, "positivo");
     Assertions.assertEquals(sm.findById(26).getRisultato(), "positivo");
   }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@DisplayName("JUnit 5 EmbeddedPaginaTest")
+@DisplayName("JUnit 5 EmbeddedRadiografiaTest")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestEmbeddedRadiografia {
 

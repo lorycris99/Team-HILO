@@ -32,7 +32,7 @@ public class PatientController {
   @Autowired
   private InterceptorMailRegister interceptor;
   
-  public boolean registerPatient(String cft, String namet, String surnamet,
+  public Patient registerPatient(String cft, String namet, String surnamet,
                                  String mailt, String telefonot, boolean isInternot, String indirizzot) {
     String cf = cft;
     String name = namet;
@@ -45,7 +45,9 @@ public class PatientController {
     String indirizzo = indirizzot;
     Patient p = new Patient(cf, username, password, mail, telefono, isInterno,
         indirizzo, name, surname);
-    return interceptor.sendRegisteredMail(p);
+    patientManager.createPatient(p);
+    interceptor.sendRegisteredMail(p);
+    return p;
   }
 
 

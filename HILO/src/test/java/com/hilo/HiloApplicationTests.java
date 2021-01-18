@@ -1,6 +1,8 @@
 package com.hilo;
 
 import com.hilo.controller.healthworker.HealthWorkerTest;
+import com.hilo.controller.healthworker.LoginControllerTest;
+import com.hilo.controller.healthworker.PatientControllerTest;
 import com.hilo.model.adminmanagement.*;
 import com.hilo.model.healthworkermanagement.TestHealthWorker;
 import com.hilo.model.healthworkermanagement.TestHealthWorkerManager;
@@ -21,5 +23,6 @@ import org.springframework.boot.test.context.SpringBootTest;
     TestEmbeddedEffettuaP.class, TestEmbeddedAfferire.class, TestEmbeddedPagina.class,
     TestEmbeddedRadiografia.class, TestEmbeddedPaginaDiarioClinico.class,
     TestPaginaDiarioClinico.class, TestPaginaDiarioClinicoManager.class, 
-    TestRadiografiaManager.class, TestRadiografia.class})
+    TestRadiografiaManager.class, TestRadiografia.class, 
+    LoginControllerTest.class, PatientControllerTest.class})
 public class HiloApplicationTests {}

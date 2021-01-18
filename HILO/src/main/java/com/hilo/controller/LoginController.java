@@ -5,8 +5,6 @@ import com.hilo.model.healthworkermanagement.entity.HealthWorkerManager;
 import com.hilo.model.patientmanagement.entity.Patient;
 import com.hilo.model.patientmanagement.entity.PatientManager;
 import javax.servlet.http.HttpSession;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +20,7 @@ public class LoginController {
   @Autowired
   private HttpSession session;
 
-  public boolean doLogin(String user, String pass) throws JSONException {
+  public boolean doLogin(String user, String pass) {
     String username = user;
     String password = pass;
     Patient p = pm.findByUsernameAndPassword(username, password);

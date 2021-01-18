@@ -1,8 +1,8 @@
 package com.hilo;
 
-import com.hilo.controller.healthworker.HealthWorkerTest;
-import com.hilo.controller.healthworker.LoginControllerTest;
-import com.hilo.controller.healthworker.PatientControllerTest;
+import com.hilo.controller.HealthWorkerTest;
+import com.hilo.controller.LoginControllerTest;
+import com.hilo.controller.PatientControllerTest;
 import com.hilo.model.adminmanagement.TestAfferire;
 import com.hilo.model.adminmanagement.TestAfferireManager;
 import com.hilo.model.adminmanagement.TestEmbeddedAfferire;

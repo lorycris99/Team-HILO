@@ -1,11 +1,9 @@
-package com.hilo.controller.healthworker;
+package com.hilo.controller;
 
-import com.hilo.controller.PatientController;
 import com.hilo.model.patientmanagement.entity.Patient;
 import java.util.List;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -19,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PatientControllerTest {
 
-  private Patient patient = null;
+  private static Patient patient = null;
 
   @Autowired
   private PatientController controller;
@@ -50,8 +48,8 @@ public class PatientControllerTest {
     } 
   }
 
-  @AfterAll
-  public static void cleanUp() {
+  @Order(3)
+  public void cleanUp() {
     controller.deletePaziente(patient);
   }
 }

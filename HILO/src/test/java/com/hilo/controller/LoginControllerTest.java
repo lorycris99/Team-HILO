@@ -1,4 +1,4 @@
-package com.hilo.controller.healthworker;
+package com.hilo.controller;
 
 import com.hilo.controller.LoginController;
 import javax.servlet.http.HttpSession;

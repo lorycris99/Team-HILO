@@ -47,14 +47,14 @@ public class HealthWorkerTest {
   @Test
   @Order(1)
   public void insertSwabPatient() {
-    Patient p = new Patient("4321", "user", "pass", "lmao@yeah.lol", "33333",
-            false, "via kek 24", "lmao", "yeah");
-    String timestamp = "09-01-2021 07:45";
     Swab s = new Swab();
     s.setId(25);
     s.setRisultato("");
     s.setIdStruttura(1);
     s.setIsInterno(false);
+    Patient p = new Patient("4321", "user", "pass", "lmao@yeah.lol", "33333",
+                            false, "via kek 24", "lmao", "yeah");
+    String timestamp = "09-01-2021 07:45";
     controller.insertSwab(s, p, timestamp);
     EffettuaP temp = new EffettuaP();
     temp.setTimestamp(timestamp);
@@ -68,13 +68,13 @@ public class HealthWorkerTest {
   @Test
   @Order(2)
   public void insertSwabPatientInterno() {
-    Patient p = pm.findById("FRTGRD99A01F912U");
-    String timestamp = "09-01-2021 08:45";
     Swab s = new Swab();
     s.setId(26);
     s.setRisultato("");
     s.setIdStruttura(1);
     s.setIsInterno(true);
+    Patient p = pm.findById("FRTGRD99A01F912U");
+    String timestamp = "09-01-2021 08:45";
     controller.insertSwab(s, p, timestamp);
     EffettuaP temp = new EffettuaP();
     temp.setTimestamp(timestamp);
@@ -89,13 +89,13 @@ public class HealthWorkerTest {
   @Test
   @Order(3)
   public void insertSwabAs() {
-    HealthWorker hw = hwm.findById("CNTGPP64M08M131X");
     Swab s = new Swab();
-    String timestamp = "10-01-2021 08:45";
     s.setId(27);
     s.setRisultato("");
     s.setIdStruttura(1);
     s.setIsInterno(false);
+    HealthWorker hw = hwm.findById("CNTGPP64M08M131X");
+    String timestamp = "10-01-2021 08:45";
     controller.insertSwab(s, hw, timestamp);
     EffettuaAs temp = new EffettuaAs();
     temp.setTimestamp(timestamp);
@@ -127,9 +127,9 @@ public class HealthWorkerTest {
 
   @Test
   @Order(4)
-  public void getAllWorkers(){
+  public void getAllWorkers() {
     List<HealthWorker> list = controller.getAll();
-    for(HealthWorker t : list){
+    for (HealthWorker t : list) {
       Assertions.assertEquals(t, hwm.findById(t.getCf()));
     }
   }
@@ -143,9 +143,9 @@ public class HealthWorkerTest {
 
   @Test
   @Order(6)
-  public void findAllSwab(){
+  public void findAllSwab() {
     List<Swab> list = controller.findAllSwab();
-    for(Swab t : list){
+    for (Swab t : list) {
       Assertions.assertEquals(t, sm.findById(t.getId()));
     }
   }

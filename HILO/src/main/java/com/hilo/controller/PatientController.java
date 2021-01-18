@@ -45,7 +45,11 @@ public class PatientController {
     String indirizzo = indirizzot;
     Patient p = new Patient(cf, username, password, mail, telefono, isInterno,
         indirizzo, name, surname);
-    patientManager.createPatient(p);
+    
+    boolean b = patientManager.createPatient(p);
+    if (!b) {
+      return null;
+    }
     interceptor.sendRegisteredMail(p);
     return p;
   }
@@ -80,13 +84,7 @@ public class PatientController {
     return patientManager.findById(cf);
   }
 
-
-  /* @GetMapping("/patient/xray")
-  List<Radiografia> getAllXray() {
-    for (Radiografia temp : rr.findAll()
-    ) {
-      System.out.println(temp.toString());
-    }
-    return rr.findAll();
-  } */
+  public void deletePaziente(Patient toDelete) {
+    patientManager.deletePatient(toDelete);
+  }
 }

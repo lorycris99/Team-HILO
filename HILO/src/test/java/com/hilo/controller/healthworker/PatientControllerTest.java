@@ -1,10 +1,9 @@
 package com.hilo.controller.healthworker;
 
-import java.util.List;
-
 import com.hilo.controller.PatientController;
 import com.hilo.model.patientmanagement.entity.Patient;
-
+import java.util.List;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
@@ -19,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PatientControllerTest {
 
-  private Patient p = null;
+  private Patient patient = null;
 
   @Autowired
   private PatientController controller;
@@ -34,8 +33,10 @@ public class PatientControllerTest {
     String telefono = "333333333";
     boolean isInterno = true;
     String indirizzo = "Via Milano 126";
-    p = controller.registerPatient(cf, name, surname, mail, telefono, isInterno, indirizzo);
-    Assertions.assertEquals(p, controller.getPazienteByCF("PRTGMN56D26B301S"));
+    patient = controller.registerPatient(cf, name, surname, mail, telefono, isInterno, indirizzo);
+    Assertions.assertEquals(patient, controller.getPazienteByCF("PRTGMN56D26B301S"));
+    patient = controller.registerPatient(cf, name, surname, mail, telefono, isInterno, indirizzo);
+    Assertions.assertNull(patient);
   }
 
   @Test
@@ -45,5 +46,10 @@ public class PatientControllerTest {
     for (Patient p : patients) {
       Assertions.assertEquals(p, controller.getPazienteByCF(p.getCf()));
     } 
+  }
+
+  @AfterAll
+  public void cleanUp() {
+    controller.deletePaziente(patient);
   }
 }

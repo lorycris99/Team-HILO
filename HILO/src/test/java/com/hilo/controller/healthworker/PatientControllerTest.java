@@ -51,7 +51,7 @@ public class PatientControllerTest {
   }
 
   @AfterAll
-  public void cleanUp() {
+  public static void cleanUp() {
     controller.deletePaziente(patient);
   }
 }

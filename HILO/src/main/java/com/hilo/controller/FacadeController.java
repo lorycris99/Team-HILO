@@ -71,7 +71,8 @@ public class FacadeController implements RequestController {
   @GetMapping("/view/swab/add")
   public String requestAddSwab() {
     if (session.getAttribute("role") != null 
-        && session.getAttribute("role").equals("healthworker")) {
+        && session.getAttribute("role").equals("healthworker")
+            || session.getAttribute("role").equals("admin")) {
       return "aggiungi-tampone";
     }
     return "HomePage";
@@ -124,7 +125,18 @@ public class FacadeController implements RequestController {
   @PostMapping("/swab/bypatient")
   public @ResponseBody String findSwabByPatient(Model m, @RequestParam(name = "cf") String cf) {
     List<Swab> list = hc.findSwabByCF(cf);
-    return gson.toJson(list);
+    if (session.getAttribute("role") == null) {
+      return "HomePage";
+    }
+    if (session.getAttribute("role").equals("admin")
+            || session.getAttribute("role").equals("healthworker")) {
+      return gson.toJson(list);
+    }
+    if (session.getAttribute("role").equals("patient")
+            && session.getAttribute("cf").equals("cf")) {
+      return gson.toJson(list);
+    }
+    return "HomePage";
   }
 
   @GetMapping("/view/healthworker")

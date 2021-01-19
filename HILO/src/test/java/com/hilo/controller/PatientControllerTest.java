@@ -50,6 +50,6 @@ public class PatientControllerTest {
   @Test
   @Order(3)
   public void cleanUp() {
-    controller.deletePaziente(patient);
+    controller.deletePaziente(controller.getPazienteByCf("PRTGMN56D26B301S"));
   }
 }

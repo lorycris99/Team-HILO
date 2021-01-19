@@ -150,9 +150,13 @@ public class FacadeController implements RequestController {
     }
   }
 
-  @GetMapping("/patient/loadradiography")
-  public @ResponseBody String loadRadiography(Model m) {
-    return "Da implementare";
+  @GetMapping("/view/loadradiography")
+  public String loadRadiography(Model m) {
+    if (session.getAttribute("role") != null && (session.getAttribute("role").equals("admin") 
+        || session.getAttribute("role").equals("healthworker"))) {
+      return "aggiungi-radiografia";
+    }
+    return "HomePage";
   }
 
   @PostMapping("/swab/add")
@@ -325,6 +329,11 @@ public class FacadeController implements RequestController {
   @GetMapping("/view/about")
   public String showAboutUs() {
     return "Su-di-noi";
+  }
+
+  @PostMapping("/patient/loadradiography")
+  public @ResponseBody String radiograhyAdded() {
+    return "Not implemented yet";
   }
 
 }

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/")
-public class FacadeController implements RequestController {
+public class FacadeController {
   @Autowired
   private PatientController pc;
 

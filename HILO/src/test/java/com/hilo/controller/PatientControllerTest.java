@@ -2,7 +2,6 @@ package com.hilo.controller;
 
 import com.hilo.model.patientmanagement.entity.Patient;
 import java.util.List;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
@@ -33,7 +32,7 @@ public class PatientControllerTest {
     boolean isInterno = true;
     String indirizzo = "Via Milano 126";
     patient = controller.registerPatient(cf, name, surname, mail, telefono, isInterno, indirizzo);
-    Assertions.assertEquals(patient, controller.getPazienteByCF("PRTGMN56D26B301S"));
+    Assertions.assertEquals(patient, controller.getPazienteByCf("PRTGMN56D26B301S"));
     Patient patient1 = controller.registerPatient(cf, name, surname, 
                         mail, telefono, isInterno, indirizzo);
     Assertions.assertNull(patient1);
@@ -44,7 +43,7 @@ public class PatientControllerTest {
   public void getAllPatientsTests() {
     List<Patient> patients = controller.getAll();
     for (Patient p : patients) {
-      Assertions.assertEquals(p, controller.getPazienteByCF(p.getCf()));
+      Assertions.assertEquals(p, controller.getPazienteByCf(p.getCf()));
     } 
   }
 

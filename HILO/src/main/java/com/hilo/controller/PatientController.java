@@ -10,8 +10,6 @@ import com.hilo.model.patientmanagement.entity.Patient;
 import com.hilo.model.patientmanagement.entity.PatientManager;
 import java.util.List;
 import net.bytebuddy.utility.RandomString;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +31,7 @@ public class PatientController {
   private InterceptorMailRegister interceptor;
   
   public Patient registerPatient(String cft, String namet, String surnamet,
-                                 String mailt, String telefonot, boolean isInternot, String indirizzot) {
+        String mailt, String telefonot, boolean isInternot, String indirizzot) {
     String cf = cft;
     String name = namet;
     String surname = surnamet;
@@ -80,7 +78,7 @@ public class PatientController {
     return pm.findByCf(cf);
   }
 
-  public Patient getPazienteByCF(String cf) {
+  public Patient getPazienteByCf(String cf) {
     return patientManager.findById(cf);
   }
 

@@ -1,11 +1,11 @@
 package com.hilo.controller;
 
 import com.google.gson.Gson;
-import javax.servlet.http.HttpSession;
-
 import com.hilo.model.healthworkermanagement.entity.HealthWorker;
 import com.hilo.model.patientmanagement.entity.Patient;
 import com.hilo.model.swabmanagement.entity.Swab;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 
 
 @Controller
@@ -54,7 +53,7 @@ public class FacadeController implements RequestController {
                         @RequestParam(name = "password") String pass) throws JSONException {
     System.out.println(lc.doLogin(user, pass));
     System.out.println(session.getAttribute("role"));
-    if(session.getAttribute("role").equals("healthworker")) {
+    if (session.getAttribute("role").equals("healthworker")) {
       return "operatore-homepage";
     }
     return "HomePage";
@@ -131,11 +130,11 @@ public class FacadeController implements RequestController {
   public String addSwab(@RequestParam(name = "cf") String cf,
                         @RequestParam(name = "idStruttura") String idStruttura,
                         @RequestParam(name = "isInterno") String isInterno) {
-    Patient p = pc.getPazienteByCF(cf);
     Swab s = new Swab();
     s.setIsInterno(Boolean.parseBoolean(isInterno));
     s.setRisultato("");
     s.setIdStruttura(Integer.parseInt(idStruttura));
+    Patient p = pc.getPazienteByCf(cf);
     hc.insertSwab(s, p, "10-01-2000 09:00");
     return "aggiungi-tampone";
   }
@@ -179,7 +178,8 @@ public class FacadeController implements RequestController {
                                        @RequestParam(name = "isInterno") String isInterno
   ) {
     String indirizzo = via + " " + strada + " " + civico + ", " + citta;
-    pc.registerPatient(cf, nome, cognome, email, telefono, Boolean.parseBoolean(isInterno), indirizzo);
+    pc.registerPatient(cf, nome, cognome, email, telefono, 
+        Boolean.parseBoolean(isInterno), indirizzo);
     return "aggiungi-paziente";
   }
 

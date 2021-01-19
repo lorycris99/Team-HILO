@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PatientControllerTest {
 
-  private static Patient patient = null;
+  private Patient patient = null;
 
   @Autowired
   private PatientController controller;
@@ -48,6 +48,7 @@ public class PatientControllerTest {
     } 
   }
 
+  @Test
   @Order(3)
   public void cleanUp() {
     controller.deletePaziente(patient);

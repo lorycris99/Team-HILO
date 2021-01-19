@@ -32,13 +32,16 @@ public class LoginController {
       session.setAttribute("username", username);
       if (hw.getRuolo().equalsIgnoreCase("admin")) {
         session.setAttribute("role", "admin");
+        session.setAttribute("cf", hw.getCf());
         return true;
       }
       session.setAttribute("role", "healthworker");
+      session.setAttribute("cf", hw.getCf());
       return true;
     }
     session.setAttribute("username", username);
     session.setAttribute("role", "patient");
+    session.setAttribute("cf", p.getCf());
     return true;
   }
 

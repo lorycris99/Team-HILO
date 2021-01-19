@@ -50,7 +50,11 @@ public class FacadeController implements RequestController {
 
   @PostMapping("/login")
   public String doLogin(@RequestParam(name = "username") String user,
-                        @RequestParam(name = "password") String pass) throws JSONException {
+                        @RequestParam(name = "password") String pass) {
+    if (session.getAttribute("role") != null) {
+      return "HomePage";
+    }
+
     System.out.println(lc.doLogin(user, pass));
     System.out.println(session.getAttribute("role"));
     if (session.getAttribute("role").equals("healthworker")) {
@@ -66,17 +70,30 @@ public class FacadeController implements RequestController {
 
   @GetMapping("/view/swab/add")
   public String requestAddSwab() {
-    return "aggiungi-tampone";
+    if (session.getAttribute("role") != null 
+        && session.getAttribute("role").equals("healthworker")) {
+      return "aggiungi-tampone";
+    }
+    return "HomePage";
   }
 
   @GetMapping("/view/healthworker/add")
-  public String requestAddSwabHealthWorker() {
-    return "aggiungi-operatore";
+  public String requestAddHealthWorker() {
+    if (session.getAttribute("role") != null 
+        && session.getAttribute("role").equals("admin")) {
+      return "aggiungi-operatore";
+    }
+    return "HomePage";
   }
 
   @GetMapping("/view/patient/add")
   public String requestPatientAdd() {
-    return "aggiungi-paziente";
+    if (session.getAttribute("role") != null 
+        && session.getAttribute("role").equals("admin")
+        || session.getAttribute("role").equals("healthworker")) {
+      return "aggiungi-paziente";
+    }
+    return "HomePage";
   }
 
   @GetMapping("/view/swab/find")
@@ -130,6 +147,10 @@ public class FacadeController implements RequestController {
   public String addSwab(@RequestParam(name = "cf") String cf,
                         @RequestParam(name = "idStruttura") String idStruttura,
                         @RequestParam(name = "isInterno") String isInterno) {
+    if (session.getAttribute("role") == null 
+        || !session.getAttribute("role").equals("healthworker")) {
+      return "HomePage";
+    }
     Swab s = new Swab();
     s.setIsInterno(Boolean.parseBoolean(isInterno));
     s.setRisultato("");
@@ -166,7 +187,7 @@ public class FacadeController implements RequestController {
   }
 
   @PostMapping("/patient/add")
-  public String requestAddHealthWorker(@RequestParam(name = "cf") String cf,
+  public String requestAddPatient(@RequestParam(name = "cf") String cf,
                                        @RequestParam(name = "email") String email,
                                        @RequestParam(name = "telefono") String telefono,
                                        @RequestParam(name = "nome") String nome,
@@ -177,14 +198,18 @@ public class FacadeController implements RequestController {
                                        @RequestParam(name = "via") String via,
                                        @RequestParam(name = "isInterno") String isInterno
   ) {
+    if (session.getAttribute("role") == null || (!session.getAttribute("role").equals("admin") 
+        && !session.getAttribute("role").equals("healthworker"))) {
+      return "HomePage";
+    }
     String indirizzo = via + " " + strada + " " + civico + ", " + citta;
     pc.registerPatient(cf, nome, cognome, email, telefono, 
         Boolean.parseBoolean(isInterno), indirizzo);
     return "aggiungi-paziente";
   }
 
-  @PostMapping("healthworker/add")
-  public void requestAddSwabHealthWorker(@RequestParam(name = "cf") String cf,
+  @PostMapping("/healthworker/add")
+  public String addHealthWorker(@RequestParam(name = "cf") String cf,
                                            @RequestParam(name = "email") String email,
                                            @RequestParam(name = "telefono") String telefono,
                                            @RequestParam(name = "nome") String nome,
@@ -196,14 +221,22 @@ public class FacadeController implements RequestController {
                                            @RequestParam(name = "via") String via,
                                            @RequestParam(name = "ruolo") String ruolo) {
     String indirizzo = via + " " + strada + " " + civico + ", " + citta;
+    if (session.getAttribute("role") == null || session.getAttribute("role").equals("admin")) {
+      return "HomePage";
+    }
     HealthWorker hw = new HealthWorker(cf, "", "", email,
             telefono, ruolo, cognome, nome, indirizzo, Integer.parseInt(idStruttura));
     hc.insertHealthWorker(hw);
+    return "operatore-homepage";
   }
 
   @GetMapping("/patient/diarioPaziente/byCF")
   public String getPaginaByCf(@RequestParam(name = "cf") String cf) {
-    return gson.toJson(pc.getPaginaByCf(cf));
+    if (session.getAttribute("role") != null && session.getAttribute("role").equals("patient") 
+        && session.getAttribute("cf").equals(cf)) {
+      return gson.toJson(pc.getPaginaByCf(cf));
+    }
+    return null;
   }
 
   @GetMapping("/api/statistics/")
@@ -212,34 +245,54 @@ public class FacadeController implements RequestController {
   }
 
   @GetMapping("/swab/inserisciRisultato")
-  public String inserisciRisultato(@RequestParam(name = "idTampone") String id, 
+  public @ResponseBody String inserisciRisultato(@RequestParam(name = "idTampone") String id, 
                                  @RequestParam(name = "risultato") String risultato) {
-    return gson.toJson(hc.inserisciRisultato(Integer.valueOf(id), risultato));
+    if (session.getAttribute("role") != null 
+        && session.getAttribute("role").equals("admin")) {
+      return gson.toJson(hc.inserisciRisultato(Integer.valueOf(id), risultato));
+    }
+    return null;
   }
 
   @GetMapping("/admin/inserisciStruttura")
-  public String inserisciStruttura(@RequestParam(name = "struttura") String strutturaJson) 
+  public @ResponseBody String inserisciStruttura(
+                                  @RequestParam(name = "struttura") String strutturaJson) 
                                   throws JSONException {
-    return gson.toJson(ac.aggiungiStruttura(strutturaJson));
+    if (session.getAttribute("role") != null 
+        && session.getAttribute("role").equals("admin")) {                               
+      return gson.toJson(ac.aggiungiStruttura(strutturaJson));
+    }
+    return null;
   }
 
   @GetMapping("/admin/rimuoviStruttura")
-  public String rimuoviStruttura(@RequestParam(name = "idStruttura") Integer idStruttura) {
-    return gson.toJson(ac.removeStruttura(idStruttura));
+  public @ResponseBody String rimuoviStruttura(@RequestParam(name = "idStruttura") 
+                                              Integer idStruttura) {
+    if (session.getAttribute("role") != null && session.getAttribute("role").equals("admin")) {
+      return gson.toJson(ac.removeStruttura(idStruttura));
+    }
+
+    return null;
   }
 
   @GetMapping("/admin/getStrutturaById")
-  public String getById(@RequestParam(name = "idStruttura") Integer id) {
-    return gson.toJson(ac.getById(id));
+  public @ResponseBody String getById(@RequestParam(name = "idStruttura") Integer id) {
+    if (session.getAttribute("role") != null && session.getAttribute("role").equals("admin")) {
+      return gson.toJson(ac.getById(id));
+    }
+    return null;
   }
 
   @GetMapping("/admin/getAll")
-  public String getAll() {
-    return gson.toJson(ac.getAll());
+  public @ResponseBody String getAll() {
+    if (session.getAttribute("role") != null && session.getAttribute("role").equals("admin")) {
+      return gson.toJson(ac.getAll());
+    }
+    return null;
   }
 
   @GetMapping("/")
-  public String getView(Model m) {
+  public String getView() {
     return "HomePage";
   }
 
@@ -251,6 +304,9 @@ public class FacadeController implements RequestController {
 
   @GetMapping("/view/landing")
   public String showLogin() {
+    if (session.getAttribute("role") != null) {
+      return "HomePage";
+    }
     return "Login";
   }
 

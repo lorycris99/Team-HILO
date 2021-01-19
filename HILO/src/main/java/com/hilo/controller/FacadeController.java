@@ -113,10 +113,16 @@ public class FacadeController implements RequestController {
 
   @GetMapping("/view/healthworker")
   public String requestHealthWorkerHomepage() {
-    return "operatore-homepage";
+    if (session.getAttribute("role") != null 
+        && (session.getAttribute("role").equals("healthworker") 
+        || session.getAttribute("role").equals("admin"))) {
+      return "operatore-homepage";
+    } else {
+      return "HomePage";
+    }
   }
 
-  @PostMapping("/patient/loadradiography")
+  @GetMapping("/patient/loadradiography")
   public @ResponseBody String loadRadiography(Model m) {
     return "Da implementare";
   }

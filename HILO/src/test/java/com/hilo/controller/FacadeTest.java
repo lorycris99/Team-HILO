@@ -17,6 +17,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpSession;
@@ -40,6 +41,8 @@ public class FacadeTest {
 
   private Gson gson;
 
+  private Model m;
+
   @Test
   public void testAddHealthWorker() {
     Mockito.when(session.getAttribute("role")).thenReturn("admin");
@@ -58,15 +61,93 @@ public class FacadeTest {
   @Test
   public void testDoLogin() {
 //    Mockito.when(session.getAttribute("role")).thenReturn(null);
+    Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("admin");
     String page = facade.doLogin("admin", "admin");
     Assertions.assertEquals("admin-homepage", page);
-    session.invalidate();
-//    Mockito.when(session.getAttribute("role")).thenReturn(null);
+    Mockito.verify(session, Mockito.times(4)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("healthworker");
     Assertions.assertEquals("operatore-homepage", facade.doLogin("prova", "prova"));
-//    Mockito.when(session.getAttribute("role")).thenReturn("healthworker");
+    Mockito.verify(session, Mockito.times(3)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("healthworker");
     Assertions.assertEquals("HomePage", facade.doLogin("prova", "prova"));
-    Mockito.verify(session, Mockito.times(6)).getAttribute("role");
+    Mockito.verify(session, Mockito.times(1)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("patient");
+    Assertions.assertEquals("HomePage", facade.doLogin("sdvsvse", "efwegy"));
+    Mockito.verify(session, Mockito.times(4)).getAttribute("role");
   }
 
+  @Test
+  public void testDoLogout() {
+    Assertions.assertEquals("HomePage", facade.doLogout());
+    Mockito.verify(lc, Mockito.times(1)).doLogout();
+  }
+
+  @Test
+  public void testRequestAddSwab() {
+    Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("null");
+    Assertions.assertEquals("HomePage", facade.requestAddSwab());
+    Mockito.verify(session,Mockito.times(2)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("healthworker");
+    Assertions.assertEquals("aggiungi-tampone", facade.requestAddSwab());
+    Mockito.verify(session,Mockito.times(2)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("admin");
+    Assertions.assertEquals("aggiungi-tampone", facade.requestAddSwab());
+    Mockito.verify(session,Mockito.times(3)).getAttribute("role");
+  }
+
+  @Test
+  public void testRequestAddHealthWorker() {
+    Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("null");
+    Assertions.assertEquals("HomePage", facade.requestAddHealthWorker());
+    Mockito.verify(session,Mockito.times(1)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("admin");
+    Assertions.assertEquals("aggiungi-operatore", facade.requestAddHealthWorker());
+    Mockito.verify(session,Mockito.times(2)).getAttribute("role");
+  }
+
+  @Test
+  public void testRequestPatientAdd() {
+    Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("null");
+    Assertions.assertEquals("HomePage", facade.requestPatientAdd());
+    Mockito.verify(session,Mockito.times(2)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("healthworker");
+    Assertions.assertEquals("aggiungi-paziente", facade.requestPatientAdd());
+    Mockito.verify(session,Mockito.times(3)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("admin");
+    Assertions.assertEquals("aggiungi-paziente", facade.requestPatientAdd());
+    Mockito.verify(session,Mockito.times(2)).getAttribute("role");
+  }
+
+  @Test
+  public void testFindSwabByPatient() {
+    m = new ConcurrentModel();
+    Mockito.when(session.getAttribute("role")).thenReturn(null);
+    Assertions.assertEquals("HomePage", facade.findSwabByPatient(m, ""));
+    Mockito.verify(session,Mockito.times(2)).getAttribute("role");
+    Mockito.reset(session);
+  }
+
+  @Test
+  public void testRequestHealthWorkerHomepage() {
+    Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("null");
+    Assertions.assertEquals("HomePage", facade.requestHealthWorkerHomepage());
+    Mockito.verify(session,Mockito.times(1)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("healthworker");
+    Assertions.assertEquals("operatore-homepage", facade.requestHealthWorkerHomepage());
+    Mockito.verify(session,Mockito.times(2)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("admin");
+    Assertions.assertEquals("operatore-homepage", facade.requestHealthWorkerHomepage());
+    Mockito.verify(session,Mockito.times(3)).getAttribute("role");
+  }
 
 }

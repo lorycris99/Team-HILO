@@ -1,24 +1,25 @@
 package com.hilo.katalon;
 
 
-import java.util.regex.Pattern;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.util.concurrent.TimeUnit;
-
-import com.hilo.model.patientmanagement.entity.Patient;
-import com.hilo.model.patientmanagement.entity.PatientManager;
-import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-
-import org.junit.jupiter.api.Assertions;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -26,24 +27,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestFrontend {
   private WebDriver driver;
-  private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
-
-  @Autowired
-  private PatientManager pm;
 
   @Before
   public void setUp() throws Exception {
     System.setProperty("webdriver.gecko.driver", "C:\\Users\\ivanc\\Desktop\\geckodriver.exe");
     driver = new FirefoxDriver();
-    baseUrl = "https://www.google.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   @Order(1)
-  public void testTC101() throws Exception {
+  public void testTc101() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -86,7 +82,7 @@ public class TestFrontend {
 
   @Test
   @Order(2)
-  public void testTC102() throws Exception {
+  public void testTc102() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -132,7 +128,7 @@ public class TestFrontend {
 
   @Test
   @Order(3)
-  public void testTC103() throws Exception {
+  public void testTc103() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -175,7 +171,7 @@ public class TestFrontend {
 
   @Test
   @Order(4)
-  public void testTC104() throws Exception {
+  public void testTc104() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -221,7 +217,7 @@ public class TestFrontend {
 
   @Test
   @Order(5)
-  public void testTC105() throws Exception {
+  public void testTc105() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -264,7 +260,7 @@ public class TestFrontend {
 
   @Test
   @Order(6)
-  public void testTC106() throws Exception {
+  public void testTc106() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -310,7 +306,7 @@ public class TestFrontend {
 
   @Test
   @Order(7)
-  public void testTC107() throws Exception {
+  public void testTc107() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -353,7 +349,7 @@ public class TestFrontend {
 
   @Test
   @Order(8)
-  public void testTC108() throws Exception {
+  public void testTc108() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -399,7 +395,7 @@ public class TestFrontend {
 
   @Test
   @Order(9)
-  public void testTC109() throws Exception {
+  public void testTc109() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -442,7 +438,7 @@ public class TestFrontend {
 
   @Test
   @Order(10)
-  public void testTC110() throws Exception {
+  public void testTc110() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -488,7 +484,7 @@ public class TestFrontend {
 
   @Test
   @Order(11)
-  public void testTC111() throws Exception {
+  public void testTc111() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -534,7 +530,7 @@ public class TestFrontend {
 
   @Test
   @Order(12)
-  public void testTC112() throws Exception {
+  public void testTc112() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -577,7 +573,7 @@ public class TestFrontend {
 
   @Test
   @Order(13)
-  public void testTC113() throws Exception {
+  public void testTc113() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -623,7 +619,7 @@ public class TestFrontend {
 
   @Test
   @Order(14)
-  public void testTC114() throws Exception {
+  public void testTc114() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -666,7 +662,7 @@ public class TestFrontend {
 
   @Test
   @Order(15)
-  public void testTC115() throws Exception {
+  public void testTc115() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -712,7 +708,7 @@ public class TestFrontend {
 
   @Test
   @Order(16)
-  public void testTC116() throws Exception {
+  public void testTc116() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -755,7 +751,7 @@ public class TestFrontend {
 
   @Test
   @Order(17)
-  public void testTC117() throws Exception {
+  public void testTc117() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -801,7 +797,7 @@ public class TestFrontend {
 
   @Test
   @Order(18)
-  public void testTC118() throws Exception {
+  public void testTc118() throws Exception {
     driver.get("http://localhost:8080/");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -845,11 +841,11 @@ public class TestFrontend {
     assertFalse(isAlertPresent());
   }
 
-  //Inizio Test TC 2
+  //Inizio Test Tc 2
 
   @Test
   @Order(19)
-  public void testTC201() throws Exception {
+  public void testTc201() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -896,7 +892,7 @@ public class TestFrontend {
 
   @Test
   @Order(20)
-  public void testTC202() throws Exception {
+  public void testTc202() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -946,7 +942,7 @@ public class TestFrontend {
 
   @Test
   @Order(21)
-  public void testTC203() throws Exception {
+  public void testTc203() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -993,7 +989,7 @@ public class TestFrontend {
 
   @Test
   @Order(22)
-  public void testTC204() throws Exception {
+  public void testTc204() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1043,7 +1039,7 @@ public class TestFrontend {
 
   @Test
   @Order(23)
-  public void testTC205() throws Exception {
+  public void testTc205() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1090,7 +1086,7 @@ public class TestFrontend {
 
   @Test
   @Order(24)
-  public void testTC206() throws Exception {
+  public void testTc206() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1140,7 +1136,7 @@ public class TestFrontend {
 
   @Test
   @Order(25)
-  public void testTC207() throws Exception {
+  public void testTc207() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1190,7 +1186,7 @@ public class TestFrontend {
 
   @Test
   @Order(26)
-  public void testTC208() throws Exception {
+  public void testTc208() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1237,7 +1233,7 @@ public class TestFrontend {
 
   @Test
   @Order(27)
-  public void testTC209() throws Exception {
+  public void testTc209() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1287,7 +1283,7 @@ public class TestFrontend {
 
   @Test
   @Order(28)
-  public void testTC210() throws Exception {
+  public void testTc210() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1334,7 +1330,7 @@ public class TestFrontend {
 
   @Test
   @Order(29)
-  public void testTC211() throws Exception {
+  public void testTc211() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1384,7 +1380,7 @@ public class TestFrontend {
 
   @Test
   @Order(30)
-  public void testTC212() throws Exception {
+  public void testTc212() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1431,7 +1427,7 @@ public class TestFrontend {
 
   @Test
   @Order(31)
-  public void testTC213() throws Exception {
+  public void testTc213() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1481,7 +1477,7 @@ public class TestFrontend {
 
   @Test
   @Order(32)
-  public void testTC214() throws Exception {
+  public void testTc214() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1528,7 +1524,7 @@ public class TestFrontend {
 
   @Test
   @Order(33)
-  public void testTC215() throws Exception {
+  public void testTc215() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1578,7 +1574,7 @@ public class TestFrontend {
 
   @Test
   @Order(34)
-  public void testTC216() throws Exception {
+  public void testTc216() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1625,7 +1621,7 @@ public class TestFrontend {
 
   @Test
   @Order(35)
-  public void testTC217() throws Exception {
+  public void testTc217() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1675,7 +1671,7 @@ public class TestFrontend {
 
   @Test
   @Order(36)
-  public void testTC218() throws Exception {
+  public void testTc218() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1722,7 +1718,7 @@ public class TestFrontend {
 
   @Test
   @Order(37)
-  public void testTC219() throws Exception {
+  public void testTc219() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1772,7 +1768,7 @@ public class TestFrontend {
 
   @Test
   @Order(38)
-  public void testTC220() throws Exception {
+  public void testTc220() throws Exception {
     driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
@@ -1820,7 +1816,7 @@ public class TestFrontend {
     assertFalse(isAlertPresent());
   }
 
-//Inzio TC3
+//Inzio Tc3
 
   @Test
   @Order(39)
@@ -1945,8 +1941,6 @@ public class TestFrontend {
     driver.findElement(By.xpath("//button[@type='submit']")).click();
     assertFalse(isAlertPresent());
   }
-
-
 
   @After
   public void tearDown() throws Exception {

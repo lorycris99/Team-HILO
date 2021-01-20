@@ -38,28 +38,31 @@
             }
             else
             {
-                if(id == 'cf' && !document.getElementById(id).value.match(/[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]/)){
+                if(id == 'cf' && !document.getElementById(id).value.match(/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/)){
                     return true;
                 }
                 if(id == 'email' && !document.getElementById(id).value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)){
                     return true;
                 }
-                if(id == 'civico' && !document.getElementById(id).value.match(/[0-9]+/)){
+                if(id == 'civico' && !document.getElementById(id).value.match(/^[0-9]+$/)){
                     return true;
                 }
-                if(id == 'nome' && !document.getElementById(id).value.match(/^[a-zA-Z ]+/)){
+                if(id == 'nome' && !document.getElementById(id).value.match(/^[a-zA-Z][a-zA-Z ]*$/)){
                     return true;
                 }
-                if(id == 'cognome' && !document.getElementById(id).value.match(/^[a-zA-Z ]+/)){
+                if(id == 'cognome' && !document.getElementById(id).value.match(/^[a-zA-Z][a-zA-Z ]*$/)){
                     return true;
                 }
-                if(id == 'strada' && !document.getElementById(id).value.match(/^[a-zA-Z ]+/)){
+                if(id == 'strada' && !document.getElementById(id).value.match(/^[a-zA-Z][a-zA-Z ]*$/)){
                     return true;
                 }
-                if(id == 'telefono' && !document.getElementById(id).value.match(/^(\+39){0,1}[0-9]{9,10}/)){
+                if(id == 'telefono' && !document.getElementById(id).value.match(/^(\+39){0,1}[0-9]{9,10}$/)){
                     return true;
                 }
-                if(id == 'idStruttura' && !document.getElementById(id).value.match(/[0-9]+/)){
+                if(id == 'idStruttura' && !document.getElementById(id).value.match(/^[0-9]+$/)){
+                    return true;
+                }
+                if(id == 'citta' && !document.getElementById(id).value.match(/^[a-zA-Z][a-zA-Z ]*$/)){
                     return true;
                 }
                 return false;

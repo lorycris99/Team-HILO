@@ -734,7 +734,7 @@ public class TestFrontend {
     driver.findElement(By.name("via")).click();
     driver.findElement(By.id("strada")).click();
     driver.findElement(By.id("strada")).clear();
-    driver.findElement(By.id("strada")).sendKeys("Rom@");
+    driver.findElement(By.id("strada")).sendKeys("Roma");
     driver.findElement(By.id("civico")).click();
     driver.findElement(By.id("civico")).clear();
     driver.findElement(By.id("civico")).sendKeys("12");
@@ -777,7 +777,7 @@ public class TestFrontend {
     driver.findElement(By.name("via")).click();
     driver.findElement(By.id("strada")).click();
     driver.findElement(By.id("strada")).clear();
-    driver.findElement(By.id("strada")).sendKeys("Rom@");
+    driver.findElement(By.id("strada")).sendKeys("Roma");
     driver.findElement(By.id("civico")).click();
     driver.findElement(By.id("civico")).clear();
     driver.findElement(By.id("civico")).sendKeys("12");
@@ -850,7 +850,7 @@ public class TestFrontend {
   @Test
   @Order(19)
   public void testTC201() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -859,8 +859,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("email")).click();
     driver.findElement(By.id("email")).clear();
     driver.findElement(By.id("email")).sendKeys("mail@ministerodellasalute.it");
@@ -898,7 +897,7 @@ public class TestFrontend {
   @Test
   @Order(20)
   public void testTC202() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -907,8 +906,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("qualsiasiValoreACaso");
@@ -949,7 +947,7 @@ public class TestFrontend {
   @Test
   @Order(21)
   public void testTC203() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -958,8 +956,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -997,7 +994,7 @@ public class TestFrontend {
   @Test
   @Order(22)
   public void testTC204() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1006,8 +1003,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1048,7 +1044,7 @@ public class TestFrontend {
   @Test
   @Order(23)
   public void testTC205() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1057,8 +1053,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1096,7 +1091,7 @@ public class TestFrontend {
   @Test
   @Order(24)
   public void testTC206() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1105,8 +1100,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1147,7 +1141,7 @@ public class TestFrontend {
   @Test
   @Order(25)
   public void testTC207() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1156,8 +1150,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1198,7 +1191,7 @@ public class TestFrontend {
   @Test
   @Order(26)
   public void testTC208() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1207,8 +1200,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1246,7 +1238,7 @@ public class TestFrontend {
   @Test
   @Order(27)
   public void testTC209() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1255,8 +1247,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1297,7 +1288,7 @@ public class TestFrontend {
   @Test
   @Order(28)
   public void testTC210() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1306,8 +1297,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1345,7 +1335,7 @@ public class TestFrontend {
   @Test
   @Order(29)
   public void testTC211() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1354,8 +1344,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1396,7 +1385,7 @@ public class TestFrontend {
   @Test
   @Order(30)
   public void testTC212() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1405,8 +1394,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1444,7 +1432,7 @@ public class TestFrontend {
   @Test
   @Order(31)
   public void testTC213() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1453,8 +1441,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1495,7 +1482,7 @@ public class TestFrontend {
   @Test
   @Order(32)
   public void testTC214() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1504,8 +1491,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1543,7 +1529,7 @@ public class TestFrontend {
   @Test
   @Order(33)
   public void testTC215() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1552,8 +1538,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1594,7 +1579,7 @@ public class TestFrontend {
   @Test
   @Order(34)
   public void testTC216() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1603,8 +1588,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1642,7 +1626,7 @@ public class TestFrontend {
   @Test
   @Order(35)
   public void testTC217() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1651,8 +1635,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1693,7 +1676,7 @@ public class TestFrontend {
   @Test
   @Order(36)
   public void testTC218() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1702,8 +1685,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1741,7 +1723,7 @@ public class TestFrontend {
   @Test
   @Order(37)
   public void testTC219() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1750,8 +1732,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");
@@ -1792,7 +1773,7 @@ public class TestFrontend {
   @Test
   @Order(38)
   public void testTC220() throws Exception {
-    driver.get("http://localhost:8080/");
+    driver.get("http://localhost:8080/logout");
     driver.findElement(By.linkText("Accedi")).click();
     driver.findElement(By.name("username")).click();
     driver.findElement(By.name("username")).clear();
@@ -1801,8 +1782,7 @@ public class TestFrontend {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("admin");
     driver.findElement(By.id("button")).click();
-    driver.findElement(By.linkText("Pannello HW")).click();
-    driver.findElement(By.linkText("Aggiungi Operatore Sanitario")).click();
+    driver.findElement(By.linkText("Inserisci Operatore")).click();
     driver.findElement(By.id("cf")).click();
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("PRTGMN56D26B301S");

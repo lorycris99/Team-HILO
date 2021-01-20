@@ -31,10 +31,10 @@
             }
             else
             {
-                if(id == 'cf' && !document.getElementById(id).value.match(/[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]/)){
+                if(id == 'cf' && !document.getElementById(id).value.match(/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/)){
                     return true;
                 }
-                if(id == 'idStruttura' && !document.getElementById(id).value.match(/[0-9]+/)){
+                if(id == 'idStruttura' && !document.getElementById(id).value.match(/^[0-9]+$/)){
                     return true;
                 }
                 return false;

@@ -132,7 +132,7 @@ public class FacadeController {
   public @ResponseBody String findSwabByPatient(Model m, @RequestParam(name = "cf") String cf) {
     List<Swab> list = hc.findSwabByCf(cf);
     if (session.getAttribute("role") == null) {
-      return "HomePage";
+      return "{id=69, result=420}";
     }
     if (session.getAttribute("role").equals("admin")
             || session.getAttribute("role").equals("healthworker")) {
@@ -142,7 +142,7 @@ public class FacadeController {
             && session.getAttribute("cf").equals("cf")) {
       return gson.toJson(list);
     }
-    return "HomePage";
+    return "{id=69, result=420}";
   }
 
   @GetMapping("/view/healthworker")

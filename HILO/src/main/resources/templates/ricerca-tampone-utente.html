@@ -15,6 +15,7 @@
         function button() {
             var xhttp;
             xhttp = new XMLHttpRequest();
+            console.log("porcodio");
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var obj = JSON.parse(this.responseText);
@@ -30,14 +31,25 @@
             xhttp.open("POST", "/swab/bypatient", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             var str = "cf=" + document.getElementById("cf").value;
-            if(str.length !== 16) {
-                return;
+            if(check('cf')) {
+                xhttp.send(str);
+            } else {
+                alert("Dati immessi non corretti!");
             }
-            xhttp.send(str);
+
         }
 
-        function iterator(value) {
-            result = "ID: " + value.id + " Risultato: " + value.risultato;
+        function check(id) {
+            if(document.getElementById(id).value == '')
+            {
+                return false;
+            }
+            else {
+                if (id == 'cf' && !document.getElementById(id).value.match(/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/)) {
+                    return false;
+                }
+                return true;
+            }
         }
     </script>
 </head>

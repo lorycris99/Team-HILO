@@ -1,25 +1,24 @@
 package com.hilo.katalon;
+//Non toccare gli import, grazie! f
 
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.fail;
-
+import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
-import org.junit.After;
-import org.junit.Before;
+
+import com.hilo.model.patientmanagement.entity.Patient;
+import com.hilo.model.patientmanagement.entity.PatientManager;
+import org.junit.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -35,6 +34,7 @@ public class TestFrontend {
     System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
     driver = new FirefoxDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    System.out.println("lol");
   }
 
   @Test
@@ -77,7 +77,7 @@ public class TestFrontend {
     new Select(driver.findElement(By.id("isInterno"))).selectByVisibleText("Esterno");
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -123,7 +123,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -166,7 +166,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -212,7 +212,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -255,7 +255,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -301,7 +301,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -344,7 +344,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -390,7 +390,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -433,7 +433,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -479,7 +479,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -525,7 +525,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -568,7 +568,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -614,7 +614,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -657,7 +657,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -703,7 +703,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -746,7 +746,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -792,7 +792,7 @@ public class TestFrontend {
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.id("button")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -887,7 +887,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -937,7 +937,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -984,7 +984,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1034,7 +1034,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1081,7 +1081,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1131,7 +1131,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1181,7 +1181,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1228,7 +1228,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1278,7 +1278,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1325,7 +1325,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1375,7 +1375,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1422,7 +1422,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1472,7 +1472,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1519,7 +1519,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1569,7 +1569,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1616,7 +1616,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1666,7 +1666,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1713,7 +1713,7 @@ public class TestFrontend {
     driver.findElement(By.id("civico")).clear();
     driver.findElement(By.id("civico")).sendKeys("126");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1763,7 +1763,7 @@ public class TestFrontend {
     driver.findElement(By.id("idStruttura")).clear();
     driver.findElement(By.id("idStruttura")).sendKeys("dieci");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1838,7 +1838,7 @@ public class TestFrontend {
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("cfacaso");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1864,7 +1864,7 @@ public class TestFrontend {
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("cfacaso");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1887,7 +1887,7 @@ public class TestFrontend {
     new Select(driver.findElement(By.id("isInterno"))).selectByVisibleText("Esterno");
     driver.findElement(By.id("isInterno")).click();
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1913,7 +1913,7 @@ public class TestFrontend {
     driver.findElement(By.id("cf")).clear();
     driver.findElement(By.id("cf")).sendKeys("RSSMRA80A01H501U#");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    assertEquals("Non Funziona", closeAlertAndGetItsText());
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
   }
 
   @Test
@@ -1941,6 +1941,64 @@ public class TestFrontend {
     driver.findElement(By.xpath("//button[@type='submit']")).click();
     assertFalse(isAlertPresent());
   }
+
+  @Test
+  @Order(44)
+  public void test401() {
+    driver.get("http://localhost:8080/logout");
+    driver.findElement(By.linkText("Accedi")).click();
+    driver.findElement(By.name("username")).click();
+    driver.findElement(By.name("username")).clear();
+    driver.findElement(By.name("username")).sendKeys("prova");
+    driver.findElement(By.name("password")).click();
+    driver.findElement(By.name("password")).clear();
+    driver.findElement(By.name("password")).sendKeys("prova");
+    driver.findElement(By.id("button")).click();
+    driver.findElement(By.linkText("Cerca tampone")).click();
+    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
+  }
+
+  @Test
+  @Order(45)
+  public void test402() {
+    driver.get("http://localhost:8080/logout");
+    driver.findElement(By.linkText("Accedi")).click();
+    driver.findElement(By.name("username")).click();
+    driver.findElement(By.name("username")).clear();
+    driver.findElement(By.name("username")).sendKeys("prova");
+    driver.findElement(By.name("password")).click();
+    driver.findElement(By.name("password")).clear();
+    driver.findElement(By.name("password")).sendKeys("prova");
+    driver.findElement(By.id("button")).click();
+    driver.findElement(By.linkText("Cerca tampone")).click();
+    driver.findElement(By.id("cf")).click();
+    driver.findElement(By.id("cf")).clear();
+    driver.findElement(By.id("cf")).sendKeys("RSSMRA80A01H501-");
+    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    assertEquals("Dati immessi non corretti!", closeAlertAndGetItsText());
+  }
+
+  @Test
+  @Order(46)
+  public void test403() {
+    driver.get("http://localhost:8080/logout");
+    driver.findElement(By.linkText("Accedi")).click();
+    driver.findElement(By.name("username")).click();
+    driver.findElement(By.name("username")).clear();
+    driver.findElement(By.name("username")).sendKeys("prova");
+    driver.findElement(By.name("password")).click();
+    driver.findElement(By.name("password")).clear();
+    driver.findElement(By.name("password")).sendKeys("prova");
+    driver.findElement(By.id("button")).click();
+    driver.findElement(By.linkText("Cerca tampone")).click();
+    driver.findElement(By.id("cf")).click();
+    driver.findElement(By.id("cf")).clear();
+    driver.findElement(By.id("cf")).sendKeys("RSSMRA80A01H501U");
+    driver.findElement(By.xpath("//button[@type='submit']")).click();
+    assertFalse(isAlertPresent());
+  }
+
 
   @After
   public void tearDown() throws Exception {

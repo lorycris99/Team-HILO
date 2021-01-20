@@ -272,6 +272,11 @@ public class FacadeController {
     return null;
   }
 
+  @GetMapping("/view/swab/addresult")
+  public String showAddResult() {
+    return "aggiungi-tampone-risultato";
+  }
+
   @GetMapping("/admin/inserisciStruttura")
   public @ResponseBody String inserisciStruttura(
                                   @RequestParam(name = "struttura") String strutturaJson) 

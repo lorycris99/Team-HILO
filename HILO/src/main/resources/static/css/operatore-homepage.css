@@ -4,6 +4,12 @@
   }
 }
 
+@media (max-width: 576px) {
+  .col-md-6 {
+    margin-top: 5%;
+  }
+}
+
 .btn.btn-primary.text-center {
   margin-bottom: 5%;
 }

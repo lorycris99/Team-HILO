@@ -32,7 +32,7 @@ public class TestFrontend {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.gecko.driver", "C:\\Users\\ivanc\\Desktop\\geckodriver.exe");
+    System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
     driver = new FirefoxDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }

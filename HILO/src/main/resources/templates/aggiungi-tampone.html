@@ -9,29 +9,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/aggiungi-tampone.css" th:href="@{/css/aggiungi-tampone.css}">
     <script>
-        document.getElementById('button').onclick = function (e) {
-
+        function control(e) {
+            e.preventDefault();
             var error = false;
 
             if(check('cf')) error = true;
             if(check('idStruttura')) error = true;
-            if(check('isInterno')) error = true;
 
-            if(error) e.preventDefault();
-
+            if(error) {
+                alert("Non Funziona");
+                return false;
+            }
+            document.getElementById("form").submit();
         }
 
         function check(id) {
 
             if(document.getElementById(id).value == '')
             {
-                if(id == 'cf' && document.getElementById(id).value.length !== 16){
-                    return false;
-                }
                 return true;
             }
             else
             {
+                if(id == 'cf' && !document.getElementById(id).value.match(/[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]/)){
+                    return true;
+                }
+                if(id == 'idStruttura' && !document.getElementById(id).value.match(/[0-9]+/)){
+                    return true;
+                }
                 return false;
             }
 
@@ -48,7 +53,7 @@
     </div>
     <div class="row">
         <div class="col-md-5 offset-md-4">
-            <form class="text-center" action="/swab/add" method="post"><label for="idStruttura">ID struttura</label><input class="form-control form-control-sm" type="text" id="idStruttura" name="idStruttura" placeholder="Inserisci id della struttura"><label for="isInterno" style="margin-top: 12px;">Provenienza</label>
+            <form class="text-center" action="/swab/add" method="post" onsubmit="return control(event)"><label for="idStruttura">ID struttura</label><input class="form-control form-control-sm" type="text" id="idStruttura" name="idStruttura" placeholder="Inserisci id della struttura"><label for="isInterno" style="margin-top: 12px;">Provenienza</label>
                 <select
                     class="custom-select" id="isInterno" name="isInterno">
                     <optgroup label="Provenienza">

@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/aggiungi-operatore.css" th:href="@{/css/aggiungi-operatore.css}">
     <script>
-        document.getElementById('button').onclick = function (e) {
-
+        function control(e) {
+            e.preventDefault();
             var error = false;
 
             if(check('cf')) error = true;
@@ -21,23 +21,47 @@
             if(check('citta')) error = true;
             if(check('strada')) error = true;
             if(check('civico')) error = true;
-            if(check('isInterno')) error = true;
+            if(check('idStruttura')) error = true;
 
-            if(error) e.preventDefault();
-
+            if(error) {
+                alert("Non Funziona");
+                return false;
+            }
+            document.getElementById("form").submit();
         }
 
         function check(id) {
 
             if(document.getElementById(id).value == '')
             {
-                if(id == 'cf' && document.getElementById(id).value.length !== 16){
-                    return false;
-                }
                 return true;
             }
             else
             {
+                if(id == 'cf' && !document.getElementById(id).value.match(/[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]/)){
+                    return true;
+                }
+                if(id == 'email' && !document.getElementById(id).value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)){
+                    return true;
+                }
+                if(id == 'civico' && !document.getElementById(id).value.match(/[0-9]+/)){
+                    return true;
+                }
+                if(id == 'nome' && !document.getElementById(id).value.match(/^[a-zA-Z ]+/)){
+                    return true;
+                }
+                if(id == 'cognome' && !document.getElementById(id).value.match(/^[a-zA-Z ]+/)){
+                    return true;
+                }
+                if(id == 'strada' && !document.getElementById(id).value.match(/^[a-zA-Z ]+/)){
+                    return true;
+                }
+                if(id == 'telefono' && !document.getElementById(id).value.match(/^(\+39){0,1}[0-9]{9,10}/)){
+                    return true;
+                }
+                if(id == 'idStruttura' && !document.getElementById(id).value.match(/[0-9]+/)){
+                    return true;
+                }
                 return false;
             }
 
@@ -54,7 +78,7 @@
     </div>
     <div class="row">
         <div class="col-md-5 offset-md-4">
-            <form class="text-center" action="/healthworker/add" method="post"><label for="cf" style="margin-top: 12px;">CF</label><input class="form-control" type="text" id="cf" name="cf" placeholder="Inserisci codice fiscale"><label for="idStruttura">Email</label><input class="form-control form-control-sm" type="text"
+            <form class="text-center" action="/healthworker/add" method="post" onsubmit="return control(event)"><label for="cf" style="margin-top: 12px;">CF</label><input class="form-control" type="text" id="cf" name="cf" placeholder="Inserisci codice fiscale"><label for="idStruttura">Email</label><input class="form-control form-control-sm" type="text"
                     id="email" name="email" placeholder="Inserisci email"><label>Telefono</label><input class="form-control" type="text" id="telefono" name="telefono" placeholder="Inserisci numero di telefono"><label>Ruolo</label><select id="ruolo" name="ruolo" class="form-control"><option value="dottore" selected="">Dottore</option><option value="infermiere">Infermiere</option><option value="analista">Analista</option></select><label>Nome</label>
                 <input
                     class="form-control" type="text" id="nome" name="nome" placeholder="Inserisci il nome"><label>Cognome</label><input class="form-control" type="text" name="cognome" id="cognome" placeholder="Inserisci il cognome"><label>Città</label><input class="form-control" type="text" name="citta" id="citta" placeholder="Inserisci città"><label>Tipo strada</label>

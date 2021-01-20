@@ -125,7 +125,7 @@ public class FacadeController {
 
   @PostMapping("/swab/bypatient")
   public @ResponseBody String findSwabByPatient(Model m, @RequestParam(name = "cf") String cf) {
-    List<Swab> list = hc.findSwabByCF(cf);
+    List<Swab> list = hc.findSwabByCf(cf);
     if (session.getAttribute("role") == null) {
       return "HomePage";
     }

@@ -1,6 +1,5 @@
 package com.hilo.model.healthworkermanagement.entity;
 
-import com.hilo.model.adminmanagement.entity.Struttura;
 import com.hilo.model.healthworkermanagement.repository.HealthWorkerRepository;
 import java.util.List;
 import java.util.Optional;

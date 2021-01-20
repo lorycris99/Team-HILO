@@ -14,8 +14,6 @@ import com.hilo.model.swabmanagement.entity.Ryan;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import java.util.List;
-import java.util.Random;
-
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -54,7 +52,7 @@ public class HealthController {
     ep.setIdTampone(s.getId());
     sm.createSwab(s);
     if (s.getIsInterno()) {
-      if(rm.findByCfPaziente(p.getCf()).isEmpty()){
+      if (rm.findByCfPaziente(p.getCf()).isEmpty()) {
         epm.createEffettuaP(ep);
         return;
       }
@@ -95,7 +93,7 @@ public class HealthController {
     hw.setPassword(RandomString.make(10));
     hwm.createHwr(hw);
   }
-  public List<Swab> findSwabByCF(String cf) {
+  public List<Swab> findSwabByCf(String cf) {
     return epm.findByCF(cf);
   }
 }

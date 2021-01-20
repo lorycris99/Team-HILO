@@ -16,12 +16,12 @@ public class TestEmbeddedEffettuaP {
 
   @Test
   @Order(1)
-  public void equalsTest(){
-    EmbeddedEffettuaP a=new EmbeddedEffettuaP();
+  public void equalsTest() {
+    EmbeddedEffettuaP a = new EmbeddedEffettuaP();
     a.setCfP("abc");
     a.setIdTampone(20);
 
-    EmbeddedEffettuaP b=new EmbeddedEffettuaP();
+    EmbeddedEffettuaP b = new EmbeddedEffettuaP();
     b.setCfP("abc");
     b.setIdTampone(20);
 
@@ -49,12 +49,13 @@ public class TestEmbeddedEffettuaP {
 
   @Test
   @Order(2)
-  public void toStringTest(){
-    EmbeddedEffettuaP a=new EmbeddedEffettuaP();
+  public void toStringTest() {
+    EmbeddedEffettuaP a = new EmbeddedEffettuaP();
     a.setCfP("abc");
     a.setIdTampone(20);
 
-    Assertions.assertEquals("EmbeddedEffettuaP [cfP=" + "abc" + ", idTampone=" + 20 + "]",a.toString());
+    Assertions.assertEquals("EmbeddedEffettuaP [cfP=" + "abc" + ", idTampone=" + 20 + "]", 
+        a.toString());
 
   }
 

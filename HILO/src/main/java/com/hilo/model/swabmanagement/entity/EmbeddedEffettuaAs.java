@@ -46,7 +46,8 @@ public class EmbeddedEffettuaAs implements Serializable {
   }
 
   /**
-   * Permette di ottene
+   * Permette di ottene.
+   * 
    * @param cfAs
    */
   public void setCfAs(String cfAs) {

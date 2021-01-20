@@ -25,7 +25,8 @@ public class Pagina {
 
   public Pagina() {}
 
-  public Pagina(String cfPaziente, Integer numero, String note, Double temperatura, String sintomi) {
+  public Pagina(String cfPaziente, Integer numero, String note, 
+      Double temperatura, String sintomi) {
     this.cfPaziente = cfPaziente;
     this.numero = numero;
     this.note = note;

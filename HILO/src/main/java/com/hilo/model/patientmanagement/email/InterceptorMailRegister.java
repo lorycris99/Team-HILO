@@ -15,7 +15,8 @@ public class InterceptorMailRegister {
   private ErrorController ec;
   @Autowired
   private EmailServiceImpl sender;
-  public boolean sendRegisteredMail(Patient p){
+  
+  public boolean sendRegisteredMail(Patient p) {
     boolean result;
     try {
       patientManager.createPatient(p);
@@ -26,7 +27,9 @@ public class InterceptorMailRegister {
     }
     String to = p.getMail();
     String subject = "Credenziali per Hilo " + p.getNome() + " " + p.getCognome();
-    String text = "Le credenziali di accesso per il portale Hilo sono:\n" + "Username = " + p.getUsername() + "\nPassword = " + p.getPassword() + "\nPuoi cambiare la password dopo aver effettuato l'accesso.";
+    String text = "Le credenziali di accesso per il portale Hilo sono:\n" + "Username = " 
+        + p.getUsername() + "\nPassword = " + p.getPassword() 
+        + "\nPuoi cambiare la password dopo aver effettuato l'accesso.";
 
     sender.sendSimpleMessage(to, subject, text);
 

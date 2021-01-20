@@ -26,7 +26,6 @@ public class StatisticaManager {
 
   }
 
-  //TODO: capire se fare lo storico
   /**
    * Serve per ottenere tutti i tamponi effettuati in un arco di tempo che va dall'ultimo richiamo
    * del metodo alla data in cui è richiamato nuovamente il metodo. Nel caso in cui viene
@@ -40,7 +39,6 @@ public class StatisticaManager {
    */
   public List<Swab> retreiveTamponi() {
 
-    //TODO: cercare un modo più efficiente di fare questa operazione di filtering
     //recupero tutti i tamponi effettuati
     List<Swab> tempAll;
     tempAll = swab.findAll();

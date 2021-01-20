@@ -7,7 +7,7 @@
               <li class="nav-item"><a class="nav-link" href="/statistics">Statistiche</a></li>
               <li class="nav-item"><a class="nav-link" href="/view/about">Su di Noi<br></a></li>
           </ul>
-          <div th:switch="${session.role}">
+          <div style="padding-right: 2%" th:switch="${session.role}">
               <span th:case="null" class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="/view/landing">Accedi</a></span>
               <span th:case="patient" class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="/logout">Esci</a></span>
               <span th:case="healthworker" class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="/logout">Esci</a><a class="btn btn-light action-button" role="button" href="/view/healthworker">Pannello HW</a></span>

@@ -20,7 +20,9 @@ import org.nd4j.linalg.dataset.api.preprocessor.ImagePreProcessingScaler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
+/**
+ * Questa classe è l'implementazione 
+ */
 @Component
 public class Ryan {
   @Autowired

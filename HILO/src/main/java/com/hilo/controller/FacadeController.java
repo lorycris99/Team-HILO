@@ -293,8 +293,8 @@ public class FacadeController {
   }
 
   @GetMapping("/view/structure/add")
-  public String showAddStructure() {
-    return "aggiungi-struttura";
+  public @ResponseBody String showAddStructure() {
+    return "Not implemented yet";
   }
 
   @GetMapping("/view/admin")

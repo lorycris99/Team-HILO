@@ -25,6 +25,14 @@ public class Pagina {
 
   public Pagina() {}
 
+  public Pagina(String cfPaziente, Integer numero, String note, Double temperatura, String sintomi) {
+    this.cfPaziente = cfPaziente;
+    this.numero = numero;
+    this.note = note;
+    this.temperatura = temperatura;
+    this.sintomi = sintomi;
+  }
+
   public String getCfPaziente() {
     return cfPaziente;
   }
@@ -129,8 +137,8 @@ public class Pagina {
 
   @Override
   public String toString() {
-    return "Pagina [cfPaziente=" + cfPaziente + ", note=" + note + ", numero=" + numero
-            + ", sintomi=" + sintomi + ", temperatura=" + temperatura + "]";
+    return "Pagina {cfPaziente=" + cfPaziente + ", note=" + note + ", numero=" + numero
+            + ", sintomi=" + sintomi + ", temperatura=" + temperatura + "}";
   }
 
 }

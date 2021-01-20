@@ -55,6 +55,8 @@ public class FacadeController {
       return "HomePage";
     }
 
+    System.out.println("user: " + user + " pass: " + pass);
+
     System.out.println(lc.doLogin(user, pass));
     System.out.println(session.getAttribute("role"));
     if (session.getAttribute("role").equals("healthworker")) {

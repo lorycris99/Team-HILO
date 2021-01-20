@@ -150,4 +150,42 @@ public class FacadeTest {
     Mockito.verify(session,Mockito.times(3)).getAttribute("role");
   }
 
+  @Test
+  public void testLoadRadiography() {
+    m = new ConcurrentModel();
+    Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("null");
+    Assertions.assertEquals("HomePage", facade.loadRadiography(m));
+    Mockito.verify(session,Mockito.times(1)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("healthworker");
+    Assertions.assertEquals("aggiungi-radiografia", facade.loadRadiography(m));
+    Mockito.verify(session,Mockito.times(3)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("admin");
+    Assertions.assertEquals("aggiungi-radiografia", facade.loadRadiography(m));
+    Mockito.verify(session,Mockito.times(2)).getAttribute("role");
+  }
+
+  @Test
+  public void testAddSwab() {
+    Mockito.when(session.getAttribute("role")).thenReturn(null);
+    Assertions.assertEquals("HomePage", facade.addSwab("", "",""));
+    Mockito.verify(session,Mockito.times(1)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("admin");
+    Assertions.assertEquals("HomePage", facade.addSwab("", "", ""));
+    Mockito.verify(session,Mockito.times(2)).getAttribute("role");
+  }
+
+  @Test
+  public void testShowLogin() {
+    Mockito.when(session.getAttribute("role")).thenReturn(null);
+    Assertions.assertEquals("Login", facade.showLogin());
+    Mockito.verify(session,Mockito.times(1)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.when(session.getAttribute("role")).thenReturn("admin");
+    Assertions.assertEquals("HomePage", facade.showLogin());
+    Mockito.verify(session,Mockito.times(1)).getAttribute("role");
+  }
+
 }

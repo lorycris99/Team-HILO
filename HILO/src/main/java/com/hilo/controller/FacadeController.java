@@ -51,10 +51,15 @@ public class FacadeController {
   @PostMapping("/login")
   public String doLogin(@RequestParam(name = "username") String user,
                         @RequestParam(name = "password") String pass) {
+    session.removeAttribute("error");
+    
     if (session.getAttribute("role") != null) {
       return "HomePage";
     }
-    System.out.println(lc.doLogin(user, pass));
+    if (!lc.doLogin(user, pass)) {
+      session.setAttribute("error", true);
+      return "Login";
+    } 
     System.out.println(session.getAttribute("role"));
     if (session.getAttribute("role").equals("healthworker")) {
       return "operatore-homepage";
@@ -336,6 +341,7 @@ public class FacadeController {
 
   @GetMapping("/view/landing")
   public String showLogin() {
+    session.removeAttribute("error");
     if (session.getAttribute("role") != null) {
       return "HomePage";
     }

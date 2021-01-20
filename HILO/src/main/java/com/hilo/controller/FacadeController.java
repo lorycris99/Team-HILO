@@ -59,6 +59,8 @@ public class FacadeController {
     System.out.println(session.getAttribute("role"));
     if (session.getAttribute("role").equals("healthworker")) {
       return "operatore-homepage";
+    } else if (session.getAttribute("role").equals("admin")) {
+      return "admin-homepage";
     }
     return "HomePage";
   }
@@ -279,6 +281,16 @@ public class FacadeController {
       return gson.toJson(ac.aggiungiStruttura(strutturaJson));
     }
     return null;
+  }
+
+  @GetMapping("/view/structure/add")
+  public String showAddStructure() {
+    return "aggiungi-struttura";
+  }
+
+  @GetMapping("/view/admin")
+  public String showAdmin() {
+    return "admin-homepage";
   }
 
   @GetMapping("/admin/rimuoviStruttura")

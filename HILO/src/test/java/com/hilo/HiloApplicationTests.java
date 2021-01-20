@@ -21,6 +21,7 @@ import com.hilo.model.patientmanagement.entity.TestPatient;
 import com.hilo.model.patientmanagement.entity.TestPatientManager;
 import com.hilo.model.patientmanagement.entity.TestRadiografia;
 import com.hilo.model.patientmanagement.entity.TestRadiografiaManager;
+import com.hilo.model.statisticsmanagement.TestStatisticsManager;
 import com.hilo.model.swabmanagement.TestEffettuaAs;
 import com.hilo.model.swabmanagement.TestEffettuaAsManager;
 import com.hilo.model.swabmanagement.TestEffettuaP;
@@ -44,5 +45,5 @@ import org.springframework.boot.test.context.SpringBootTest;
     TestEmbeddedRadiografia.class, TestEmbeddedPaginaDiarioClinico.class,
     TestPaginaDiarioClinico.class, TestPaginaDiarioClinicoManager.class, 
     TestRadiografiaManager.class, TestRadiografia.class, 
-    LoginControllerTest.class, PatientControllerTest.class})
+    LoginControllerTest.class, PatientControllerTest.class, TestStatisticsManager.class})
 public class HiloApplicationTests {}

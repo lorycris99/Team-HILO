@@ -19,6 +19,9 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Questa classe serve per gestire le statistiche giornaliere riguardo l'andamento dei contagi.
+ */
 @Component
 public class StatisticaManager {
 
@@ -108,6 +111,13 @@ public class StatisticaManager {
     return tamponiPeriodo;
   }
 
+  /**
+   * Serve per ottenere un resoconto grezzo e facilmente gestibile delle statistiche attuali.
+   *
+   * @param listaTamponi la lista di tamponi da analizzare
+   *
+   * @return le statistiche sotto forma di una Map
+   */
   public Map<String, Integer> getSommaEsiti(List<Swab> listaTamponi) {
 
     //inizializzo i dati per contare i vari esiti dei tamponi
@@ -132,15 +142,23 @@ public class StatisticaManager {
 
         elenco.put("Inconcludente", elenco.get("Inconcludente") + 1);
 
-      } else
+      } else {
 
         elenco.put("Non analizzato", elenco.get("Non analizzato") + 1);
+      }
     }
 
     return elenco;
 
   }
 
+  /**
+   * Serve per salvare una statistica in un file.
+   *
+   * @param stat la statistica da salvare
+   *
+   * @return true se il salvataggio e' andato a buon fine, false altrimenti
+   */
   public boolean saveStats(Statistica stat) {
 
     File file = new File(FILE_PATH);
@@ -159,6 +177,11 @@ public class StatisticaManager {
     }
   }
 
+  /**
+   * Serve per leggere una statistica da un file.
+   *
+   * @return la statistica letta dal file (null in caso di problemi)
+   */
   public Statistica readStats() {
 
     Statistica stat = null;
@@ -181,6 +204,13 @@ public class StatisticaManager {
     return gson.fromJson(temp, Statistica.class);
   }
 
+  /**
+   * Serve per convertire una Map in una Statistica.
+   *
+   * @param esitiTamponi la Map da convertire in Statistica
+   *
+   * @return la statistica corrispondente
+   */
   public Statistica getStatistiche(Map<String, Integer> esitiTamponi) {
 
     return new Statistica(esitiTamponi.get("Positivo"), esitiTamponi.get("Negativo"),

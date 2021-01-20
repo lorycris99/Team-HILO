@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Questa classe è l'implementazione 
+ * Questa classe è l'implementazione del modulo di Intelligenza Artificiale.
  */
 @Component
 public class Ryan {
@@ -30,6 +30,16 @@ public class Ryan {
   @Autowired
   RadiografiaManager rm;
 
+  /**
+   * Questo metodo fornisce la probabilita' di positivita' al Covid di un paziente
+   * data la sua radiografia.
+   *
+   * @param s Il tampone al quale associare la probabilita'
+   *
+   * @param p Il paziente che ha effettuato il tampone
+   *
+   * @return la probabilita' di positivita' al covid
+   */
   public double getProba(Swab s, Patient p) {
     List<Radiografia> list = rm.findByCfPaziente(p.getCf());
     Radiografia rad = list.get(list.size() - 1);

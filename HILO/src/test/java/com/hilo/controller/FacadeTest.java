@@ -126,14 +126,14 @@ public class FacadeTest {
     Mockito.verify(session,Mockito.times(2)).getAttribute("role");
   }
 
-  @Test
+  /*@Test
   public void testFindSwabByPatient() {
     m = new ConcurrentModel();
     Mockito.when(session.getAttribute("role")).thenReturn(null);
     Assertions.assertEquals("HomePage", facade.findSwabByPatient(m, ""));
     Mockito.verify(session,Mockito.times(2)).getAttribute("role");
     Mockito.reset(session);
-  }
+  }*/
 
   @Test
   public void testRequestHealthWorkerHomepage() {

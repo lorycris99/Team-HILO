@@ -56,7 +56,7 @@ public class EffettuaAsManager {
 
   public Swab findByIdTampone(int id) {
     EffettuaAs temp = ear.findByIdTampone(id);
-    if(temp==null){
+    if (temp == null) {
       return null;
     }
     List<Swab> all = sr.findAll();

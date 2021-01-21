@@ -93,6 +93,7 @@ public class HealthController {
     hw.setPassword(RandomString.make(10));
     hwm.createHwr(hw);
   }
+
   public List<Swab> findSwabByCf(String cf) {
     return epm.findByCF(cf);
   }

@@ -46,9 +46,9 @@ public class EmbeddedEffettuaAs implements Serializable {
   }
 
   /**
-   * Permette di ottene.
-   * 
-   * @param cfAs
+   * Permette di impostare il codice fiscale dell'operatore sanitario.
+   *
+   * @param cfAs codice fiscale da cercare
    */
   public void setCfAs(String cfAs) {
     this.cfAs = cfAs;

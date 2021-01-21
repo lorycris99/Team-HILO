@@ -62,21 +62,32 @@ public class FacadeTest {
   public void testDoLogin() {
 //    Mockito.when(session.getAttribute("role")).thenReturn(null);
     Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("admin");
+    Mockito.when(lc.doLogin("admin", "admin")).thenReturn(true);
     String page = facade.doLogin("admin", "admin");
     Assertions.assertEquals("admin-homepage", page);
     Mockito.verify(session, Mockito.times(4)).getAttribute("role");
     Mockito.reset(session);
+    Mockito.reset(lc);
     Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("healthworker");
+    Mockito.when(lc.doLogin("prova", "prova")).thenReturn(true);
     Assertions.assertEquals("operatore-homepage", facade.doLogin("prova", "prova"));
     Mockito.verify(session, Mockito.times(3)).getAttribute("role");
     Mockito.reset(session);
+    Mockito.reset(lc);
     Mockito.when(session.getAttribute("role")).thenReturn("healthworker");
     Assertions.assertEquals("HomePage", facade.doLogin("prova", "prova"));
     Mockito.verify(session, Mockito.times(1)).getAttribute("role");
     Mockito.reset(session);
     Mockito.when(session.getAttribute("role")).thenReturn(null).thenReturn("patient");
+    Mockito.when(lc.doLogin("sdvsvse", "efwegy")).thenReturn(true);
     Assertions.assertEquals("HomePage", facade.doLogin("sdvsvse", "efwegy"));
     Mockito.verify(session, Mockito.times(4)).getAttribute("role");
+    Mockito.reset(session);
+    Mockito.reset(lc);
+    Mockito.when(session.getAttribute("role")).thenReturn(null);
+    Mockito.when(lc.doLogin("admin", "lol")).thenReturn(false);
+    Assertions.assertEquals("Login", facade.doLogin("admin", "lol"));
+    Mockito.verify(session, Mockito.times(1)).getAttribute("role");
   }
 
   @Test

@@ -14,6 +14,8 @@ import com.hilo.model.swabmanagement.entity.Ryan;
 import com.hilo.model.swabmanagement.entity.Swab;
 import com.hilo.model.swabmanagement.entity.SwabManager;
 import java.util.List;
+import java.util.Random;
+
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,10 +47,12 @@ public class HealthController {
   private Ryan ryan;
 
   public void insertSwab(Swab s, Patient p, String timestamp) {
+    Random r = new Random();
     pm.createPatient(p);
     EffettuaP ep = new EffettuaP();
     ep.setCfP(p.getCf());
     ep.setTimestamp(timestamp);
+    s.setId(r.nextInt(Integer.MAX_VALUE));
     ep.setIdTampone(s.getId());
     sm.createSwab(s);
     if (s.getIsInterno()) {

@@ -267,13 +267,13 @@ public class FacadeController {
   }
 
   @PostMapping("/swab/inserisciRisultato")
-  public @ResponseBody String inserisciRisultato(@RequestParam(name = "idTampone") String id, 
+  public String inserisciRisultato(@RequestParam(name = "idTampone") String id,
                                  @RequestParam(name = "risultato") String risultato) {
     if (session.getAttribute("role") != null 
         && session.getAttribute("role").equals("healthworker")) {
-      return gson.toJson(hc.inserisciRisultato(Integer.valueOf(id), risultato));
+      return "aggiungi-tampone-risultato";
     }
-    return null;
+    return "HomePage";
   }
 
   @GetMapping("/view/swab/addresult")

@@ -266,11 +266,11 @@ public class FacadeController {
     return gson.toJson(sc.getStatistiche());
   }
 
-  @GetMapping("/swab/inserisciRisultato")
+  @PostMapping("/swab/inserisciRisultato")
   public @ResponseBody String inserisciRisultato(@RequestParam(name = "idTampone") String id, 
                                  @RequestParam(name = "risultato") String risultato) {
     if (session.getAttribute("role") != null 
-        && session.getAttribute("role").equals("admin")) {
+        && session.getAttribute("role").equals("healthworker")) {
       return gson.toJson(hc.inserisciRisultato(Integer.valueOf(id), risultato));
     }
     return null;

@@ -26,6 +26,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class HealthWorkerTest {
 
+  private static Swab s1 = new Swab();
+  private static Swab s2 = new Swab();
+
   @Autowired
   private HealthController controller;
 
@@ -47,51 +50,47 @@ public class HealthWorkerTest {
   @Test
   @Order(1)
   public void insertSwabPatient() {
-    Swab s = new Swab();
-    s.setId(25);
-    s.setRisultato("");
-    s.setIdStruttura(1);
-    s.setIsInterno(false);
+    s2.setRisultato("");
+    s2.setIdStruttura(1);
+    s2.setIsInterno(false);
     Patient p = new Patient("4321", "user", "pass", "lmao@yeah.lol", "33333",
                             false, "via kek 24", "lmao", "yeah");
     String timestamp = "09-01-2021 07:45";
-    controller.insertSwab(s, p, timestamp);
+    controller.insertSwab(s2, p, timestamp);
     EffettuaP temp = new EffettuaP();
     temp.setTimestamp(timestamp);
     temp.setCfP(p.getCf());
-    temp.setIdTampone(s.getId());
+    temp.setIdTampone(s2.getId());
     Assertions.assertEquals(p, pm.findById(p.getCf()));
-    Assertions.assertEquals(s, sm.findById(s.getId()));
-    Assertions.assertEquals(temp, epm.findEffettuapByIdTampone(s.getId()));
+    Assertions.assertEquals(s2, sm.findById(s2.getId()));
+    Assertions.assertEquals(temp, epm.findEffettuapByIdTampone(s2.getId()));
   }
 
   @Test
   @Order(2)
   public void insertSwabPatientInterno() {
-    Swab s = new Swab();
-    s.setId(26);
-    s.setRisultato("");
-    s.setIdStruttura(1);
-    s.setIsInterno(true);
+    s1.setRisultato("");
+    s1.setIdStruttura(1);
+    s1.setIsInterno(true);
     Patient p = pm.findById("FRTGRD99A01F912U");
     String timestamp = "09-01-2021 08:45";
-    controller.insertSwab(s, p, timestamp);
+    controller.insertSwab(s1, p, timestamp);
     EffettuaP temp = new EffettuaP();
     temp.setTimestamp(timestamp);
     temp.setCfP(p.getCf());
-    temp.setIdTampone(s.getId());
+    temp.setIdTampone(s1.getId());
     temp.setGravity(0.76);
     Assertions.assertEquals(p, pm.findById(p.getCf()));
-    Assertions.assertEquals(s, sm.findById(s.getId()));
-    Assertions.assertEquals(temp, epm.findEffettuapByIdTampone(s.getId()));
+    Assertions.assertEquals(s1, sm.findById(s1.getId()));
+    Assertions.assertEquals(temp, epm.findEffettuapByIdTampone(s1.getId()));
   }
 
   @Test
   @Order(3)
   public void insertSwabAs() {
     Swab s = new Swab();
-    s.setId(27);
     s.setRisultato("");
+    s.setId(27);
     s.setIdStruttura(1);
     s.setIsInterno(false);
     HealthWorker hw = hwm.findById("CNTGPP64M08M131X");
@@ -109,19 +108,19 @@ public class HealthWorkerTest {
   @Test
   @Order(7)
   public void delete() {
-    epm.removeEffettuaP(epm.findEffettuapByIdTampone(25));
-    epm.removeEffettuaP(epm.findEffettuapByIdTampone(26));
+    epm.removeEffettuaP(epm.findEffettuapByIdTampone(s2.getId()));
+    epm.removeEffettuaP(epm.findEffettuapByIdTampone(s1.getId()));
     eam.deleteEffettuaAs(eam.findEffettuaAsByIdTampone(27));
     pm.deletePatient(pm.findById("4321"));
-    sm.deleteSwab(sm.findById(25));
-    sm.deleteSwab(sm.findById(26));
+    sm.deleteSwab(sm.findById(s2.getId()));
+    sm.deleteSwab(sm.findById(s1.getId()));
     sm.deleteSwab(sm.findById(27));
     Assertions.assertNull(pm.findById("4321"));
-    Assertions.assertNull(sm.findById(25));
-    Assertions.assertNull(sm.findById(26));
+    Assertions.assertNull(sm.findById(s2.getId()));
+    Assertions.assertNull(sm.findById(s1.getId()));
     Assertions.assertNull(sm.findById(27));
-    Assertions.assertNull(epm.findEffettuapByIdTampone(25));
-    Assertions.assertNull(epm.findEffettuapByIdTampone(26));
+    Assertions.assertNull(epm.findEffettuapByIdTampone(s2.getId()));
+    Assertions.assertNull(epm.findEffettuapByIdTampone(s1.getId()));
     Assertions.assertNull(eam.findEffettuaAsByIdTampone(27));
   }
 
@@ -137,8 +136,9 @@ public class HealthWorkerTest {
   @Test
   @Order(5)
   public void inserisciRisultato() {
-    controller.inserisciRisultato(26, "positivo");
-    Assertions.assertEquals(sm.findById(26).getRisultato(), "positivo");
+    System.out.println(s1.getId());
+    controller.inserisciRisultato(s1.getId(), "positivo");
+    Assertions.assertEquals(sm.findById(s1.getId()).getRisultato(), "positivo");
   }
 
   @Test
